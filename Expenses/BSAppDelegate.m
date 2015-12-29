@@ -15,11 +15,13 @@
 #import "BSConstants.h"
 #import "BSCoreDataFixturesManager.h"
 
+
 @implementation BSAppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+        
     // Core Data Helper
     self.coreDataHelper = [[CoreDataStackHelper alloc] initWithPersitentStoreType:NSSQLiteStoreType
                                                                      resourceName:@"Expenses"
@@ -84,8 +86,29 @@
     [self.coreDataHelper saveContext];
 }
 
-- (BOOL)isFirstTheAppEverRun {
+// 3D Touch - Quick access Handling
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void (^)(BOOL succeeded))completionHandler
+{
     
+    UINavigationController *navigationController =  (UINavigationController *)self.window.rootViewController;
+    UIViewController *viewController = navigationController.topViewController;
+    
+    if ([viewController conformsToProtocol:@protocol(BSUIViewControllerAbilityToAddEntry)]) {
+        id<BSUIViewControllerAbilityToAddEntry> vc = (id<BSUIViewControllerAbilityToAddEntry>)viewController;
+        [vc addButtonTappedWithPresentationCompletedBlock:^{
+            if (completionHandler)
+            {
+                completionHandler(YES);
+            }
+        }];
+    } else {
+        completionHandler(NO);
+    }
+}
+
+- (BOOL)isFirstTheAppEverRun
+{
     BOOL isFirstTime = NO;
     NSArray* paths = NSSearchPathForDirectoriesInDomains(NSLibraryDirectory, NSUserDomainMask, YES);
     NSString* documentsDirectoryPath = nil;

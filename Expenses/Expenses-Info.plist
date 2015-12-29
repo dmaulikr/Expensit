@@ -30,6 +30,19 @@
 	<string>Storyboard</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Storyboard</string>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>filter_work</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Add entry</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.boasoftware.expensit.addentry</string>
+			<key>UIApplicationShortcutItemUersInfo</key>
+			<dict/>
+		</dict>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

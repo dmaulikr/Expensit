@@ -16,8 +16,12 @@
 
 @class CoreDataStackHelper, BSCoreDataController;
 
+@protocol BSUIViewControllerAbilityToAddEntry <NSObject>
+- (void)addButtonTappedWithPresentationCompletedBlock:(void (^ __nullable)(void))completion ;
+@end
 
-@interface BSBaseExpensesSummaryViewController : UICollectionViewController <BSCoreDataControllerDelegateProtocol, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout, BSCategoryFilterDelegate>
+
+@interface BSBaseExpensesSummaryViewController : UICollectionViewController <BSCoreDataControllerDelegateProtocol, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout, BSCategoryFilterDelegate, BSUIViewControllerAbilityToAddEntry>
 
 @property (strong, nonatomic) UICollectionViewLayout *layout;
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;

@@ -131,6 +131,12 @@ static Tag *tagBeingFilterBy = nil;
 
 - (void)addButtonTapped
 {
+    [self addButtonTappedWithPresentationCompletedBlock:nil];
+}
+
+
+- (void)addButtonTappedWithPresentationCompletedBlock:(void (^ __nullable)(void))completion
+{
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
     UINavigationController *navController = (UINavigationController *)[storyBoard instantiateViewControllerWithIdentifier:@"addEntryNavigationController"];
     
@@ -143,7 +149,7 @@ static Tag *tagBeingFilterBy = nil;
     addEntryVC.coreDataController = self.coreDataController;
     addEntryVC.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
     
-    [self presentViewController:navController animated:YES completion:nil];
+    [self presentViewController:navController animated:YES completion:completion];
 }
 
 
