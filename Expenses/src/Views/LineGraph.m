@@ -19,7 +19,7 @@ static const CGFloat kGraphXValuesTopMargin = 5.0f;
 
 @interface LineGraph()
 
-@property (retain, nonatomic) UIColor* backgroundColor;
+//@property (retain, nonatomic) UIColor* backgroundColor;
 @property (retain, nonatomic) UIColor* backgroundVerticalLinesColor;
 @property (retain, nonatomic) UIColor* backgroundHorizontalLinesColor;
 @property (retain, nonatomic) UIColor* expensesLineColor;
@@ -34,7 +34,7 @@ static const CGFloat kGraphXValuesTopMargin = 5.0f;
 
 #pragma mark - Init Methods
 
-- (id) initWithCoder:(NSCoder *)aDecoder
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     /*************************************************************************************************/
     /* Init Method.                                                                                  */
@@ -48,6 +48,7 @@ static const CGFloat kGraphXValuesTopMargin = 5.0f;
         _expensesLineColor = [UIColor colorWithRed:209.0/255.0 green:91.0/255.0 blue:82.0/255.0 alpha:1.0];
         _backgroundHorizontalLinesColor = lightGray;
         _backgroundVerticalLinesColor = lightGray;
+        self.backgroundColor = [UIColor clearColor];
     }
     
     return self;
@@ -110,7 +111,7 @@ static const CGFloat kGraphXValuesTopMargin = 5.0f;
         // DRAW BACKGROUND + GRID
         [self drawBackgroundInRect:backgroundRect];
         [self drawGridInRect:gridRect horizontalLines:9 verticalLines:[benefits count] xValues:self.dataSource.xValues maxYValue:maxDomainValue];
-        
+
         // MOVE ORIGIN TO BE AT THE INTERSECTION OF THE AXIS
         CGContextTranslateCTM(theContext, kGraphLeftMargin, kGraphBottomMargin);
         
@@ -274,8 +275,13 @@ static const CGFloat kGraphXValuesTopMargin = 5.0f;
         [subpath addLineToPoint:[(NSValue*)moneyIn[i] CGPointValue]];
     }
     
-    for (NSInteger i = currentIndex ; i>=initialIndex; i--) {
-        [subpath addLineToPoint:[(NSValue*)moneyOut[i] CGPointValue]];
+    
+    
+    for (NSInteger i = currentIndex ; ABS(i-initialIndex)>0; i--) {
+        if (i >= 0 && i < moneyOut.count) {
+            [subpath addLineToPoint:[(NSValue*)moneyOut[i] CGPointValue]];
+        }
+
     }
     
     if (!CGPointEqualToPoint([(NSValue*)moneyIn[initialIndex] CGPointValue], [(NSValue*)moneyOut[initialIndex] CGPointValue])) {

@@ -14,11 +14,7 @@
 
 - (void)applyThemeToNavigationBar
 {
-    // Text
-//    [[UINavigationBar appearance] setTintColor:self.theme.navigationBarTextColor];
-    
-    // Background
-//    [[UINavigationBar appearance] setBackgroundColor:self.theme.navigationBarBackgroundColor];
+
 }
 
 

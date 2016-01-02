@@ -51,7 +51,6 @@
 		009C9EDF17B68FD300DE1A97 /* BSGreenTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EDE17B68FD300DE1A97 /* BSGreenTheme.m */; };
 		009C9EE317B6912900DE1A97 /* BSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EE217B6912900DE1A97 /* BSThemeManager.m */; };
 		009C9EE717B6939100DE1A97 /* BSThemeManager_iOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EE617B6939100DE1A97 /* BSThemeManager_iOS7.m */; };
-		009C9EEC17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EEB17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.m */; };
 		009D00FA19426FA000B850D4 /* BSHeaderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 009D00F919426FA000B850D4 /* BSHeaderButton.m */; };
 		009D010C194307A500B850D4 /* BSChartLegendCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 009D010B194307A500B850D4 /* BSChartLegendCollectionViewCell.m */; };
 		009D01191943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 009D01181943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m */; };
@@ -221,8 +220,6 @@
 		009C9EE517B6939100DE1A97 /* BSThemeManager_iOS7.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSThemeManager_iOS7.h; sourceTree = "<group>"; };
 		009C9EE617B6939100DE1A97 /* BSThemeManager_iOS7.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSThemeManager_iOS7.m; sourceTree = "<group>"; };
 		009C9EE917B693CC00DE1A97 /* BSThemeManager+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BSThemeManager+Protected.h"; sourceTree = "<group>"; };
-		009C9EEA17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSThemeManager_iOS6_andBelow.h; sourceTree = "<group>"; };
-		009C9EEB17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSThemeManager_iOS6_andBelow.m; sourceTree = "<group>"; };
 		009D00F819426FA000B850D4 /* BSHeaderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSHeaderButton.h; sourceTree = "<group>"; };
 		009D00F919426FA000B850D4 /* BSHeaderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSHeaderButton.m; sourceTree = "<group>"; };
 		009D010A194307A500B850D4 /* BSChartLegendCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSChartLegendCollectionViewCell.h; sourceTree = "<group>"; };
@@ -567,8 +564,6 @@
 				009C9EE517B6939100DE1A97 /* BSThemeManager_iOS7.h */,
 				009C9EE617B6939100DE1A97 /* BSThemeManager_iOS7.m */,
 				009C9EE917B693CC00DE1A97 /* BSThemeManager+Protected.h */,
-				009C9EEA17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.h */,
-				009C9EEB17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.m */,
 			);
 			name = Themes;
 			sourceTree = "<group>";
@@ -690,7 +685,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BS;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Borja Arias Drake";
 				TargetAttributes = {
 					007B8248177476780052FE84 = {
@@ -899,7 +894,6 @@
 				00E9F178177F47E000A1A212 /* BSDailyExpensesSummaryViewController.m in Sources */,
 				00D7E0F5178F3A5000474A30 /* BSMonthlyGridLayout.m in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
-				009C9EEC17B694B000DE1A97 /* BSThemeManager_iOS6_andBelow.m in Sources */,
 				005DF5F4178B5A9A00DC1800 /* LineGraph.m in Sources */,
 				00D7E0F9178F40A100474A30 /* BSDailyLayout.m in Sources */,
 				001ECAA118DDECF200B7D027 /* BSCategoryFilterViewController.m in Sources */,
@@ -966,6 +960,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -1042,11 +1037,12 @@
 					"$(SRCROOT)/../BSPieChartView/BSPieChartView/Source/Headers/**",
 				);
 				INFOPLIST_FILE = "Expenses/Expenses-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ExpensesAppWorkspace-cpawapuscsryhtapnkcwxzdyiduh/Build/Products/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boasoftware.expensit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1076,11 +1072,12 @@
 					"$(SRCROOT)/../BSPieChartView/BSPieChartView/Source/Headers/**",
 				);
 				INFOPLIST_FILE = "Expenses/Expenses-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ExpensesAppWorkspace-cpawapuscsryhtapnkcwxzdyiduh/Build/Products/Debug-iphoneos",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.boasoftware.expensit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
@@ -1124,6 +1121,7 @@
 					"-force_load",
 					"$(SRCROOT)/ExpensesTests/OCMock/libOCMock.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boasoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -1162,6 +1160,7 @@
 					"-force_load",
 					"$(SRCROOT)/ExpensesTests/OCMock/libOCMock.a",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.boasoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
 				TEST_HOST = "$(BUNDLE_LOADER)";

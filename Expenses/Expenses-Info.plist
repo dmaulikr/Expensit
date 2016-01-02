@@ -9,7 +9,7 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.boasoftware.expensit</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -24,12 +24,6 @@
 	<string>1.1.14</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UIFileSharingEnabled</key>
-	<false/>
-	<key>UILaunchStoryboardName</key>
-	<string>Storyboard</string>
-	<key>UIMainStoryboardFile</key>
-	<string>Storyboard</string>
 	<key>UIApplicationShortcutItems</key>
 	<array>
 		<dict>
@@ -43,6 +37,12 @@
 			<dict/>
 		</dict>
 	</array>
+	<key>UIFileSharingEnabled</key>
+	<false/>
+	<key>UILaunchStoryboardName</key>
+	<string>Storyboard</string>
+	<key>UIMainStoryboardFile</key>
+	<string>Storyboard</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

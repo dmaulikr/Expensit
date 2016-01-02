@@ -37,9 +37,10 @@
     if ([self saveModel:&error])
     {
         [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    } else {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Couldn't save" message:[error userInfo][NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alertView show];
+    }
+    else
+    {
+        [self displayUnableToSaveErrorwithMessage:[error userInfo][NSLocalizedDescriptionKey]];
     }
 }
 
@@ -81,9 +82,26 @@
     }
     else
     {
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Couldn't save" message:[error userInfo][NSLocalizedDescriptionKey] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-        [alertView show];
+        [self displayUnableToSaveErrorwithMessage:[error userInfo][NSLocalizedDescriptionKey]];
     }
+}
+
+- (void)displayUnableToSaveErrorwithMessage:(NSString *)message
+{
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Couldn't save", nil)
+                                                                             message:message
+                                                                      preferredStyle:UIAlertControllerStyleAlert];
+    
+    
+    UIAlertAction *dismiss = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
+                                                      style:UIAlertActionStyleCancel
+                                                    handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    
+    [alertController addAction:dismiss];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 @end

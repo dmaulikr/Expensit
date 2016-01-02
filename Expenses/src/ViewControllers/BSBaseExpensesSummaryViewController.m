@@ -162,19 +162,19 @@ static Tag *tagBeingFilterBy = nil;
         UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
         if (UIDeviceOrientationIsLandscape(deviceOrientation) && !self.isShowingLandscapeView)
         {
-            [self performSegueWithIdentifier:@"DisplayGraphView" sender:[[self navigationController] topViewController]];
+            [self performSegueWithIdentifier:@"DisplayGraphView" sender:self];
             self.isShowingLandscapeView = YES;
         }
-        else if (UIDeviceOrientationIsPortrait(deviceOrientation) && self.isShowingLandscapeView && [self.presentedViewController isKindOfClass:[BSGraphViewController class]])
+        else if (UIDeviceOrientationIsPortrait(deviceOrientation) && self.isShowingLandscapeView )
         {
-            [self dismissViewControllerAnimated:NO completion:nil];
+            [self dismissViewControllerAnimated:YES completion:nil];
             self.isShowingLandscapeView = NO;
         }
     }
 }
 
 
-- (NSUInteger)supportedInterfaceOrientations
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
 {
     return UIInterfaceOrientationMaskPortrait;
 }

@@ -23,16 +23,16 @@
 
 @interface BSBaseExpensesSummaryViewController : UICollectionViewController <BSCoreDataControllerDelegateProtocol, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout, BSCategoryFilterDelegate, BSUIViewControllerAbilityToAddEntry>
 
-@property (strong, nonatomic) UICollectionViewLayout *layout;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic) CoreDataStackHelper *coreDataStackHelper;
-@property (strong, nonatomic) BSCoreDataController *coreDataController;
+@property (strong, nonatomic, nullable) UICollectionViewLayout *layout;
+@property (strong, nonatomic, nullable) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic, nullable) CoreDataStackHelper *coreDataStackHelper;
+@property (strong, nonatomic, nullable) BSCoreDataController *coreDataController;
 
 /*! When the user is in a particular summary screen and selects a cell, this property is set by
  the previous viewController and used by the nextViewController to scroll to the right section.
  This property exists because in certain screens we don't show all items, for example, we just show
  months that have entries in the daily summary screen.*/
-@property (strong, nonatomic) NSString *nameOfSectionToBeShown;
+@property (strong, nonatomic, nullable) NSString *nameOfSectionToBeShown;
 
 @property (assign, nonatomic) BOOL shouldScrollToSelectedSection;
 
@@ -45,6 +45,6 @@
  @disscusion This is mainly used to calculate which section to take into consideration to calculate the data to feed a chart in landscape.
  @returns the name of the section that is predominantely visible, the one that occupies the most space.
  */
-- (NSString*) visibleSectionName;//should be protected
+- (nullable NSString *) visibleSectionName;//should be protected
 
 @end
