@@ -104,10 +104,15 @@
         [graphViewController setMoneyOut:[self dataForGraphWithFetchRequestResults:expensesResults]];
 
         NSMutableArray *yearStrings = [NSMutableArray array];
-        for (NSNumber *number in self.years) {
+        for (NSNumber *number in self.years)
+        {
             [yearStrings addObject:[number stringValue]];
         }
         [graphViewController setXValues:yearStrings];
+    }
+    else
+    {
+        [super prepareForSegue:segue sender:sender];
     }
 }
 

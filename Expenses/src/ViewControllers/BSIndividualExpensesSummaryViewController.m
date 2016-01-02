@@ -131,8 +131,12 @@
         editEntryViewController.isEditingEntry = YES;
         BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:YES];
         editEntryViewController.cellActionDataSource = cellActionsDataSource;
-
     }
+    else
+    {
+        [super prepareForSegue:segue sender:sender];
+    }
+    
 }
 
 - (void)orientationChanged:(NSNotification *)notification

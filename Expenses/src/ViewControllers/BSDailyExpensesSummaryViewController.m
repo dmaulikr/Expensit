@@ -162,7 +162,10 @@
 
         [graphViewController setSections:sections];
     }
-
+    else
+    {
+        [super prepareForSegue:segue sender:sender];
+    }
 }
 
 

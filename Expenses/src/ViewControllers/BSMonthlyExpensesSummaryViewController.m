@@ -128,6 +128,10 @@
         graphViewController.categories = [self.coreDataController sortedTagsByPercentageFromSections:[self.coreDataController categoriesForMonth:button.month inYear:button.year] sections:sections];
         [graphViewController setSections:sections];
     }
+    else
+    {
+        [super prepareForSegue:segue sender:sender];
+    }    
 }
 
 

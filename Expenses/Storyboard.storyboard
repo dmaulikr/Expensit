@@ -3,6 +3,7 @@
     <dependencies>
         <deployment version="2336" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller View Controller-->
@@ -77,7 +78,18 @@
                         <barButtonItem title="Item" id="n1Y-6M-y6p"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Yearly" id="E9c-MZ-pgU">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qpg-Up-ph4"/>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="Qpg-Up-ph4">
+                                <connections>
+                                    <segue destination="BhN-NC-sp3" kind="presentation" identifier="showAddEntryForm" id="5Ma-8x-FnT"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="filter_all" id="OMe-sp-oVh">
+                                <connections>
+                                    <segue destination="K7J-aq-faw" kind="modal" identifier="showFilter" id="wRq-9c-34r"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -86,7 +98,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rQM-EW-2ig" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1651.875" y="326.40845070422534"/>
+            <point key="canvasLocation" x="-1348" y="333"/>
         </scene>
         <!--Category Filter View Controller-->
         <scene sceneID="ECD-0O-GIi">
@@ -151,7 +163,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rWR-5p-tfa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-978.75" y="1147.7112676056338"/>
+            <point key="canvasLocation" x="-1275" y="937.5"/>
         </scene>
         <!--Graph VC-->
         <scene sceneID="v54-b8-aWj">
@@ -278,7 +290,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KoP-vO-DmW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1674.375" y="1187.3239436619717"/>
+            <point key="canvasLocation" x="1856" y="1527"/>
         </scene>
         <!--Navigation Controller View Controller-->
         <scene sceneID="bzo-ra-cEN">
@@ -298,7 +310,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="d2c-45-G1f" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-78.75" y="-696.12676056338023"/>
+            <point key="canvasLocation" x="973" y="-673"/>
         </scene>
         <!--Delegate-->
         <scene sceneID="Jj8-v0-HgS">
@@ -531,7 +543,7 @@
                     </date>
                 </datePicker>
             </objects>
-            <point key="canvasLocation" x="1072.5" y="-696.12676056338023"/>
+            <point key="canvasLocation" x="1959" y="-673"/>
         </scene>
         <!--Monthly-->
         <scene sceneID="dND-11-XUn">
@@ -610,11 +622,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Monthly" id="rcJ-1z-p1r">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="BQL-ih-tMP">
-                            <connections>
-                                <segue destination="BhN-NC-sp3" kind="presentation" identifier="addEntryFromMonth" id="p7z-Vm-w3k"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="BQL-ih-tMP">
+                                <connections>
+                                    <segue destination="BhN-NC-sp3" kind="presentation" identifier="showAddEntryForm" id="kAZ-wN-jUI"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="filter_all" id="cGf-zF-eq0">
+                                <connections>
+                                    <segue destination="K7J-aq-faw" kind="presentation" identifier="showFilter" id="kPC-HB-T5S"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="Bei-CJ-kYp" kind="presentation" identifier="DisplayGraphView" animates="NO" modalTransitionStyle="crossDissolve" id="Omz-ET-bsl"/>
@@ -622,7 +641,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbo-3f-H9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-161.25" y="326.40845070422534"/>
+            <point key="canvasLocation" x="-274" y="333"/>
         </scene>
         <!--Daily-->
         <scene sceneID="3uM-AG-LiF">
@@ -702,11 +721,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Daily" id="2lx-ln-xLD">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="s4v-ck-FmL">
-                            <connections>
-                                <segue destination="BhN-NC-sp3" kind="presentation" identifier="addEntryFromDay" id="LOK-DZ-fZ1"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="s4v-ck-FmL">
+                                <connections>
+                                    <segue destination="BhN-NC-sp3" kind="presentation" identifier="showAddEntryForm" id="LOK-DZ-fZ1"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="filter_all" id="Fst-yY-sDg">
+                                <connections>
+                                    <segue destination="K7J-aq-faw" kind="presentation" identifier="showFilter" id="xiw-zN-IxC"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="Bei-CJ-kYp" kind="presentation" identifier="DisplayGraphView" animates="NO" modalTransitionStyle="crossDissolve" id="ppL-ZX-bTD"/>
@@ -714,7 +740,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lvq-pL-gPr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="973.125" y="326.40845070422534"/>
+            <point key="canvasLocation" x="723" y="333"/>
         </scene>
         <!--Entries-->
         <scene sceneID="fVP-hX-uqf">
@@ -788,11 +814,18 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" title="Entries" id="w90-CH-C5I">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="wDg-iD-4qN">
-                            <connections>
-                                <segue destination="BhN-NC-sp3" kind="presentation" identifier="addEntryFromEntry" id="SvB-fj-3Fl"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="wDg-iD-4qN">
+                                <connections>
+                                    <segue destination="BhN-NC-sp3" kind="presentation" identifier="showAddEntryForm" id="SvB-fj-3Fl"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="filter_all" id="pbH-Rl-plb">
+                                <connections>
+                                    <segue destination="K7J-aq-faw" kind="presentation" identifier="showFilter" id="mhk-lY-BLe"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEj-Bm-Jjz" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -800,9 +833,13 @@
             <point key="canvasLocation" x="1959.375" y="326.40845070422534"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="filter_all" width="25" height="25"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="p7z-Vm-w3k"/>
+        <segue reference="5Ma-8x-FnT"/>
         <segue reference="7gU-IS-qsc"/>
-        <segue reference="VMT-65-EvS"/>
+        <segue reference="3Wo-jm-gLj"/>
+        <segue reference="mhk-lY-BLe"/>
     </inferredMetricsTieBreakers>
 </document>

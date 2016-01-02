@@ -37,8 +37,6 @@ static Tag *tagBeingFilterBy = nil;
 {
     [super viewDidLoad];
     
-    
-    
     self.firstTimeViewWillAppear = YES;
     
     // Set up Core Data helpers
@@ -54,12 +52,10 @@ static Tag *tagBeingFilterBy = nil;
                                                  name:UIDeviceOrientationDidChangeNotification
                                                object:nil];
 
-    
-
-    
     // NavBar buttons
-    UIBarButtonItem *filterButton = [self buttonForCategory:nil];
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped)];
+    UIBarButtonItem *filterButton = self.navigationItem.rightBarButtonItems[1];
+    [self configureButton:filterButton forCategory:nil];
+    UIBarButtonItem *addButton = self.navigationItem.rightBarButtonItems[0];
     self.navigationItem.rightBarButtonItems = @[addButton, filterButton];
     
     // Category filter view controller transitioning delegate
@@ -68,7 +64,7 @@ static Tag *tagBeingFilterBy = nil;
 }
 
 
-- (void) viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
@@ -129,12 +125,6 @@ static Tag *tagBeingFilterBy = nil;
 }
 
 
-- (void)addButtonTapped
-{
-    [self addButtonTappedWithPresentationCompletedBlock:nil];
-}
-
-
 - (void)addButtonTappedWithPresentationCompletedBlock:(void (^ __nullable)(void))completion
 {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
@@ -179,6 +169,36 @@ static Tag *tagBeingFilterBy = nil;
     return UIInterfaceOrientationMaskPortrait;
 }
 
+
+
+#pragma mark - segues
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"showAddEntryForm"])
+    {
+        UINavigationController *navigationController = (UINavigationController *)[segue destinationViewController];
+        BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:NO];
+        BSEntryDetailsFormViewController *addEntryVC = (BSEntryDetailsFormViewController*)navigationController.topViewController;
+        addEntryVC.isEditingEntry = NO;
+        addEntryVC.entryModel = [self.coreDataController newEntry];
+        addEntryVC.cellActionDataSource = cellActionsDataSource;
+        addEntryVC.coreDataController = self.coreDataController;
+        addEntryVC.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
+        
+    }
+    else if ([[segue identifier] isEqualToString:@"showFilter"])
+    {
+        BSCategoryFilterViewController *categoryFilterViewController = (BSCategoryFilterViewController *)[segue destinationViewController];
+        
+        categoryFilterViewController.transitioningDelegate = self.categoryFilterViewTransitioningDelegate;
+        categoryFilterViewController.modalPresentationStyle = UIModalPresentationCustom;
+        categoryFilterViewController.delegate = self;
+        categoryFilterViewController.selectedTag = tagBeingFilterBy;
+        categoryFilterViewController.categories = [self.coreDataController allTags];
+        categoryFilterViewController.categoryImages = [self.coreDataController allTagImages];
+    }
+}
 
 
 
@@ -358,6 +378,7 @@ static Tag *tagBeingFilterBy = nil;
     [self filterChangedToCategory:tag takingScreenshot:YES];
 }
 
+
 - (void)filterChangedToCategory:(Tag *)tag takingScreenshot:(BOOL)shouldTakeScreenshot
 {
     // So we remember when bringing the modal view back again
@@ -365,8 +386,10 @@ static Tag *tagBeingFilterBy = nil;
     tagBeingFilterBy = tag;
     
     // Change button
-    UIBarButtonItem *filterButton = [self buttonForCategory:tag];
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonTapped)];
+    UIBarButtonItem *filterButton = self.navigationItem.rightBarButtonItems[1];
+    [self configureButton:filterButton forCategory:tag];
+
+    UIBarButtonItem *addButton = self.navigationItem.rightBarButtonItems[0];
     self.navigationItem.rightBarButtonItems = @[addButton, filterButton];
     
     // Update the request so filter by category
@@ -384,6 +407,8 @@ static Tag *tagBeingFilterBy = nil;
     }
    
 }
+
+
 
 #pragma mark - Filter icons
 
@@ -406,8 +431,8 @@ static Tag *tagBeingFilterBy = nil;
 }
 
 
-- (UIBarButtonItem *)buttonForCategory:(Tag *)tag {
-
+- (UIBarButtonItem *)buttonForCategory:(Tag *)tag
+{
     UIImage *iconImage = [self.coreDataController imageForCategory:tag];
     UIButton *carIcon = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
     [carIcon setImage:iconImage forState:UIControlStateNormal];
@@ -421,6 +446,14 @@ static Tag *tagBeingFilterBy = nil;
 
     return filterButton;
 }
+
+- (void)configureButton:(UIBarButtonItem *)button forCategory:(Tag *)tag
+{
+    UIImage *iconImage = [self.coreDataController imageForCategory:tag];
+    [button setImage:iconImage];
+//    [button setBackgroundImage:iconImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
+}
+
 
 @end
 
