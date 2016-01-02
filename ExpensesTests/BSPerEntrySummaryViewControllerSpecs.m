@@ -50,6 +50,11 @@ beforeAll(^{
 
     perEntryViewController.coreDataStackHelper = coreDataStackHelper;
     perEntryViewController.coreDataController = coreDataController;
+    
+    
+    KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
+    [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
+    [perEntryViewController stub:@selector(navigationItem) andReturn:navItemMock];
 });
 
 afterAll(^{
@@ -129,6 +134,7 @@ describe(@"Category filtering", ^{
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"19/07/2012"] description:@"Dinner" value:@"-30" category:foodTag];
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"02/10/2013"] description:@"Food and drinks" value:@"-5.60" category:billsTag];
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"02/10/2013"] description:@"Trip" value:@"-100" category:travelTag];
+
     });
     
     afterAll(^{
@@ -146,6 +152,11 @@ describe(@"Category filtering", ^{
     beforeEach(^{
         KWMock *collectionMock = [KWMock nullMockForClass:UICollectionView.class];
         [perEntryViewController stub:@selector(collectionView) andReturn:collectionMock];
+        
+        KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
+        [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
+        [perEntryViewController stub:@selector(navigationItem) andReturn:navItemMock];
+
     });
     
     

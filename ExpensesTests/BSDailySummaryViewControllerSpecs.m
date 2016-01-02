@@ -96,6 +96,10 @@ describe(@"Daily calculations", ^{
         KWMock *collectionMock = [KWMock nullMockForClass:UICollectionView.class];
         [dailyViewController stub:@selector(collectionView) andReturn:collectionMock];
         
+        KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
+        [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
+        [dailyViewController stub:@selector(navigationItem) andReturn:navItemMock];
+        
         [dailyViewController filterChangedToCategory:nil];
         NSArray *dailyResults = dailyViewController.fetchedResultsController.fetchedObjects;
         [[theValue([dailyResults count]) should] equal:theValue(6)];
@@ -251,6 +255,11 @@ describe(@"Category filtering", ^{
     beforeEach(^{
         KWMock *collectionMock = [KWMock nullMockForClass:UICollectionView.class];
         [dailyViewController stub:@selector(collectionView) andReturn:collectionMock];
+        
+        KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
+        [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
+        [dailyViewController stub:@selector(navigationItem) andReturn:navItemMock];
+
     });
     
     

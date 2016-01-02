@@ -114,6 +114,10 @@ describe(@"Monthly calculations", ^{
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"19/06/2011"] description:@"Food and drinks" value:@"12" category:clothing];
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"19/07/2011"] description:@"Food and drinks" value:@"-5" category:clothing];
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"21/12/2011"] description:@"Food and drinks" value:@"-10" category:clothing];
+        
+        KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
+        [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
+        [monthlyViewController stub:@selector(navigationItem) andReturn:navItemMock];
     });
         
     afterAll(^{
@@ -363,6 +367,11 @@ describe(@"Category filtering", ^{
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"21/12/2011"] description:@"Electricity" value:@"-10" category:billsTag];
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"19/10/2012"] description:@"Food and drinks" value:@"-5" category:foodTag];
         [coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"21/12/2011"] description:@"Rent" value:@"-10" category:billsTag];
+        
+        KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
+        [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
+        [monthlyViewController stub:@selector(navigationItem) andReturn:navItemMock];
+
     });
     
     afterAll(^{
