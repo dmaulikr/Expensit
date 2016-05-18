@@ -189,10 +189,10 @@
 		00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlyExpensesSummaryViewController.m; sourceTree = "<group>"; };
 		00735EB6178835CD00725DFD /* BSYearlySummaryEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlySummaryEntryCell.h; sourceTree = "<group>"; };
 		0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesPresenterProtocol.swift; sourceTree = "<group>"; };
-		0077D5801CED0CD200003F71 /* Expensit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Expensit-Bridging-Header.h"; sourceTree = "<group>"; };
-		0077D5811CED0CDE00003F71 /* ExpensesTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExpensesTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesUserInterfaceProtocol.swift; sourceTree = "<group>"; };
 		0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesControllerProtocol.swift; sourceTree = "<group>"; };
+		0077D58B1CED11CB00003F71 /* ExpensesTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExpensesTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		0077D58C1CED11DC00003F71 /* Expenses-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Expenses-Bridging-Header.h"; sourceTree = "<group>"; };
 		007B8249177476780052FE84 /* Expensit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expensit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B824C177476780052FE84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		007B824E177476780052FE84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -549,9 +549,9 @@
 		007B8255177476780052FE84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0077D5811CED0CDE00003F71 /* ExpensesTests-Bridging-Header.h */,
-				0077D5801CED0CD200003F71 /* Expensit-Bridging-Header.h */,
 				007B8256177476780052FE84 /* Expenses-Info.plist */,
+				0077D58B1CED11CB00003F71 /* ExpensesTests-Bridging-Header.h */,
+				0077D58C1CED11DC00003F71 /* Expenses-Bridging-Header.h */,
 				007B8257177476780052FE84 /* InfoPlist.strings */,
 				007B825A177476780052FE84 /* main.m */,
 				007B825C177476780052FE84 /* Expenses-Prefix.pch */,
@@ -1144,7 +1144,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expensit-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expenses-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -1183,7 +1183,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
-				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expensit-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expenses-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1229,7 +1229,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boasoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
-				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/src/Use cases/show/User interface/Presenter/ExpensesTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/ExpensesTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -1272,7 +1272,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boasoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
-				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/src/Use cases/show/User interface/Presenter/ExpensesTests-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/ExpensesTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
