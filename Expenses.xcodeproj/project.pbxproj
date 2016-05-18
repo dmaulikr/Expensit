@@ -27,6 +27,12 @@
 		005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5F7178CA9D300DC1800 /* BSGraphViewController.m */; };
 		005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */; };
 		00735EB41788351200725DFD /* BSYearlyExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */; };
+		0077D57C1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */; };
+		0077D57D1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */; };
+		0077D5831CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */; };
+		0077D5841CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */; };
+		0077D5861CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */; };
+		0077D5871CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */; };
 		007B824D177476780052FE84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824C177476780052FE84 /* Foundation.framework */; };
 		007B824F177476780052FE84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824E177476780052FE84 /* CoreGraphics.framework */; };
 		007B8251177476780052FE84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B8250177476780052FE84 /* UIKit.framework */; };
@@ -182,6 +188,11 @@
 		00735EB21788351200725DFD /* BSYearlyExpensesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlyExpensesSummaryViewController.h; sourceTree = "<group>"; };
 		00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlyExpensesSummaryViewController.m; sourceTree = "<group>"; };
 		00735EB6178835CD00725DFD /* BSYearlySummaryEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlySummaryEntryCell.h; sourceTree = "<group>"; };
+		0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesPresenterProtocol.swift; sourceTree = "<group>"; };
+		0077D5801CED0CD200003F71 /* Expensit-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Expensit-Bridging-Header.h"; sourceTree = "<group>"; };
+		0077D5811CED0CDE00003F71 /* ExpensesTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExpensesTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesUserInterfaceProtocol.swift; sourceTree = "<group>"; };
+		0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesControllerProtocol.swift; sourceTree = "<group>"; };
 		007B8249177476780052FE84 /* Expensit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expensit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B824C177476780052FE84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		007B824E177476780052FE84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -409,6 +420,80 @@
 			path = Controllers;
 			sourceTree = "<group>";
 		};
+		0077D5671CED00D300003F71 /* Use cases */ = {
+			isa = PBXGroup;
+			children = (
+				0077D5711CED01FF00003F71 /* show */,
+			);
+			path = "Use cases";
+			sourceTree = "<group>";
+		};
+		0077D5711CED01FF00003F71 /* show */ = {
+			isa = PBXGroup;
+			children = (
+				0077D5721CED01FF00003F71 /* Business logic */,
+				0077D5751CED01FF00003F71 /* User interface */,
+			);
+			path = show;
+			sourceTree = "<group>";
+		};
+		0077D5721CED01FF00003F71 /* Business logic */ = {
+			isa = PBXGroup;
+			children = (
+				0077D5731CED01FF00003F71 /* Controllers */,
+				0077D5741CED01FF00003F71 /* Models */,
+			);
+			path = "Business logic";
+			sourceTree = "<group>";
+		};
+		0077D5731CED01FF00003F71 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0077D5741CED01FF00003F71 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0077D5751CED01FF00003F71 /* User interface */ = {
+			isa = PBXGroup;
+			children = (
+				0077D5761CED01FF00003F71 /* Presenter */,
+				0077D5771CED01FF00003F71 /* View */,
+				0077D5781CED01FF00003F71 /* Wireframe */,
+			);
+			path = "User interface";
+			sourceTree = "<group>";
+		};
+		0077D5761CED01FF00003F71 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0077D5771CED01FF00003F71 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0077D5781CED01FF00003F71 /* Wireframe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Wireframe;
+			sourceTree = "<group>";
+		};
 		007B8240177476780052FE84 = {
 			isa = PBXGroup;
 			children = (
@@ -451,7 +536,7 @@
 		007B8254177476780052FE84 /* Expenses */ = {
 			isa = PBXGroup;
 			children = (
-				007B83151775A6330052FE84 /* src */,
+				007B83151775A6330052FE84 /* source */,
 				007B825D177476780052FE84 /* BSAppDelegate.h */,
 				007B825E177476780052FE84 /* BSAppDelegate.m */,
 				007B8263177476780052FE84 /* Images.xcassets */,
@@ -464,6 +549,8 @@
 		007B8255177476780052FE84 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				0077D5811CED0CDE00003F71 /* ExpensesTests-Bridging-Header.h */,
+				0077D5801CED0CD200003F71 /* Expensit-Bridging-Header.h */,
 				007B8256177476780052FE84 /* Expenses-Info.plist */,
 				007B8257177476780052FE84 /* InfoPlist.strings */,
 				007B825A177476780052FE84 /* main.m */,
@@ -520,9 +607,10 @@
 			name = Dependencies;
 			sourceTree = "<group>";
 		};
-		007B83151775A6330052FE84 /* src */ = {
+		007B83151775A6330052FE84 /* source */ = {
 			isa = PBXGroup;
 			children = (
+				0077D5671CED00D300003F71 /* Use cases */,
 				0053A7D218F9D59700D63918 /* iPad */,
 				0022AD50180FA651006C736C /* Protocols */,
 				00BEAFC517775D6C00A59EE2 /* Views */,
@@ -530,6 +618,7 @@
 				000D04E11775BD56002D0AB8 /* Models */,
 				00A5D45117B7D398003F81B5 /* BSConstants.h */,
 			);
+			name = source;
 			path = src;
 			sourceTree = "<group>";
 		};
@@ -685,6 +774,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = BS;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Borja Arias Drake";
 				TargetAttributes = {
@@ -856,9 +946,11 @@
 			files = (
 				002487AD1809B403006652DF /* Tag.m in Sources */,
 				00F9B3BB18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
+				0077D5831CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */,
 				000D04E41775BD56002D0AB8 /* Entry.m in Sources */,
 				0080504F193B16E60029C9DA /* BSCategoryPieChartView.m in Sources */,
 				009C9EDF17B68FD300DE1A97 /* BSGreenTheme.m in Sources */,
+				0077D57C1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */,
 				008F767C18D32EF50059CB55 /* BSStaticTableAddEntryFormCellActionDataSource.m in Sources */,
 				00F9B3BF18E76414009F626E /* BSVisualEffects.m in Sources */,
 				005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */,
@@ -886,6 +978,7 @@
 				00F8144B1775FC4000F2D0A8 /* BSIndividualExpensesSummaryViewController.m in Sources */,
 				001FF01318E2178D004F06DB /* UIImage+ImageEffects.m in Sources */,
 				00BEAFCC17775D6C00A59EE2 /* BSDailySummanryEntryCell.m in Sources */,
+				0077D5861CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */,
 				00D7E0FD178F491200474A30 /* BSSingleEntryCell.m in Sources */,
 				00E9F174177F2E1F00A1A212 /* BSCurrencyHelper.m in Sources */,
 				00BD78A4182FF4DB0004A808 /* BSEntryTypeToSegmentedControlCellConvertor.m in Sources */,
@@ -905,9 +998,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0077D57D1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */,
 				000260D31BCC5DCF00B2444E /* BSPerEntrySummaryViewControllerSpecs.m in Sources */,
+				0077D5841CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */,
 				000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */,
 				000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */,
+				0077D5871CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */,
 				000260D21BCC5D5700B2444E /* BSMonthlySummaryViewControllerSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1023,6 +1119,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_CODE_COVERAGE = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
@@ -1038,6 +1135,7 @@
 				);
 				INFOPLIST_FILE = "Expenses/Expenses-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ExpensesAppWorkspace-cpawapuscsryhtapnkcwxzdyiduh/Build/Products/Debug-iphoneos",
@@ -1046,6 +1144,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expensit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1057,6 +1157,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_CODE_COVERAGE = YES;
+				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1073,6 +1174,7 @@
 				);
 				INFOPLIST_FILE = "Expenses/Expenses-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ExpensesAppWorkspace-cpawapuscsryhtapnkcwxzdyiduh/Build/Products/Debug-iphoneos",
@@ -1081,6 +1183,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expensit-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1091,6 +1194,7 @@
 			baseConfigurationReference = 8C7CDFF4784CB7B9A30F1A00 /* Pods-ExpensesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Expensit.app/Expensit";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1108,6 +1212,7 @@
 					"$(PROJECT_DIR)/ExpensesTests/OCMock/**",
 				);
 				INFOPLIST_FILE = "ExpensesTests/ExpensesTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ExpensesAppWorkspace-cpawapuscsryhtapnkcwxzdyiduh/Build/Products/Debug-iphonesimulator",
@@ -1124,6 +1229,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boasoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/src/Use cases/show/User interface/Presenter/ExpensesTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1134,6 +1241,7 @@
 			baseConfigurationReference = 6B6C9F993D76B24CAD6E0133 /* Pods-ExpensesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Expensit.app/Expensit";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1147,6 +1255,7 @@
 					"$(PROJECT_DIR)/ExpensesTests/OCMock/**",
 				);
 				INFOPLIST_FILE = "ExpensesTests/ExpensesTests-Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ExpensesAppWorkspace-cpawapuscsryhtapnkcwxzdyiduh/Build/Products/Debug-iphonesimulator",
@@ -1163,6 +1272,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.boasoftware.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
+				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/src/Use cases/show/User interface/Presenter/ExpensesTests-Bridging-Header.h";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

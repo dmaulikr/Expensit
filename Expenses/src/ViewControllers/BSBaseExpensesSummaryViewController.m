@@ -40,7 +40,9 @@ static Tag *tagBeingFilterBy = nil;
     self.firstTimeViewWillAppear = YES;
     
     // Set up Core Data helpers
-    BSAppDelegate *delegate = (BSAppDelegate*)[[UIApplication sharedApplication] delegate];
+    BSAppDelegate *delegate = (BSAppDelegate*)[[UIApplication sharedApplication] delegate]; // TODO: PROTECT THROUGH
+    
+    // TODO: MOVE TO CONTROLLER
     self.coreDataStackHelper = delegate.coreDataHelper;
     self.coreDataController = [[BSCoreDataController alloc] initWithEntityName:@"Entry" delegate:nil coreDataHelper:self.coreDataStackHelper]; // CoreData controller (should be a singleton)
     
