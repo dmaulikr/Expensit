@@ -27,12 +27,36 @@
 		005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5F7178CA9D300DC1800 /* BSGraphViewController.m */; };
 		005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */; };
 		00735EB41788351200725DFD /* BSYearlyExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */; };
-		0077D57C1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */; };
-		0077D57D1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */; };
-		0077D5831CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */; };
-		0077D5841CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */; };
-		0077D5861CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */; };
-		0077D5871CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */; };
+		0077D57C1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */; };
+		0077D57D1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */; };
+		0077D5831CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5821CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift */; };
+		0077D5841CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5821CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift */; };
+		0077D5861CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5851CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift */; };
+		0077D5871CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5851CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift */; };
+		0077D5911CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5901CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift */; };
+		0077D5921CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5901CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift */; };
+		0077D5C81CF059F900003F71 /* BSAbstractShowEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5C71CF059F900003F71 /* BSAbstractShowEntriesController.swift */; };
+		0077D5C91CF059F900003F71 /* BSAbstractShowEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5C71CF059F900003F71 /* BSAbstractShowEntriesController.swift */; };
+		0077D5CB1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5CA1CF0CBF200003F71 /* BSShowYearlyEntriesPresenter.swift */; };
+		0077D5CC1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5CA1CF0CBF200003F71 /* BSShowYearlyEntriesPresenter.swift */; };
+		0077D5CE1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5CD1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift */; };
+		0077D5CF1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5CD1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift */; };
+		0077D5D11CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D01CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift */; };
+		0077D5D21CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D01CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift */; };
+		0077D5D41CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D31CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift */; };
+		0077D5D51CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D31CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift */; };
+		0077D5DA1CF0D1D000003F71 /* BSShowAllEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D61CF0D1CF00003F71 /* BSShowAllEntriesController.swift */; };
+		0077D5DB1CF0D1D000003F71 /* BSShowAllEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D61CF0D1CF00003F71 /* BSShowAllEntriesController.swift */; };
+		0077D5DC1CF0D1D000003F71 /* BSShowDailyEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D71CF0D1CF00003F71 /* BSShowDailyEntriesController.swift */; };
+		0077D5DD1CF0D1D000003F71 /* BSShowDailyEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D71CF0D1CF00003F71 /* BSShowDailyEntriesController.swift */; };
+		0077D5DE1CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D81CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift */; };
+		0077D5DF1CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D81CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift */; };
+		0077D5E01CF0D1D000003F71 /* BSShowYearlyEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D91CF0D1D000003F71 /* BSShowYearlyEntriesController.swift */; };
+		0077D5E11CF0D1D000003F71 /* BSShowYearlyEntriesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D5D91CF0D1D000003F71 /* BSShowYearlyEntriesController.swift */; };
+		0077D61C1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */; };
+		0077D61D1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */; };
+		0077D61F1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */; };
+		0077D6201CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */; };
 		007B824D177476780052FE84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824C177476780052FE84 /* Foundation.framework */; };
 		007B824F177476780052FE84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824E177476780052FE84 /* CoreGraphics.framework */; };
 		007B8251177476780052FE84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B8250177476780052FE84 /* UIKit.framework */; };
@@ -188,11 +212,23 @@
 		00735EB21788351200725DFD /* BSYearlyExpensesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlyExpensesSummaryViewController.h; sourceTree = "<group>"; };
 		00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlyExpensesSummaryViewController.m; sourceTree = "<group>"; };
 		00735EB6178835CD00725DFD /* BSYearlySummaryEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlySummaryEntryCell.h; sourceTree = "<group>"; };
-		0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesPresenterProtocol.swift; sourceTree = "<group>"; };
-		0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesUserInterfaceProtocol.swift; sourceTree = "<group>"; };
-		0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowMonthlyEntriesControllerProtocol.swift; sourceTree = "<group>"; };
+		0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSAbstractExpensesSummaryPresenterEventsProtocol.swift; sourceTree = "<group>"; };
+		0077D5821CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSAbstractExpensesSummaryUserInterfaceProtocol.swift; sourceTree = "<group>"; };
+		0077D5851CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSAbstractShowEntriesControllerProtocol.swift; sourceTree = "<group>"; };
 		0077D58B1CED11CB00003F71 /* ExpensesTests-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ExpensesTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		0077D58C1CED11DC00003F71 /* Expenses-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Expenses-Bridging-Header.h"; sourceTree = "<group>"; };
+		0077D5901CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSAbstractShowEntriesPresenter.swift; sourceTree = "<group>"; };
+		0077D5C71CF059F900003F71 /* BSAbstractShowEntriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSAbstractShowEntriesController.swift; sourceTree = "<group>"; };
+		0077D5CA1CF0CBF200003F71 /* BSShowYearlyEntriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowYearlyEntriesPresenter.swift; sourceTree = "<group>"; };
+		0077D5CD1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowMonthlyEntriesPresenter.swift; sourceTree = "<group>"; };
+		0077D5D01CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowDailyEntriesPresenter.swift; sourceTree = "<group>"; };
+		0077D5D31CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowAllEntriesPresenter.swift; sourceTree = "<group>"; };
+		0077D5D61CF0D1CF00003F71 /* BSShowAllEntriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowAllEntriesController.swift; sourceTree = "<group>"; };
+		0077D5D71CF0D1CF00003F71 /* BSShowDailyEntriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowDailyEntriesController.swift; sourceTree = "<group>"; };
+		0077D5D81CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowMonthlyEntriesController.swift; sourceTree = "<group>"; };
+		0077D5D91CF0D1D000003F71 /* BSShowYearlyEntriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowYearlyEntriesController.swift; sourceTree = "<group>"; };
+		0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSMonthlyExpensesSummaryPresenterEventsProtocol.swift; sourceTree = "<group>"; };
+		0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowMonthlyEntriesControllerProtocol.swift; sourceTree = "<group>"; };
 		007B8249177476780052FE84 /* Expensit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expensit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B824C177476780052FE84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		007B824E177476780052FE84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -449,7 +485,13 @@
 		0077D5731CED01FF00003F71 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				0077D5851CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift */,
+				0077D5851CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift */,
+				0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */,
+				0077D5D61CF0D1CF00003F71 /* BSShowAllEntriesController.swift */,
+				0077D5D71CF0D1CF00003F71 /* BSShowDailyEntriesController.swift */,
+				0077D5D81CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift */,
+				0077D5D91CF0D1D000003F71 /* BSShowYearlyEntriesController.swift */,
+				0077D5C71CF059F900003F71 /* BSAbstractShowEntriesController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -474,7 +516,13 @@
 		0077D5761CED01FF00003F71 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				0077D57B1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift */,
+				0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */,
+				0077D5901CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift */,
+				0077D5CA1CF0CBF200003F71 /* BSShowYearlyEntriesPresenter.swift */,
+				0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */,
+				0077D5CD1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift */,
+				0077D5D01CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift */,
+				0077D5D31CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -482,7 +530,7 @@
 		0077D5771CED01FF00003F71 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				0077D5821CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift */,
+				0077D5821CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -946,15 +994,17 @@
 			files = (
 				002487AD1809B403006652DF /* Tag.m in Sources */,
 				00F9B3BB18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
-				0077D5831CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */,
+				0077D5831CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift in Sources */,
 				000D04E41775BD56002D0AB8 /* Entry.m in Sources */,
 				0080504F193B16E60029C9DA /* BSCategoryPieChartView.m in Sources */,
 				009C9EDF17B68FD300DE1A97 /* BSGreenTheme.m in Sources */,
-				0077D57C1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */,
+				0077D5DE1CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift in Sources */,
+				0077D57C1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				008F767C18D32EF50059CB55 /* BSStaticTableAddEntryFormCellActionDataSource.m in Sources */,
 				00F9B3BF18E76414009F626E /* BSVisualEffects.m in Sources */,
 				005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */,
 				00BD78A8183195F50004A808 /* BSAmountToTextControlCellConvertor.m in Sources */,
+				0077D5D11CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift in Sources */,
 				007B825B177476780052FE84 /* main.m in Sources */,
 				00BD78A0182FF35A0004A808 /* BSTagToSegmentedControlCellConvertor.m in Sources */,
 				005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */,
@@ -969,27 +1019,37 @@
 				009D01191943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m in Sources */,
 				000D04F71775D20F002D0AB8 /* BSCoreDataController.m in Sources */,
 				00BEAFCA17775D6C00A59EE2 /* BSDailyEntryHeaderView.m in Sources */,
+				0077D5C81CF059F900003F71 /* BSAbstractShowEntriesController.swift in Sources */,
+				0077D5CE1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift in Sources */,
 				00BEAFD017775DA400A59EE2 /* BSMonthlyExpensesSummaryViewController.m in Sources */,
 				008F768818D44B400059CB55 /* BSDateToDatePickerCellConvertor.m in Sources */,
 				009C9EE317B6912900DE1A97 /* BSThemeManager.m in Sources */,
+				0077D61C1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				007B825F177476780052FE84 /* BSAppDelegate.m in Sources */,
 				0080504B193B0DAE0029C9DA /* BSPieChartViewController.m in Sources */,
 				009D010C194307A500B850D4 /* BSChartLegendCollectionViewCell.m in Sources */,
 				00F8144B1775FC4000F2D0A8 /* BSIndividualExpensesSummaryViewController.m in Sources */,
+				0077D5DC1CF0D1D000003F71 /* BSShowDailyEntriesController.swift in Sources */,
 				001FF01318E2178D004F06DB /* UIImage+ImageEffects.m in Sources */,
 				00BEAFCC17775D6C00A59EE2 /* BSDailySummanryEntryCell.m in Sources */,
-				0077D5861CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */,
+				0077D5861CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
 				00D7E0FD178F491200474A30 /* BSSingleEntryCell.m in Sources */,
+				0077D5CB1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */,
 				00E9F174177F2E1F00A1A212 /* BSCurrencyHelper.m in Sources */,
 				00BD78A4182FF4DB0004A808 /* BSEntryTypeToSegmentedControlCellConvertor.m in Sources */,
 				005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */,
 				00BEAFD417775F2900A59EE2 /* BSMonthlySummaryEntryCell.m in Sources */,
 				00E9F178177F47E000A1A212 /* BSDailyExpensesSummaryViewController.m in Sources */,
+				0077D5E01CF0D1D000003F71 /* BSShowYearlyEntriesController.swift in Sources */,
+				0077D61F1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */,
 				00D7E0F5178F3A5000474A30 /* BSMonthlyGridLayout.m in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
 				005DF5F4178B5A9A00DC1800 /* LineGraph.m in Sources */,
 				00D7E0F9178F40A100474A30 /* BSDailyLayout.m in Sources */,
 				001ECAA118DDECF200B7D027 /* BSCategoryFilterViewController.m in Sources */,
+				0077D5DA1CF0D1D000003F71 /* BSShowAllEntriesController.swift in Sources */,
+				0077D5D41CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift in Sources */,
+				0077D5911CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */,
 				000D04EA1775C8C5002D0AB8 /* BSBaseExpensesSummaryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -998,12 +1058,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0077D57D1CED09AE00003F71 /* ShowMonthlyEntriesPresenterProtocol.swift in Sources */,
+				0077D57D1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000260D31BCC5DCF00B2444E /* BSPerEntrySummaryViewControllerSpecs.m in Sources */,
-				0077D5841CED0E2D00003F71 /* ShowMonthlyEntriesUserInterfaceProtocol.swift in Sources */,
+				0077D5DB1CF0D1D000003F71 /* BSShowAllEntriesController.swift in Sources */,
+				0077D5E11CF0D1D000003F71 /* BSShowYearlyEntriesController.swift in Sources */,
+				0077D5841CED0E2D00003F71 /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift in Sources */,
+				0077D5D21CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift in Sources */,
+				0077D6201CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */,
+				0077D61D1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
+				0077D5DD1CF0D1D000003F71 /* BSShowDailyEntriesController.swift in Sources */,
 				000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */,
 				000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */,
-				0077D5871CED0E7F00003F71 /* ShowMonthlyEntriesControllerProtocol.swift in Sources */,
+				0077D5CF1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift in Sources */,
+				0077D5871CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
+				0077D5921CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */,
+				0077D5CC1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */,
+				0077D5D51CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift in Sources */,
+				0077D5C91CF059F900003F71 /* BSAbstractShowEntriesController.swift in Sources */,
+				0077D5DF1CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift in Sources */,
 				000260D21BCC5D5700B2444E /* BSMonthlySummaryViewControllerSpecs.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

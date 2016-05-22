@@ -21,7 +21,26 @@
 
 @end
 
+
+
 @implementation BSMonthlyExpensesSummaryViewController
+
+
+#pragma mark - View Cycle
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.showEntriesController = [[BSShowMonthlyEntriesController alloc] init];
+    id<BSMonthlyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowMonthlyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
+                                                                                                                 showEntriesController:self.showEntriesController];
+    
+    
+    self.showEntriesPresenter = mp;
+    self.showMonthlyEntriesPresenter = mp;
+    
+}
 
 
 
@@ -29,7 +48,7 @@
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [[self.fetchedResultsController sections] count];
+    return [self.entries count];
 }
 
 
@@ -41,7 +60,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
     NSArray *fetchedObjectsForSection = [sectionInfo objects];
     NSPredicate *itemForMonthPredicate = [NSPredicate predicateWithFormat:@"month = %d", indexPath.row + 1];
     NSDictionary *itemForMonth = [[fetchedObjectsForSection filteredArrayUsingPredicate:itemForMonthPredicate] lastObject];
@@ -80,7 +99,7 @@
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
     
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
     headerView.titleLabel.text = sectionInfo.name;
     BSHeaderButton *headerButton = (BSHeaderButton *)headerView.pieChartButton;
     
@@ -101,7 +120,7 @@
         dailyExpensesViewController.coreDataStackHelper = self.coreDataStackHelper;
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:selectedIndexPath.section];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:selectedIndexPath.section];
 
         // Create the name of the section to go to in the next VC
         NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.name]; // there are 12 months (0-11) that's why we add 1. The section name is the year
@@ -109,23 +128,24 @@
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        NSArray *surplusResults = [self graphSurplusResults];
-        NSArray *expensesResults = [self graphExpensesResults];
-        
         BSGraphViewController *graphViewController = (BSGraphViewController *)[segue destinationViewController];
         [graphViewController setGraphTitle:[self visibleSectionName]];
-        [graphViewController setMoneyIn:[self dataForGraphWithFetchRequestResults:surplusResults]];
-        [graphViewController setMoneyOut:[self dataForGraphWithFetchRequestResults:expensesResults]];
-        [graphViewController setXValues:@[@"Jan", @"Feb", @"Mar", @"Apr", @"May", @"Jun", @"Jul", @"Aug", @"Sep", @"Oct", @"Nov", @"Dec"]];
+        [graphViewController setMoneyIn:[self.showEntriesPresenter dataForGraphFromSuplusResultsForSection:[self visibleSectionName]]];
+        [graphViewController setMoneyOut:[self.showEntriesPresenter dataForGraphFromExpensesResultsForSection:[self visibleSectionName]]];
+        [graphViewController setXValues:[self.showEntriesPresenter abscissaValues]];
     }
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
         BSHeaderButton *button = (BSHeaderButton *)sender;
-        NSArray *sections = [self.coreDataController expensesByCategoryForMonth:button.month inYear:button.year];
+        //NSArray *sections = [self.coreDataController expensesByCategoryForMonth:button.month inYear:button.year];
+        NSArray *sections = [self.showMonthlyEntriesPresenter expensesByCategoryForMonth:button.month.integerValue year:button.year.integerValue];
         BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
         graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
         graphViewController.modalPresentationStyle = UIModalPresentationCustom;        
-        graphViewController.categories = [self.coreDataController sortedTagsByPercentageFromSections:[self.coreDataController categoriesForMonth:button.month inYear:button.year] sections:sections];
+//        graphViewController.categories = [self.coreDataController sortedTagsByPercentageFromSections:[self.coreDataController categoriesForMonth:button.month inYear:button.year] sections:sections];
+        NSArray *categories = [self.coreDataController categoriesForMonth:button.month inYear:button.year];
+        graphViewController.categories = [self.showMonthlyEntriesPresenter sortedTagsByPercentageFromSections:categories sections:sections];
+
         [graphViewController setSections:sections];
     }
     else
@@ -154,67 +174,5 @@
     CGFloat cellHeight = (sectionHeight / numberOfRows);
     return CGSizeMake(cellWidth, cellHeight);
 }
-
-
-
-#pragma mark - BSCoreDataControllerDelegate
-
-- (NSString*) sectionNameKeyPath
-{
-    return @"year";
-}
-
-
-
-#pragma mark - BSCoreDataControllerDelegate
-
-- (NSFetchRequest*) fetchRequest {
-    return [self.coreDataController fetchRequestForMonthlySummary];
-}
-
-
-- (NSArray *)graphSurplusResults
-{
-    return [self.coreDataController resultsForRequest:[self.coreDataController graphMonthlySurplusFetchRequestForSectionName:[self visibleSectionName]] error:nil];
-}
-
-
-- (NSArray *)graphExpensesResults
-{
-    return [self.coreDataController resultsForRequest:[self.coreDataController graphMonthlyExpensesFetchRequestForSectionName:[self visibleSectionName]] error:nil];
-}
-
-
-
-#pragma mark - Graph
-
-- (NSArray *) dataForGraphWithFetchRequestResults:(NSArray*) monthlyExpensesResults
-{
-    NSMutableArray *graphData = [NSMutableArray array];
-    
-    for (int monthNumber = 1; monthNumber<=12; monthNumber++)
-    {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"month = %d", monthNumber];
-        NSArray *filteredResults = [monthlyExpensesResults filteredArrayUsingPredicate:predicate];
-        NSDictionary *monthDictionary = [filteredResults lastObject];
-        
-        if (monthDictionary)
-        {
-            NSNumber *value = monthDictionary[@"monthlySum"];
-            if ([value compare:@0] == NSOrderedAscending)
-            {
-                value = [NSNumber numberWithFloat:-[value floatValue]];
-            }
-            [graphData addObject:value];
-        }
-        else
-        {
-            [graphData addObject:@0.0];
-        }
-    }
-    
-    return graphData;
-}
-
 
 @end

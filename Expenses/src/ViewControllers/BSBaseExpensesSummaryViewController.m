@@ -39,13 +39,6 @@ static Tag *tagBeingFilterBy = nil;
     
     self.firstTimeViewWillAppear = YES;
     
-    // Set up Core Data helpers
-    BSAppDelegate *delegate = (BSAppDelegate*)[[UIApplication sharedApplication] delegate]; // TODO: PROTECT THROUGH
-    
-    // TODO: MOVE TO CONTROLLER
-    self.coreDataStackHelper = delegate.coreDataHelper;
-    self.coreDataController = [[BSCoreDataController alloc] initWithEntityName:@"Entry" delegate:nil coreDataHelper:self.coreDataStackHelper]; // CoreData controller (should be a singleton)
-    
     // Prepare for Landscape
     self.isShowingLandscapeView = NO;
     [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
@@ -56,7 +49,10 @@ static Tag *tagBeingFilterBy = nil;
 
     // NavBar buttons
     UIBarButtonItem *filterButton = self.navigationItem.rightBarButtonItems[1];
-    [self configureButton:filterButton forCategory:nil];
+    
+    // Request image for category filter
+    [self.showEntriesPresenter viewIsReadyToDisplayImageForCategory:nil];
+    
     UIBarButtonItem *addButton = self.navigationItem.rightBarButtonItems[0];
     self.navigationItem.rightBarButtonItems = @[addButton, filterButton];
     
@@ -70,23 +66,27 @@ static Tag *tagBeingFilterBy = nil;
 {
     [super viewWillAppear:animated];
     
-    // Perform Fetch
-    [self.fetchedResultsController performFetch:nil];
-    [self.collectionView reloadData];
-    
+    // Request data
+    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^(NSArray * _Nullable entries, NSArray * _Nullable sections) {
+        self.entries = entries;
+        self.sections = sections;
+        [self.collectionView reloadData];
+    }];
+
     // Apply filter before calculating section to go to
-    [self filterChangedToCategory:tagBeingFilterBy takingScreenshot:NO]; // No need for taking a screenshot
+    [self filterChangedToCategory:tagBeingFilterBy takingScreenshot:NO];
 
     // Scroll to selected section
     [self scrollToSelectedSection];
 }
+
 
 - (void)scrollToSelectedSection
 {
     if (self.shouldScrollToSelectedSection && self.firstTimeViewWillAppear)
     {
         self.firstTimeViewWillAppear = NO;
-        NSArray *sectionNames = [self.fetchedResultsController.fetchedObjects valueForKeyPath:[self sectionNameKeyPath]];
+        NSArray *sectionNames = [self.entries valueForKeyPath:[self.showEntriesPresenter sectionNameKeyPath]];
         NSMutableArray* uniqueSectionNames = [[NSMutableArray alloc] init];
         for(id sectionName in sectionNames)
         {
@@ -120,8 +120,9 @@ static Tag *tagBeingFilterBy = nil;
     categoryFilterViewController.modalPresentationStyle = UIModalPresentationCustom;
     categoryFilterViewController.delegate = self;
     categoryFilterViewController.selectedTag = tagBeingFilterBy;
-    categoryFilterViewController.categories = [self.coreDataController allTags];
-    categoryFilterViewController.categoryImages = [self.coreDataController allTagImages];
+    NSDictionary *info = [self.showEntriesPresenter tagInfo];
+    categoryFilterViewController.categories = info[@"tags"];
+    categoryFilterViewController.categoryImages = info[@"images"];
     
     [self presentViewController:categoryFilterViewController animated:YES completion:nil];
 }
@@ -197,8 +198,9 @@ static Tag *tagBeingFilterBy = nil;
         categoryFilterViewController.modalPresentationStyle = UIModalPresentationCustom;
         categoryFilterViewController.delegate = self;
         categoryFilterViewController.selectedTag = tagBeingFilterBy;
-        categoryFilterViewController.categories = [self.coreDataController allTags];
-        categoryFilterViewController.categoryImages = [self.coreDataController allTagImages];
+        NSDictionary *info = [self.showEntriesPresenter tagInfo];
+        categoryFilterViewController.categories = info[@"tags"];
+        categoryFilterViewController.categoryImages = info[@"images"];
     }
 }
 
@@ -267,11 +269,12 @@ static Tag *tagBeingFilterBy = nil;
     }
     
     id <NSFetchedResultsSectionInfo> sectionInfo = nil;
-    if ([[self.fetchedResultsController sections] count])
-    {
-        sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:[sectionWithMostVisibleCells intValue]];
-    }
     
+    if ([self.sections count] > 0)
+    {
+        sectionInfo = [self.sections objectAtIndex:[sectionWithMostVisibleCells intValue]];
+    }
+
     return sectionInfo.name;
 }
 
@@ -286,81 +289,6 @@ static Tag *tagBeingFilterBy = nil;
 {
     return YES;
 }
-
-
-
-#pragma mark - Core Data
-
-- (NSFetchedResultsController *)fetchedResultsController
-{
-    if (_fetchedResultsController != nil) {
-        return _fetchedResultsController;
-    }
-    
-    // Create the request
-    NSFetchRequest *fetchRequest = [self fetchRequest];
-    
-    // FetchedResultsController
-    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                    managedObjectContext:self.coreDataStackHelper.managedObjectContext
-                                                                      sectionNameKeyPath:self.sectionNameKeyPath
-                                                                               cacheName:nil];
-
-    // Execute the request
-	NSError *error = nil;
-	if (![_fetchedResultsController performFetch:&error])
-    {
-	    NSLog(@"Unresolved error fetching results. %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    else
-    {
-        
-    }
-    
-    return _fetchedResultsController;
-}
-
-
-- (NSFetchRequest*) fetchRequest
-{
-    @throw [NSException exceptionWithName:@"Implement in subclasses" reason:@"This methods should be implemented by the subclasses" userInfo:nil];
-    return nil;
-}
-
-
-- (NSFetchRequest *)graphFetchRequest
-{
-    @throw [NSException exceptionWithName:@"Implement in subclasses" reason:@"This methods should be implemented by the subclasses" userInfo:nil];
-    return nil;
-}
-
-
-- (NSString*) sectionNameKeyPath
-{
-    @throw [NSException exceptionWithName:@"Implement in subclasses" reason:@"This methods should be implemented by the subclasses" userInfo:nil];
-    return nil;
-}
-
-
-- (NSArray *)graphSurplusResults
-{
-    @throw [NSException exceptionWithName:@"Implement in subclasses" reason:@"This methods should be implemented by the subclasses" userInfo:nil];
-}
-
-
-- (NSArray *)graphExpensesResults
-{
-    @throw [NSException exceptionWithName:@"Implement in subclasses" reason:@"This methods should be implemented by the subclasses" userInfo:nil];
-}
-
-
-- (NSArray *)dataForGraphWithFetchRequestResults:(NSArray*) results
-{
-    @throw [NSException exceptionWithName:@"Implement in subclasses" reason:@"This methods should be implemented by the subclasses" userInfo:nil];
-
-}
-
 
 
 #pragma mark - Dealloc
@@ -387,27 +315,28 @@ static Tag *tagBeingFilterBy = nil;
     // The argument is already a Tag* reference or nil
     tagBeingFilterBy = tag;
     
-    // Change button
+    // Change buttons
     UIBarButtonItem *filterButton = self.navigationItem.rightBarButtonItems[1];
-    [self configureButton:filterButton forCategory:tag];
+    [self.showEntriesPresenter viewIsReadyToDisplayImageForCategory:tag]; // notify filter need ne image
 
     UIBarButtonItem *addButton = self.navigationItem.rightBarButtonItems[0];
     self.navigationItem.rightBarButtonItems = @[addButton, filterButton];
+
+    // Notify that flilter changed
+    [self.showEntriesPresenter filterChangedToCategory:tag]; // thi could be unified ith previou
     
-    // Update the request so filter by category
-    NSFetchRequest *request = self.fetchedResultsController.fetchRequest;
-    [self.coreDataController modifyfetchRequest:request toFilterByCategory:tag];
-    
-    // Re-fetch the results of the query
-    [self.fetchedResultsController performFetch:nil];
-    [self.collectionView reloadData];
-    
-    if (shouldTakeScreenshot)
-    {
-        // Refresh blurry background after collectionview reloaded
-        [self performSelector:@selector(blurrContentViewBackground) withObject:nil afterDelay:0.1];
-    }
-   
+    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^(NSArray * _Nullable entries, NSArray * _Nullable sections) {
+        self.entries = entries;
+        self.sections = sections;
+        
+        [self.collectionView reloadData];
+        
+        if (shouldTakeScreenshot)
+        {
+            // Refresh blurry background after collectionview reloaded
+            [self performSelector:@selector(blurrContentViewBackground) withObject:nil afterDelay:0.1];
+        }
+    }];
 }
 
 
@@ -433,29 +362,14 @@ static Tag *tagBeingFilterBy = nil;
 }
 
 
-- (UIBarButtonItem *)buttonForCategory:(Tag *)tag
+
+#pragma mark - BSAbstractExpensesSummaryUserInterfaceProtocol
+
+- (void)displayImageForCategory:(UIImage *)image
 {
-    UIImage *iconImage = [self.coreDataController imageForCategory:tag];
-    UIButton *carIcon = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 25, 25)];
-    [carIcon setImage:iconImage forState:UIControlStateNormal];
-    
-    [carIcon addTarget:self
-                action:@selector(filterButtonTapped)
-      forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIBarButtonItem *filterButton = [[UIBarButtonItem alloc] initWithCustomView:carIcon];
-
-    return filterButton;
+    UIBarButtonItem *filterButton = self.navigationItem.rightBarButtonItems[1];
+    [filterButton setImage:image];
 }
-
-- (void)configureButton:(UIBarButtonItem *)button forCategory:(Tag *)tag
-{
-    UIImage *iconImage = [self.coreDataController imageForCategory:tag];
-    [button setImage:iconImage];
-//    [button setBackgroundImage:iconImage forState:UIControlStateHighlighted barMetrics:UIBarMetricsDefault];
-}
-
 
 @end
 

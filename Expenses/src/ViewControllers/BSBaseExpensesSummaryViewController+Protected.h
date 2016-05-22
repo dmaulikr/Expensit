@@ -16,8 +16,10 @@
 
 @property (nonatomic, strong) BSAnimatedBlurEffectTransitioningDelegate *animatedBlurEffectTransitioningDelegate;
 
+@property (nonatomic, strong) NSArray *entries;
+@property (nonatomic, strong) NSArray *sections;
+
 - (NSFetchRequest*)fetchRequest;
-- (NSFetchRequest *)graphFetchRequest;
 - (NSString*)sectionNameKeyPath;
 - (NSArray *)graphSurplusResults;
 - (NSArray *)graphExpensesResults;

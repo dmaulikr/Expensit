@@ -13,6 +13,7 @@
 #import "BSCoreDataController.h"
 #import "BSStaticTableAddEntryFormCellActionDataSource.h"
 #import "BSCategoryFilterViewController.h"
+#import "Expensit-Swift.h"
 
 @class CoreDataStackHelper, BSCoreDataController;
 
@@ -21,12 +22,14 @@
 @end
 
 
-@interface BSBaseExpensesSummaryViewController : UICollectionViewController <BSCoreDataControllerDelegateProtocol, UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout, BSCategoryFilterDelegate, BSUIViewControllerAbilityToAddEntry>
+@interface BSBaseExpensesSummaryViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout, BSCategoryFilterDelegate, BSUIViewControllerAbilityToAddEntry, BSAbstractExpensesSummaryUserInterfaceProtocol>
 
 @property (strong, nonatomic, nullable) UICollectionViewLayout *layout;
 @property (strong, nonatomic, nullable) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic, nullable) CoreDataStackHelper *coreDataStackHelper;
 @property (strong, nonatomic, nullable) BSCoreDataController *coreDataController;
+@property (strong, nonatomic, nullable) id<BSAbstractExpensesSummaryPresenterEventsProtocol> showEntriesPresenter;
+@property (strong, nonatomic, nullable) id<BSAbstractShowEntriesControllerProtocol> showEntriesController;
 
 /*! When the user is in a particular summary screen and selects a cell, this property is set by
  the previous viewController and used by the nextViewController to scroll to the right section.

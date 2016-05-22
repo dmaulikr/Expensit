@@ -7,3 +7,9 @@
 //
 
 import Foundation
+
+
+@objc protocol BSAbstractExpensesSummaryUserInterfaceProtocol
+{
+    func displayImageForCategory(image : UIImage)
+}

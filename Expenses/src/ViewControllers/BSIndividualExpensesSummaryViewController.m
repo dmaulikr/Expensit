@@ -95,14 +95,14 @@
 
 #pragma mark - BSCoreDataControllerDelegate
 
-- (NSFetchRequest *)fetchRequest {
-    return [self.coreDataController fetchRequestForIndividualEntriesSummary];
-}
-
-- (NSString*) sectionNameKeyPath
-{
-    return @"yearMonthDay";
-}
+//- (NSFetchRequest *)fetchRequest {
+//    return [self.coreDataController fetchRequestForIndividualEntriesSummary];
+//}
+//
+//- (NSString*) sectionNameKeyPath
+//{
+//    return @"yearMonthDay";
+//}
 
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

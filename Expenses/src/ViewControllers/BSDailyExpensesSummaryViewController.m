@@ -178,21 +178,21 @@
 
 #pragma mark - BSCoreDataControllerDelegate
 
-- (NSFetchRequest*) fetchRequest {
-    return [self.coreDataController fetchRequestForDaylySummary];
-}
-
-
-- (NSArray *)graphSurplusResults
-{
-    return [self.coreDataController resultsForRequest:[self.coreDataController graphDailySurplusFetchRequestForSectionName:[self visibleSectionName]] error:nil];
-}
-
-
-- (NSArray *)graphExpensesResults
-{
-    return [self.coreDataController resultsForRequest:[self.coreDataController graphDailyExpensesFetchRequestForSectionName:[self visibleSectionName]] error:nil];
-}
+//- (NSFetchRequest*) fetchRequest {
+//    return [self.coreDataController fetchRequestForDaylySummary];
+//}
+//
+//
+//- (NSArray *)graphSurplusResults
+//{
+//    return [self.coreDataController resultsForRequest:[self.coreDataController graphDailySurplusFetchRequestForSectionName:[self visibleSectionName]] error:nil];
+//}
+//
+//
+//- (NSArray *)graphExpensesResults
+//{
+//    return [self.coreDataController resultsForRequest:[self.coreDataController graphDailyExpensesFetchRequestForSectionName:[self visibleSectionName]] error:nil];
+//}
 
 
 #pragma mark - Graph Data
