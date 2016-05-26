@@ -17,11 +17,6 @@
 #import "LineGraph.h"
 #import "BSPieChartViewController.h"
 
-@interface BSMonthlyExpensesSummaryViewController ()
-
-@end
-
-
 
 @implementation BSMonthlyExpensesSummaryViewController
 
@@ -34,7 +29,7 @@
     
     self.showEntriesController = [[BSShowMonthlyEntriesController alloc] init];
     id<BSMonthlyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowMonthlyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
-                                                                                                                 showEntriesController:self.showEntriesController];
+                                                                                                        showMonthlyEntriesController:(id<BSShowMonthlyEntriesControllerProtocol>)self.showEntriesController];
     
     
     self.showEntriesPresenter = mp;
@@ -137,13 +132,11 @@
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
         BSHeaderButton *button = (BSHeaderButton *)sender;
-        //NSArray *sections = [self.coreDataController expensesByCategoryForMonth:button.month inYear:button.year];
         NSArray *sections = [self.showMonthlyEntriesPresenter expensesByCategoryForMonth:button.month.integerValue year:button.year.integerValue];
         BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
         graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
         graphViewController.modalPresentationStyle = UIModalPresentationCustom;        
-//        graphViewController.categories = [self.coreDataController sortedTagsByPercentageFromSections:[self.coreDataController categoriesForMonth:button.month inYear:button.year] sections:sections];
-        NSArray *categories = [self.coreDataController categoriesForMonth:button.month inYear:button.year];
+        NSArray *categories = [self.showMonthlyEntriesPresenter categoriesForMonth:button.month.integerValue year:button.year.integerValue];
         graphViewController.categories = [self.showMonthlyEntriesPresenter sortedTagsByPercentageFromSections:categories sections:sections];
 
         [graphViewController setSections:sections];

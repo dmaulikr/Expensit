@@ -10,7 +10,7 @@ import Foundation
 
 
 
-class BSShowDailyEntriesController: BSAbstractShowEntriesController {
+class BSShowDailyEntriesController: BSAbstractShowEntriesController, BSShowDailyEntriesControllerProtocol {
     
     override func fetchRequest() -> NSFetchRequest {
         return self.coreDataController.fetchRequestForDaylySummary()
@@ -41,7 +41,18 @@ class BSShowDailyEntriesController: BSAbstractShowEntriesController {
         catch {
             return []
         }
-
+    }
+    
+    func expensesByCategoryForMonth(month: Int, year : Int) -> [AnyObject]? {
+        return self.coreDataController.expensesByCategoryForMonth(month, inYear:year)
+    }
+    
+    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
+        return self.coreDataController.sortedTagsByPercentageFromSections(tags, sections:sections)
+    }
+    
+    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]? {
+        return self.coreDataController.categoriesForMonth(month, inYear: year)
     }
 
 }

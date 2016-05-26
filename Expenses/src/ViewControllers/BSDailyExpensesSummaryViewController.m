@@ -21,30 +21,42 @@
 
 @implementation BSDailyExpensesSummaryViewController
 
-
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.showEntriesController = [[BSShowDailyEntriesController alloc] init];
+    id<BSDailyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowDailyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
+                                                                                                        showDailyEntriesController:(id<BSShowDailyEntriesControllerProtocol>)self.showEntriesController];
+    
+    
+    self.showEntriesPresenter = mp;
+    self.showDailyEntriesPresenter = mp;
+    
+}
 
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [[self.fetchedResultsController sections] count];
+    return [self.sections count];
 }
 
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:section];
     NSString *monthString = [sectionInfo name];
     NSArray *components = [monthString componentsSeparatedByString:@"/"];
     
-    NSRange numberOfDaysInMonth = [DateTimeHelper numberOfDaysInMonth:components[0]];
+    NSRange numberOfDaysInMonth = [DateTimeHelper numberOfDaysInMonth:components[0]]; // todo: move to preenter
     return numberOfDaysInMonth.length;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
     NSArray *fetchedObjectsForSection = [sectionInfo objects];
     NSPredicate *itemForDayPredicate = [NSPredicate predicateWithFormat:@"day = %d AND monthYear = %@", indexPath.row + 1, sectionInfo.name];
     NSDictionary *itemForDayMonthYear = [[fetchedObjectsForSection filteredArrayUsingPredicate:itemForDayPredicate] lastObject];
@@ -78,7 +90,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
     
     headerView.titleLabel.text = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:sectionInfo.name];
     BSHeaderButton *headerButton = (BSHeaderButton *)headerView.pieChartButton;
@@ -115,12 +127,6 @@
 
 #pragma mark - BSCoreDataControllerDelegate
 
-- (NSString*) sectionNameKeyPath
-{
-    return @"monthYear";
-}
-
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showEntriesForDay"])
@@ -130,7 +136,7 @@
         
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:selectedIndexPath.section];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:selectedIndexPath.section];
         
         // Create the name of the section to go to in the next VC
         NSString *month = [sectionInfo.name componentsSeparatedByString:@"/"][0];
@@ -142,24 +148,22 @@
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        NSArray *surplusResults = [self graphSurplusResults];
-        NSArray *expensesResults = [self graphExpensesResults];
-        
         BSGraphViewController *graphViewController = (BSGraphViewController *)[segue destinationViewController];
         [graphViewController setGraphTitle:[DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:[self visibleSectionName]]];
-        [graphViewController setMoneyIn:[self dataForGraphWithFetchRequestResults:surplusResults]];
-        [graphViewController setMoneyOut:[self dataForGraphWithFetchRequestResults:expensesResults]];
-        [graphViewController setXValues:[self arrayDayNumbersInMonth]];
+        [graphViewController setMoneyIn:[self.showDailyEntriesPresenter dataForGraphFromSuplusResultsForSection:[self visibleSectionName]]];
+        [graphViewController setMoneyOut:[self.showDailyEntriesPresenter dataForGraphFromExpensesResultsForSection:[self visibleSectionName]]];
+        [graphViewController setXValues:[self.showDailyEntriesPresenter arrayDayNumbersInMonthFromVisibleSection:[self visibleSectionName]]];
     }
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
         BSHeaderButton *button = (BSHeaderButton *)sender;
-        NSArray *sections = [self.coreDataController expensesByCategoryForMonth:button.month inYear:button.year];
+        NSArray *sections = [self.showDailyEntriesPresenter expensesByCategoryForMonth:button.month.integerValue year:button.year.integerValue];
         BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
         graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
         graphViewController.modalPresentationStyle = UIModalPresentationCustom;
-        graphViewController.categories = [self.coreDataController sortedTagsByPercentageFromSections:[self.coreDataController categoriesForMonth:button.month inYear:button.year] sections:sections];
-
+        NSArray *categories = [self.showDailyEntriesPresenter categoriesForMonth:button.month.integerValue year:button.year.integerValue];
+        graphViewController.categories = [self.showDailyEntriesPresenter sortedTagsByPercentageFromSections:categories sections:sections];
+        
         [graphViewController setSections:sections];
     }
     else
@@ -173,75 +177,5 @@
 {
     return @"BSDailyEntryHeaderView";
 }
-
-
-
-#pragma mark - BSCoreDataControllerDelegate
-
-//- (NSFetchRequest*) fetchRequest {
-//    return [self.coreDataController fetchRequestForDaylySummary];
-//}
-//
-//
-//- (NSArray *)graphSurplusResults
-//{
-//    return [self.coreDataController resultsForRequest:[self.coreDataController graphDailySurplusFetchRequestForSectionName:[self visibleSectionName]] error:nil];
-//}
-//
-//
-//- (NSArray *)graphExpensesResults
-//{
-//    return [self.coreDataController resultsForRequest:[self.coreDataController graphDailyExpensesFetchRequestForSectionName:[self visibleSectionName]] error:nil];
-//}
-
-
-#pragma mark - Graph Data
-
-
-
-- (NSArray *) dataForGraphWithFetchRequestResults:(NSArray*) dailyExpensesResults
-{
-    NSMutableArray *graphData = [NSMutableArray array];
-    NSString *monthNumber = [[self visibleSectionName] componentsSeparatedByString:@"/"][0];
-    NSRange numberOfDaysInMonth = [DateTimeHelper numberOfDaysInMonth:monthNumber];
-    
-    for (int dayNumber = 1; dayNumber<=numberOfDaysInMonth.length; dayNumber++)
-    {
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"day = %d", dayNumber];
-        NSArray *filteredResults = [dailyExpensesResults filteredArrayUsingPredicate:predicate];
-        NSDictionary *monthDictionary = [filteredResults lastObject];
-        
-        if (monthDictionary)
-        {
-            NSNumber *value = monthDictionary[@"dailySum"];
-            if ([value compare:@0] == NSOrderedAscending)
-            {
-                value = [NSNumber numberWithFloat:-[value floatValue]];
-            }
-            [graphData addObject:value];
-        }
-        else
-        {
-            [graphData addObject:@0.0];
-        }
-    }
-    
-    return graphData;
-}
-
-
-- (NSArray *) arrayDayNumbersInMonth
-{
-    NSString *monthNumber = [[self visibleSectionName] componentsSeparatedByString:@"/"][0];
-    NSRange numberOfDaysInMonth = [DateTimeHelper numberOfDaysInMonth:monthNumber];
-    NSMutableArray *dayNumbers = [NSMutableArray array];
-    
-    for (int i = 1; i<=numberOfDaysInMonth.length; i++) {
-        [dayNumbers addObject:[NSString stringWithFormat:@"%d", i]];
-    }
-    
-    return dayNumbers;
-}
-
 
 @end

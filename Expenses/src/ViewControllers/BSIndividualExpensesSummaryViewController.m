@@ -20,15 +20,20 @@
 
 @implementation BSIndividualExpensesSummaryViewController
 
-- (void) viewDidLoad
+#pragma mark - View Cycle
+
+- (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    self.showEntriesController = [[BSShowAllEntriesController alloc] init];
+    self.showEntriesPresenter = [[BSShowAllEntriesPresenter alloc] initWithShowEntriesUserInterface:self
+                                                                                 showEntriesController:self.showEntriesController];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    if ([[self.fetchedResultsController sections] count] == 0) {
+    if ([self.sections count] == 0) {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
 }
@@ -37,13 +42,13 @@
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [[self.fetchedResultsController sections] count];
+    return [self.sections count];
 }
 
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:section];
 
     return [sectionInfo numberOfObjects];
 }
@@ -51,7 +56,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    Entry *managedObject = (Entry*)[self.fetchedResultsController objectAtIndexPath:indexPath];
+    Entry *managedObject = (Entry*)[self.entries objectAtIndex:indexPath.section];
     BSDailySummanryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
 
     // configure the cell
@@ -67,7 +72,7 @@
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
 
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:indexPath.section];
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
     NSArray *components = [sectionInfo.name componentsSeparatedByString:@"/"];
     headerView.titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@", [components objectAtIndex:2],
                                   [DateTimeHelper monthNameForMonthNumber:[NSDecimalNumber decimalNumberWithString:[components objectAtIndex:1]]],
@@ -95,16 +100,6 @@
 
 #pragma mark - BSCoreDataControllerDelegate
 
-//- (NSFetchRequest *)fetchRequest {
-//    return [self.coreDataController fetchRequestForIndividualEntriesSummary];
-//}
-//
-//- (NSString*) sectionNameKeyPath
-//{
-//    return @"yearMonthDay";
-//}
-
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"showEntriesForDay"])
@@ -122,12 +117,12 @@
         int sum = 0;
         for (int i=0; i<selectedIndexPath.section; i++)
         {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:i];
+            id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:i];
             sum += [sectionInfo numberOfObjects];
         }
         
         editEntryViewController.coreDataController = self.coreDataController;
-        editEntryViewController.entryModel = self.fetchedResultsController.fetchedObjects[sum + selectedIndexPath.row];
+        editEntryViewController.entryModel = self.entries[sum + selectedIndexPath.row];
         editEntryViewController.isEditingEntry = YES;
         BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:YES];
         editEntryViewController.cellActionDataSource = cellActionsDataSource;

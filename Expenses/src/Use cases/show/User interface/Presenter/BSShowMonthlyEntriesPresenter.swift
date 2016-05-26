@@ -60,4 +60,8 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter, BSMonthlyE
         return self.showMonthlyEntriesController.sortedTagsByPercentageFromSections(tags, sections: sections)
     }
     
+    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]? {
+        return self.showMonthlyEntriesController.categoriesForMonth(month, year: year)
+    }
+    
 }

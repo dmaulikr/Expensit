@@ -71,13 +71,14 @@ static Tag *tagBeingFilterBy = nil;
         self.entries = entries;
         self.sections = sections;
         [self.collectionView reloadData];
+        
+        // Apply filter before calculating section to go to
+        [self filterChangedToCategory:tagBeingFilterBy takingScreenshot:NO];
+        
+        // Scroll to selected section
+        [self scrollToSelectedSection];
     }];
 
-    // Apply filter before calculating section to go to
-    [self filterChangedToCategory:tagBeingFilterBy takingScreenshot:NO];
-
-    // Scroll to selected section
-    [self scrollToSelectedSection];
 }
 
 
@@ -92,7 +93,7 @@ static Tag *tagBeingFilterBy = nil;
         {
             if(![uniqueSectionNames containsObject:sectionName])
             {
-                [uniqueSectionNames addObject:sectionName];
+                [uniqueSectionNames addObject:[NSString stringWithFormat:@"%@", sectionName]];
             }
         }
         NSArray *filteredArray = [uniqueSectionNames filteredArrayUsingPredicate:[NSPredicate predicateWithFormat:@"self = %@", self.nameOfSectionToBeShown]];

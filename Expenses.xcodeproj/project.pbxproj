@@ -57,6 +57,10 @@
 		0077D61D1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */; };
 		0077D61F1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */; };
 		0077D6201CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */; };
+		0077D6221CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D6211CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift */; };
+		0077D6231CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D6211CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift */; };
+		0077D6251CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D6241CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift */; };
+		0077D6261CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D6241CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift */; };
 		007B824D177476780052FE84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824C177476780052FE84 /* Foundation.framework */; };
 		007B824F177476780052FE84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824E177476780052FE84 /* CoreGraphics.framework */; };
 		007B8251177476780052FE84 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B8250177476780052FE84 /* UIKit.framework */; };
@@ -229,6 +233,8 @@
 		0077D5D91CF0D1D000003F71 /* BSShowYearlyEntriesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowYearlyEntriesController.swift; sourceTree = "<group>"; };
 		0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSMonthlyExpensesSummaryPresenterEventsProtocol.swift; sourceTree = "<group>"; };
 		0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowMonthlyEntriesControllerProtocol.swift; sourceTree = "<group>"; };
+		0077D6211CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSDailyExpensesSummaryPresenterEventsProtocol.swift; sourceTree = "<group>"; };
+		0077D6241CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSShowDailyEntriesControllerProtocol.swift; sourceTree = "<group>"; };
 		007B8249177476780052FE84 /* Expensit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Expensit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		007B824C177476780052FE84 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		007B824E177476780052FE84 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -487,6 +493,7 @@
 			children = (
 				0077D5851CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift */,
 				0077D61E1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift */,
+				0077D6241CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift */,
 				0077D5D61CF0D1CF00003F71 /* BSShowAllEntriesController.swift */,
 				0077D5D71CF0D1CF00003F71 /* BSShowDailyEntriesController.swift */,
 				0077D5D81CF0D1D000003F71 /* BSShowMonthlyEntriesController.swift */,
@@ -518,6 +525,7 @@
 			children = (
 				0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */,
 				0077D5901CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift */,
+				0077D6211CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift */,
 				0077D5CA1CF0CBF200003F71 /* BSShowYearlyEntriesPresenter.swift */,
 				0077D61B1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift */,
 				0077D5CD1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift */,
@@ -1006,6 +1014,7 @@
 				00BD78A8183195F50004A808 /* BSAmountToTextControlCellConvertor.m in Sources */,
 				0077D5D11CF0CC2300003F71 /* BSShowDailyEntriesPresenter.swift in Sources */,
 				007B825B177476780052FE84 /* main.m in Sources */,
+				0077D6221CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				00BD78A0182FF35A0004A808 /* BSTagToSegmentedControlCellConvertor.m in Sources */,
 				005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */,
 				009C9EE717B6939100DE1A97 /* BSThemeManager_iOS7.m in Sources */,
@@ -1016,6 +1025,7 @@
 				00A5DB7617C12DC300FCE765 /* BSTriangularAccesoryView.m in Sources */,
 				00735EB41788351200725DFD /* BSYearlyExpensesSummaryViewController.m in Sources */,
 				000CDF56183D724100BE6266 /* BSEntryDetailsFormViewController.m in Sources */,
+				0077D6251CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift in Sources */,
 				009D01191943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m in Sources */,
 				000D04F71775D20F002D0AB8 /* BSCoreDataController.m in Sources */,
 				00BEAFCA17775D6C00A59EE2 /* BSDailyEntryHeaderView.m in Sources */,
@@ -1070,8 +1080,10 @@
 				000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */,
 				000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */,
 				0077D5CF1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift in Sources */,
+				0077D6261CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift in Sources */,
 				0077D5871CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
 				0077D5921CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */,
+				0077D6231CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				0077D5CC1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */,
 				0077D5D51CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift in Sources */,
 				0077D5C91CF059F900003F71 /* BSAbstractShowEntriesController.swift in Sources */,

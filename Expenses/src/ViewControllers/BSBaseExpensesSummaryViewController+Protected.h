@@ -19,10 +19,5 @@
 @property (nonatomic, strong) NSArray *entries;
 @property (nonatomic, strong) NSArray *sections;
 
-- (NSFetchRequest*)fetchRequest;
-- (NSString*)sectionNameKeyPath;
-- (NSArray *)graphSurplusResults;
-- (NSArray *)graphExpensesResults;
-- (NSArray *)dataForGraphWithFetchRequestResults:(NSArray*) results;
 @end
 #endif

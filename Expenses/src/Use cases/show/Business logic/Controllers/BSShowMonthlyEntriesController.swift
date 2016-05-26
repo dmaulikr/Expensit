@@ -9,7 +9,7 @@
 import Foundation
 
 
-class BSShowMonthlyEntriesController: BSAbstractShowEntriesController {
+class BSShowMonthlyEntriesController: BSAbstractShowEntriesController, BSShowMonthlyEntriesControllerProtocol {
     
     override func fetchRequest() -> NSFetchRequest {
         return self.coreDataController.fetchRequestForMonthlySummary()
@@ -50,4 +50,9 @@ class BSShowMonthlyEntriesController: BSAbstractShowEntriesController {
     func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
         return self.coreDataController.sortedTagsByPercentageFromSections(tags, sections:sections)
     }
+    
+    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]? {
+        return self.coreDataController.categoriesForMonth(month, inYear: year)
+    }
+
 }

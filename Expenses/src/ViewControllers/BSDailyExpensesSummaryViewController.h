@@ -9,5 +9,7 @@
 #import "BSBaseExpensesSummaryViewController.h"
 
 @interface BSDailyExpensesSummaryViewController : BSBaseExpensesSummaryViewController
+// In order to extend the bae protocol, conformed by the uper cla, i create a econd reference to a more pecialied protocol
+@property (strong, nonatomic, nullable) id<BSDailyExpensesSummaryPresenterEventsProtocol> showDailyEntriesPresenter;
 
 @end

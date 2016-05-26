@@ -35,7 +35,7 @@
  the previous viewController and used by the nextViewController to scroll to the right section.
  This property exists because in certain screens we don't show all items, for example, we just show
  months that have entries in the daily summary screen.*/
-@property (strong, nonatomic, nullable) NSString *nameOfSectionToBeShown;
+@property (copy, nonatomic, nullable) NSString *nameOfSectionToBeShown;
 
 @property (assign, nonatomic) BOOL shouldScrollToSelectedSection;
 
