@@ -20,6 +20,8 @@
 		0017DB151937DC050052DCF4 /* libBSPieChartView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0017DB0C1937DBE80052DCF4 /* libBSPieChartView.a */; };
 		001ECAA118DDECF200B7D027 /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001ECAA018DDECF200B7D027 /* BSCategoryFilterViewController.m */; };
 		001FF01318E2178D004F06DB /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */; };
+		00229E7A1CF8D7D100FA772B /* BSDisplaySectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00229E791CF8D7D000FA772B /* BSDisplaySectionData.swift */; };
+		00229E7B1CF8D7D100FA772B /* BSDisplaySectionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00229E791CF8D7D000FA772B /* BSDisplaySectionData.swift */; };
 		002487AD1809B403006652DF /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 002487AC1809B403006652DF /* Tag.m */; };
 		0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0053A7D418F9E43600D63918 /* BSYearlyLayout.m */; };
 		005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5EB178B58A500DC1800 /* BSGraphView.m */; };
@@ -196,6 +198,7 @@
 		001ECAA018DDECF200B7D027 /* BSCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCategoryFilterViewController.m; sourceTree = "<group>"; };
 		001FF01118E2178D004F06DB /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "../UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "../UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		00229E791CF8D7D000FA772B /* BSDisplaySectionData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSDisplaySectionData.swift; sourceTree = "<group>"; };
 		002487AB1809B403006652DF /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tag.h; path = ../Tag.h; sourceTree = "<group>"; };
 		002487AC1809B403006652DF /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tag.m; path = ../Tag.m; sourceTree = "<group>"; };
 		002E2EBD191EB93E003630B2 /* v1.0.7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.7.xcdatamodel; sourceTree = "<group>"; };
@@ -415,6 +418,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		00229E701CF8D63900FA772B /* DisplayModels */ = {
+			isa = PBXGroup;
+			children = (
+				00229E791CF8D7D000FA772B /* BSDisplaySectionData.swift */,
+			);
+			name = DisplayModels;
+			sourceTree = "<group>";
+		};
 		0022AD47180FA26B006C736C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -523,6 +534,7 @@
 		0077D5761CED01FF00003F71 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
+				00229E701CF8D63900FA772B /* DisplayModels */,
 				0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */,
 				0077D5901CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift */,
 				0077D6211CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift */,
@@ -1027,6 +1039,7 @@
 				000CDF56183D724100BE6266 /* BSEntryDetailsFormViewController.m in Sources */,
 				0077D6251CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift in Sources */,
 				009D01191943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m in Sources */,
+				00229E7A1CF8D7D100FA772B /* BSDisplaySectionData.swift in Sources */,
 				000D04F71775D20F002D0AB8 /* BSCoreDataController.m in Sources */,
 				00BEAFCA17775D6C00A59EE2 /* BSDailyEntryHeaderView.m in Sources */,
 				0077D5C81CF059F900003F71 /* BSAbstractShowEntriesController.swift in Sources */,
@@ -1083,6 +1096,7 @@
 				0077D6261CF38DBB00003F71 /* BSShowDailyEntriesControllerProtocol.swift in Sources */,
 				0077D5871CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
 				0077D5921CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */,
+				00229E7B1CF8D7D100FA772B /* BSDisplaySectionData.swift in Sources */,
 				0077D6231CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				0077D5CC1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */,
 				0077D5D51CF0CEBB00003F71 /* BSShowAllEntriesPresenter.swift in Sources */,

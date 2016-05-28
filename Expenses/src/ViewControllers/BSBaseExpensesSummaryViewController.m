@@ -67,8 +67,8 @@ static Tag *tagBeingFilterBy = nil;
     [super viewWillAppear:animated];
     
     // Request data
-    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^(NSArray * _Nullable entries, NSArray * _Nullable sections) {
-        self.entries = entries;
+    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^( NSArray * _Nullable sections) {
+        //self.entries = entries;
         self.sections = sections;
         [self.collectionView reloadData];
         
@@ -326,8 +326,8 @@ static Tag *tagBeingFilterBy = nil;
     // Notify that flilter changed
     [self.showEntriesPresenter filterChangedToCategory:tag]; // thi could be unified ith previou
     
-    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^(NSArray * _Nullable entries, NSArray * _Nullable sections) {
-        self.entries = entries;
+    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^( NSArray * _Nullable sections) {
+        //self.entries = entries;
         self.sections = sections;
         
         [self.collectionView reloadData];

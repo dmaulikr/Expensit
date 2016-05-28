@@ -12,6 +12,7 @@
 @property (strong, nonatomic) IBOutlet UILabel *title;
 @property (strong, nonatomic) IBOutlet UILabel *amountLabel;
 @property (strong, nonatomic) NSDecimalNumber *amount;
+@property (assign, nonatomic) BOOL isPositive;
 
 - (void) configure;
 

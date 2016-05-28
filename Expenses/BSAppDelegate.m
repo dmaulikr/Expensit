@@ -46,8 +46,14 @@
     if ([self isFirstTheAppEverRun])
     {
         BSCoreDataController *controller = [[BSCoreDataController alloc] initWithEntityName:@"Entry" delegate:nil coreDataHelper:self.coreDataHelper];
+        [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"30/10/2015"] description:@"Food and drinks" value:@"-300.0" category:nil];
+        [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"11/09/2014"] description:@"Food and drinks" value:@"-300.0" category:nil];
         [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"02/01/2013"] description:@"Food and drinks" value:@"-300.0" category:nil];
         [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"06/07/2012"] description:@"Pocket money" value:@"100.0" category:nil];
+        [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"07/07/2012"] description:@"Pocket money" value:@"100.0" category:nil];
+        [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"05/07/2012"] description:@"Pocket money" value:@"100.0" category:nil];
+        [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"04/08/2012"] description:@"Pocket money" value:@"100.0" category:nil];
+        [controller insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"03/08/2012"] description:@"Pocket money" value:@"100.0" category:nil];
     }
     
     // This should be after we already have any entries!!!

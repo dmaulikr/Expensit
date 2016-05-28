@@ -34,6 +34,21 @@
     }
 }
 
+- (void) setIsPositive:(BOOL)isPositive
+{
+    // Assign
+    _isPositive = isPositive;
+    
+    // Configure
+    
+    if (_isPositive) {
+        self.amountLabel.textColor = [UIColor greenColor];//[((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme greenColor];
+    } else {    
+        self.amountLabel.textColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme redColor];
+    }
+}
+
+
 
 - (void) configure
 {

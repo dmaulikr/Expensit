@@ -43,7 +43,7 @@
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView
 {
-    return [self.entries count];
+    return [self.sections count];
 }
 
 

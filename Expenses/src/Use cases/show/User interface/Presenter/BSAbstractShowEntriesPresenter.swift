@@ -27,14 +27,14 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
         self.showEntriesController.filterByCategory(category)
     }
     
-    func viewIsReadyToDisplayEntriesCompletionBlock(block: (entries : [AnyObject]?, sections : [AnyObject]?)->())
+    func viewIsReadyToDisplayEntriesCompletionBlock(block: ( sections : [BSDisplaySectionData] ) -> () )
     {
         let dictionary = self.showEntriesController.entriesForSummary()
-        let ent = dictionary["entries"] as! [AnyObject]?
-        let sec = dictionary["sections"] as! [AnyObject]?
-        
+        //let ent = dictionary["entries"] as! [AnyObject]?
+        let sec = dictionary["sections"] as! [NSFetchedResultsSectionInfo]
+        let output = self.displayDataFromEntriesForSummary(sec)
         // CallBack hen data i ready
-        block(entries: ent, sections: sec)
+        block( sections: output)
     }
     
     func viewIsReadyToDisplayImageForCategory(category : Tag?) {
@@ -78,4 +78,11 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
     func dataForGraphFromQueryResults(data : [AnyObject]) -> [AnyObject] {
         return []
     }
+
+    func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
+    {
+        return []
+    }
+
+    
 }

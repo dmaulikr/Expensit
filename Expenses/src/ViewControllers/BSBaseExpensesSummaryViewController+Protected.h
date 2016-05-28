@@ -16,8 +16,8 @@
 
 @property (nonatomic, strong) BSAnimatedBlurEffectTransitioningDelegate *animatedBlurEffectTransitioningDelegate;
 
+@property (nonatomic, strong) NSArray <BSDisplaySectionData *>*sections;
 @property (nonatomic, strong) NSArray *entries;
-@property (nonatomic, strong) NSArray *sections;
 
 @end
 #endif

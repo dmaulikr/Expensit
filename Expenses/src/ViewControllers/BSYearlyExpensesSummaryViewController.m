@@ -42,39 +42,39 @@
 }
 
 
-- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+- (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)sectionIndex
 {
-    return [self.entries count];
+    BSDisplaySectionData *sectionData = self.sections[sectionIndex];
+    return sectionData.numberOfEntries;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-
     [super collectionView:collectionView cellForItemAtIndexPath:indexPath];
     
-    NSDictionary *itemForMonth = self.entries[indexPath.row];
-    
+    BSDisplayEntry *itemForYear = self.sections[indexPath.section].entries[indexPath.row];
     BSYearlySummaryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
     
     // Determine the text of the labels
-    NSString *monthLabelText = nil;
-    NSString *valueLabeltext = nil;
-    
-    if (itemForMonth)
-    {
-        monthLabelText = [[itemForMonth valueForKey:@"year"] stringValue];
-        valueLabeltext = [[BSCurrencyHelper amountFormatter] stringFromNumber:[itemForMonth valueForKey:@"yearlySum"]];
-    }
-    
+    NSString *yearLabelText = yearLabelText = itemForYear.title;
+    NSString *valueLabeltext = itemForYear.value;
+
     // Labels
     [cell configure];
-    cell.title.text = monthLabelText;
-    cell.amountLabel.text = valueLabeltext;
+    cell.title.text = yearLabelText; // set text
+    cell.amountLabel.text = valueLabeltext; // remove
     
-    // Text color
-    cell.amount = [itemForMonth valueForKey:@"yearlySum"];
-    
+    switch (itemForYear.signOfAmount)
+    {
+        case BSNumberSignTypeZero:
+            cell.isPositive = YES;
+        case BSNumberSignTypePositive:
+            cell.isPositive = YES;
+        case BSNumberSignTypeNegative:
+            cell.isPositive = NO;
+    }
+
     return cell;
 }
 
@@ -82,9 +82,7 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:@"BSDailyEntryHeaderView" forIndexPath:indexPath];
-    
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
-    headerView.titleLabel.text = sectionInfo.name;
+    headerView.titleLabel.text = self.sections[indexPath.section].title;
     
     return headerView;
 }
@@ -100,9 +98,7 @@
         BSBaseExpensesSummaryViewController *monthlyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-
-        NSString *results = [NSString stringWithFormat:@"%@", [self.entries[selectedIndexPath.row] valueForKey:@"year"]];
-        monthlyExpensesViewController.nameOfSectionToBeShown = results;//[selectedIndexPath.row][@"year"];
+        monthlyExpensesViewController.nameOfSectionToBeShown = self.sections[selectedIndexPath.section].entries[selectedIndexPath.row].title;
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
