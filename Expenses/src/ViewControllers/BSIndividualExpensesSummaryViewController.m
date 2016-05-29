@@ -48,22 +48,19 @@
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:section];
-
-    return [sectionInfo numberOfObjects];
+    return self.sections[section].numberOfEntries;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    Entry *managedObject = (Entry*)[self.entries objectAtIndex:indexPath.section];
+    BSDisplayEntry *entry = self.sections[indexPath.section].entries[indexPath.row];
     BSDailySummanryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
 
     // configure the cell
     [cell configure];
-    cell.title.text = managedObject.desc;
-    cell.amountLabel.text = [[BSCurrencyHelper amountFormatter] stringFromNumber:managedObject.value];
-    cell.amount = managedObject.value;
+    cell.title.text = entry.title;
+    cell.amountLabel.text = entry.value;
     
     return cell;
 }   
@@ -72,8 +69,8 @@
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
 
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
-    NSArray *components = [sectionInfo.name componentsSeparatedByString:@"/"];
+    BSDisplaySectionData *sectionInfo = self.sections[indexPath.section];
+    NSArray *components = [sectionInfo.title componentsSeparatedByString:@"/"];
     headerView.titleLabel.text = [NSString stringWithFormat:@"%@ %@ %@", [components objectAtIndex:2],
                                   [DateTimeHelper monthNameForMonthNumber:[NSDecimalNumber decimalNumberWithString:[components objectAtIndex:1]]],
                                   [components objectAtIndex:0]];
@@ -117,8 +114,7 @@
         int sum = 0;
         for (int i=0; i<selectedIndexPath.section; i++)
         {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:i];
-            sum += [sectionInfo numberOfObjects];
+            sum += self.sections[i].numberOfEntries;
         }
         
         editEntryViewController.coreDataController = self.coreDataController;

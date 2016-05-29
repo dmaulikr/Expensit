@@ -81,7 +81,7 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
     }
 
     override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
-    {
+    {        
         var sections = [BSDisplaySectionData]()
         
         for coreDatasectionInfo in data

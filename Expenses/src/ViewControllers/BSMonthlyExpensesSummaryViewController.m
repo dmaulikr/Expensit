@@ -55,8 +55,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    BSDisplayEntry *itemForMonth = self.sections[indexPath.section].entries[indexPath.row];
-    
+    BSDisplayEntry *itemForMonth = self.sections[indexPath.section].entries[indexPath.row];    
     BSMonthlySummaryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
     
     // Determine the text of the labels
