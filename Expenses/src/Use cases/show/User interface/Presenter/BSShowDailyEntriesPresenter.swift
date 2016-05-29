@@ -124,5 +124,12 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
         
         return sections
     }
+    
+    
+    func sectionNameForSelectedIndexPath(indexPath : NSIndexPath, sectionTitle: String) -> String {
+        let month = sectionTitle.componentsSeparatedByString("/")[0]
+        let year = sectionTitle.componentsSeparatedByString("/")[1]
+        return "\(year)/\(month)/\(indexPath.row + 1)"
+    }
 
 }

@@ -14,4 +14,5 @@ import Foundation
     func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
     func categoriesForMonth(month: Int, year : Int) -> [AnyObject]?
     func arrayDayNumbersInMonthFromVisibleSection(section: String) -> [String]
+    func sectionNameForSelectedIndexPath(indexPath : NSIndexPath, sectionTitle: String) -> String
 }

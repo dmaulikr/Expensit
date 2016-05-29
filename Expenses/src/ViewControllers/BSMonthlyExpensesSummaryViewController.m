@@ -30,11 +30,8 @@
     self.showEntriesController = [[BSShowMonthlyEntriesController alloc] init];
     id<BSMonthlyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowMonthlyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
                                                                                                         showMonthlyEntriesController:(id<BSShowMonthlyEntriesControllerProtocol>)self.showEntriesController];
-    
-    
     self.showEntriesPresenter = mp;
     self.showMonthlyEntriesPresenter = mp;
-    
 }
 
 
@@ -84,7 +81,6 @@
     headerButton.year = [NSDecimalNumber decimalNumberWithString:self.sections[indexPath.section].title];
 
     return headerView;
-    
 }
 
 

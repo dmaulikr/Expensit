@@ -28,11 +28,8 @@
     self.showEntriesController = [[BSShowDailyEntriesController alloc] init];
     id<BSDailyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowDailyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
                                                                                                         showDailyEntriesController:(id<BSShowDailyEntriesControllerProtocol>)self.showEntriesController];
-    
-    
     self.showEntriesPresenter = mp;
     self.showDailyEntriesPresenter = mp;
-    
 }
 
 #pragma mark - UICollectionViewDataSource
@@ -114,15 +111,8 @@
         
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        NSString *sectionTitle = self.sections[selectedIndexPath.section].title;
-        
-        // Create the name of the section to go to in the next VC
-        NSString *month = [sectionTitle componentsSeparatedByString:@"/"][0];
-        NSString *year = [sectionTitle componentsSeparatedByString:@"/"][1];
-        
-        
-        NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%@/%@/%ld", year, month, selectedIndexPath.row + 1];
-        dailyExpensesViewController.nameOfSectionToBeShown = sectionNameToScrollTo;
+        NSString *sectionTitle = self.sections[selectedIndexPath.section].title;        
+        dailyExpensesViewController.nameOfSectionToBeShown = [self.showDailyEntriesPresenter sectionNameForSelectedIndexPath:selectedIndexPath sectionTitle:sectionTitle];// sectionNameToScrollTo;
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {

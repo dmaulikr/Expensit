@@ -103,8 +103,8 @@
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
         BSGraphViewController *graphViewController = (BSGraphViewController *)[segue destinationViewController];
-        [graphViewController setMoneyIn:[self.showEntriesPresenter dataForGraphFromSuplusResultsForSection:@"not-ued-make-nil"]];
-        [graphViewController setMoneyOut:[self.showEntriesPresenter dataForGraphFromExpensesResultsForSection:@"not-ued-make-nil"]];
+        [graphViewController setMoneyIn:[self.showEntriesPresenter dataForGraphFromSuplusResultsForSection:@"not-used-make-nil"]];
+        [graphViewController setMoneyOut:[self.showEntriesPresenter dataForGraphFromExpensesResultsForSection:@"not-used-make-nil"]];
         [graphViewController setXValues:[self.showEntriesPresenter abscissaValues]];
     }
     else
