@@ -80,4 +80,49 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
         return self.showDailyEntriesController.categoriesForMonth(month, year: year)
     }
 
+    override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
+    {
+        var sections = [BSDisplaySectionData]()
+        
+        for coreDatasectionInfo in data
+        {
+            var entries = [BSDisplayEntry]()
+            let monthNumber = coreDatasectionInfo.name.componentsSeparatedByString("/")[0]
+            let numberOfDayInMonths = DateTimeHelper.numberOfDaysInMonth(monthNumber).length
+            for var i=0; i<numberOfDayInMonths; i += 1 {
+                
+                let dayData = BSDisplayEntry(title: "\(i+1)" , value: "", signOfAmount: .Zero)
+                entries.append(dayData)
+            }
+            
+            for entryDic in (coreDatasectionInfo.objects)!
+            {
+                let value = entryDic.valueForKey("dailySum") as! NSNumber
+                let r : NSComparisonResult = value.compare(0)
+                var sign : BSNumberSignType
+                
+                switch r
+                {
+                case NSComparisonResult.OrderedAscending:
+                    sign = .Negative
+                case NSComparisonResult.OrderedDescending:
+                    sign = .Positive
+                case NSComparisonResult.OrderedSame:
+                    sign = .Zero
+                }
+                let day = entryDic.valueForKey("day") as! NSNumber
+                let dayString = "\(day)"
+                let dailySumString = BSCurrencyHelper.amountFormatter().stringFromNumber(value)!
+                
+                let entryData = BSDisplayEntry(title: dayString as String , value: dailySumString as String, signOfAmount: sign)
+                entries[day.integerValue - 1] = entryData
+            }
+            
+            let sectionData = BSDisplaySectionData(title: coreDatasectionInfo.name, entries: entries)
+            sections.append(sectionData)
+        }
+        
+        return sections
+    }
+
 }

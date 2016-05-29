@@ -87,7 +87,7 @@ static Tag *tagBeingFilterBy = nil;
     if (self.shouldScrollToSelectedSection && self.firstTimeViewWillAppear)
     {
         self.firstTimeViewWillAppear = NO;
-        NSArray *sectionNames = [self.entries valueForKeyPath:[self.showEntriesPresenter sectionNameKeyPath]];
+        NSArray *sectionNames = [self.sections valueForKeyPath:@"title"];
         NSMutableArray* uniqueSectionNames = [[NSMutableArray alloc] init];
         for(id sectionName in sectionNames)
         {
@@ -269,14 +269,14 @@ static Tag *tagBeingFilterBy = nil;
         }
     }
     
-    id <NSFetchedResultsSectionInfo> sectionInfo = nil;
+    BSDisplaySectionData *sectionInfo = nil;
     
     if ([self.sections count] > 0)
     {
-        sectionInfo = [self.sections objectAtIndex:[sectionWithMostVisibleCells intValue]];
+        sectionInfo = self.sections[sectionWithMostVisibleCells.intValue];
     }
 
-    return sectionInfo.name;
+    return sectionInfo.title;
 }
 
 

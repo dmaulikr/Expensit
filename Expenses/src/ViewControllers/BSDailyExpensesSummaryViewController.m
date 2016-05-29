@@ -45,44 +45,23 @@
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:section];
-    NSString *monthString = [sectionInfo name];
-    NSArray *components = [monthString componentsSeparatedByString:@"/"];
-    
-    NSRange numberOfDaysInMonth = [DateTimeHelper numberOfDaysInMonth:components[0]]; // todo: move to preenter
-    return numberOfDaysInMonth.length;
+    return self.sections[section].numberOfEntries;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
-    NSArray *fetchedObjectsForSection = [sectionInfo objects];
-    NSPredicate *itemForDayPredicate = [NSPredicate predicateWithFormat:@"day = %d AND monthYear = %@", indexPath.row + 1, sectionInfo.name];
-    NSDictionary *itemForDayMonthYear = [[fetchedObjectsForSection filteredArrayUsingPredicate:itemForDayPredicate] lastObject];
-
+    BSDisplayEntry *itemForDayMonthYear = self.sections[indexPath.section].entries[indexPath.row];
     BSDailySummanryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
+    
     // Determine the text of the labels
-    NSString *monthLabelText = nil;
-    NSString *valueLabeltext = nil;
-
-    if (itemForDayMonthYear)
-    {
-        monthLabelText = [[itemForDayMonthYear valueForKey:@"day"] stringValue];
-        valueLabeltext = [[BSCurrencyHelper amountFormatter] stringFromNumber:[itemForDayMonthYear valueForKey:@"dailySum"]];
-    }
-    else
-    {
-        monthLabelText = [@(indexPath.row + 1) stringValue];
-        valueLabeltext = @"";
-    }
-
+    NSString *dayLabelText = itemForDayMonthYear.title;
+    NSString *valueLabeltext = itemForDayMonthYear.value;
     
     // configure the cell
     [cell configure];
-    cell.title.text = monthLabelText;
+    cell.title.text = dayLabelText;
     cell.amountLabel.text = valueLabeltext;
-    cell.amount = [itemForDayMonthYear valueForKey:@"dailySum"];
     
     return cell;
 }
@@ -90,14 +69,13 @@
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
     
-    headerView.titleLabel.text = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:sectionInfo.name];
+    NSString *sectionTitle = self.sections[indexPath.section].title;
+    headerView.titleLabel.text = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:sectionTitle];
     BSHeaderButton *headerButton = (BSHeaderButton *)headerView.pieChartButton;
-
     
     // TODO: Move this to a model in the view or figure out a better way to get the indexPath of the section header the button is in.
-    NSArray *components = [sectionInfo.name componentsSeparatedByString:@"/"];
+    NSArray *components = [sectionTitle componentsSeparatedByString:@"/"];
     NSString *monthString = components[0];
     NSString *yearString = components[1];
     headerButton.month = [NSDecimalNumber decimalNumberWithString:monthString];
@@ -136,11 +114,11 @@
         
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:selectedIndexPath.section];
+        NSString *sectionTitle = self.sections[selectedIndexPath.section].title;
         
         // Create the name of the section to go to in the next VC
-        NSString *month = [sectionInfo.name componentsSeparatedByString:@"/"][0];
-        NSString *year = [sectionInfo.name componentsSeparatedByString:@"/"][1];
+        NSString *month = [sectionTitle componentsSeparatedByString:@"/"][0];
+        NSString *year = [sectionTitle componentsSeparatedByString:@"/"][1];
         
         
         NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%@/%@/%ld", year, month, selectedIndexPath.row + 1];

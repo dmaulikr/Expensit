@@ -57,7 +57,7 @@
     BSYearlySummaryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
     
     // Determine the text of the labels
-    NSString *yearLabelText = yearLabelText = itemForYear.title;
+    NSString *yearLabelText = itemForYear.title;
     NSString *valueLabeltext = itemForYear.value;
 
     // Labels

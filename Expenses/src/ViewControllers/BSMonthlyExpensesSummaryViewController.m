@@ -49,58 +49,40 @@
 
 - (NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 12; // We always show the 12 months, even if the request doesn't have results for each month
+    return self.sections[section].numberOfEntries;
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
-    NSArray *fetchedObjectsForSection = [sectionInfo objects];
-    NSPredicate *itemForMonthPredicate = [NSPredicate predicateWithFormat:@"month = %d", indexPath.row + 1];
-    NSDictionary *itemForMonth = [[fetchedObjectsForSection filteredArrayUsingPredicate:itemForMonthPredicate] lastObject];
+    BSDisplayEntry *itemForMonth = self.sections[indexPath.section].entries[indexPath.row];
     
     BSMonthlySummaryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
     
     // Determine the text of the labels
-    NSString *monthLabelText = nil;
-    NSString *valueLabeltext = nil;
-    
-    if (itemForMonth)
-    {
-        monthLabelText = [DateTimeHelper monthNameForMonthNumber:[itemForMonth valueForKey:@"month"]];
-        valueLabeltext = [[BSCurrencyHelper amountFormatter] stringFromNumber:[itemForMonth valueForKey:@"monthlySum"]];
-    }
-    else
-    {
-        monthLabelText = [DateTimeHelper monthNameForMonthNumber:@(indexPath.row + 1)];
-        valueLabeltext = @"";
-    }
+    NSString *monthLabelText = itemForMonth.title;
+    NSString *valueLabeltext = itemForMonth.value;
     
     // Labels
     [cell configure];
-    
     cell.title.text = monthLabelText;
     cell.amountLabel.text = valueLabeltext;
 
-    // Text color
-    cell.amount = [itemForMonth valueForKey:@"monthlySum"];
-    
     return cell;
 }
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
-    BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
-    
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:indexPath.section];
-    headerView.titleLabel.text = sectionInfo.name;
+    BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind
+                                                                            withReuseIdentifier:[self reuseIdentifierForHeader]
+                                                                                   forIndexPath:indexPath];
+    headerView.titleLabel.text = self.sections[indexPath.section].title;
     BSHeaderButton *headerButton = (BSHeaderButton *)headerView.pieChartButton;
     
     // TODO: Move this to a model in the view or figure out a better way to get the indexPath of the section header the button is in.
     headerButton.month = nil;
-    headerButton.year = [NSDecimalNumber decimalNumberWithString:sectionInfo.name];
+    headerButton.year = [NSDecimalNumber decimalNumberWithString:self.sections[indexPath.section].title];
 
     return headerView;
     
@@ -115,10 +97,10 @@
         dailyExpensesViewController.coreDataStackHelper = self.coreDataStackHelper;
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.sections objectAtIndex:selectedIndexPath.section];
-
+        BSDisplaySectionData *sectionInfo = self.sections[selectedIndexPath.section];
+        
         // Create the name of the section to go to in the next VC
-        NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.name]; // there are 12 months (0-11) that's why we add 1. The section name is the year
+        NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.title]; // there are 12 months (0-11) that's why we add 1. The section name is the year
         dailyExpensesViewController.nameOfSectionToBeShown = sectionNameToScrollTo;
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])

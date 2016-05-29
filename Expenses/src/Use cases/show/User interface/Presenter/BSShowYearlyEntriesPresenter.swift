@@ -75,7 +75,7 @@ class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter {
                 }
                 let year = entryDic.valueForKey("year") as! NSNumber
                 let yearString = NSString(format:"\(year)")
-                let yearlySumString = NSString(format:"\(value)")
+                let yearlySumString = BSCurrencyHelper.amountFormatter().stringFromNumber(value)!
                 
                 let entryData = BSDisplayEntry(title: yearString as String , value: yearlySumString as String, signOfAmount: sign)
                 entries.append(entryData)
@@ -87,6 +87,5 @@ class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter {
         
         return sections
     }
-
     
 }
