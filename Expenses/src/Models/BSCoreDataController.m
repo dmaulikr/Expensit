@@ -684,7 +684,8 @@
 #pragma mark - Execution of queries
 
 - (NSArray *) resultsForRequest:(NSFetchRequest *)request error:(NSError **)error {
-    return [self.coreDataHelper.managedObjectContext executeFetchRequest:request error:error];
+    NSArray *output = [self.coreDataHelper.managedObjectContext executeFetchRequest:request error:error];
+    return output;
 }
 
 @end

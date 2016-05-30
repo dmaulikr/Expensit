@@ -18,22 +18,24 @@ class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter {
     }
 
     override func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
+        
         var graphData = [NSNumber]()
         let years = self.abscissaValues()
         
         for (i, _) in years.enumerate()
         {
             var monthDictionary : NSDictionary?
-            for dic in data {
-                if let yearValue = dic["year"]
+            for dic in data  {
+                let dataDictionary = dic as! NSDictionary
+                let intYear = dataDictionary["year"] as! Int
+                let yearstringFromData = "\(intYear)"
+                if yearstringFromData == years[i]
                 {
-                    if ((yearValue?.isEqual(years[i])) != nil) {
-                        monthDictionary = (dic as! NSDictionary)
-                        break
-                    }
+                    monthDictionary = (dic as! NSDictionary)
+                    break
                 }
-            }
 
+            }
             if monthDictionary != nil
             {
                 var value = monthDictionary!["yearlySum"] as! NSNumber

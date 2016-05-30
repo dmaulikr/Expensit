@@ -43,8 +43,10 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter, BSMonthlyE
             let month = dictionary["month"] as! Int
             let monthlySum = dictionary["monthlySum"] as! Float
             
-            if monthlySum > 0 {
+            if monthlySum < 0 {
                 graphData[month] = -monthlySum
+            } else {
+                graphData[month] = monthlySum
             }
         }
         

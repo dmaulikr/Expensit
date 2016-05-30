@@ -50,6 +50,8 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
             let dailySum = dictionary["dailySum"] as! Float
             
             if dailySum > 0 {
+                graphData[day] = dailySum
+            } else {
                 graphData[day] = -dailySum
             }
         }
