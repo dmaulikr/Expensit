@@ -125,7 +125,7 @@
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
         BSHeaderButton *button = (BSHeaderButton *)sender;
-        NSArray *sections = [self.showDailyEntriesPresenter expensesByCategoryForMonth:button.month.integerValue year:button.year.integerValue];
+        NSArray *sections = [self.showDailyEntriesPresenter expensesByCategoryForMonth:button.month year:button.year.integerValue];
         BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
         graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
         graphViewController.modalPresentationStyle = UIModalPresentationCustom;

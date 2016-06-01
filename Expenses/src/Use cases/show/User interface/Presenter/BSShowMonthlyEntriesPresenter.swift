@@ -54,7 +54,7 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter, BSMonthlyE
     }
     
     /// BSMonthlyExpensesSummaryPresenterEventsProtocol
-    func expensesByCategoryForMonth(month: Int, year : Int) -> [AnyObject]? {
+    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
         return self.showMonthlyEntriesController.expensesByCategoryForMonth(month, year: year)
     }
     

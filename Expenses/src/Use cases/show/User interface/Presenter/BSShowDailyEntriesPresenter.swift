@@ -70,7 +70,7 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
     }
     
     /// BSDailyExpensesSummaryPresenterEventsProtocol
-    func expensesByCategoryForMonth(month: Int, year : Int) -> [AnyObject]? {
+    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
         return self.showDailyEntriesController.expensesByCategoryForMonth(month, year: year)
     }
     

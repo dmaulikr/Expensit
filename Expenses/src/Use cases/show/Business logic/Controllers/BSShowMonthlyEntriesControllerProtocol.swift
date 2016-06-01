@@ -10,7 +10,7 @@ import Foundation
 
 @objc protocol BSShowMonthlyEntriesControllerProtocol: BSAbstractShowEntriesControllerProtocol
 {
-    func expensesByCategoryForMonth(month: Int, year : Int) -> [AnyObject]?
+    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
     func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
     func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
 }
