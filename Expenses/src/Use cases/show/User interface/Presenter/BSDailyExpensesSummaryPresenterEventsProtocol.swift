@@ -12,7 +12,7 @@ import Foundation
 @objc protocol BSDailyExpensesSummaryPresenterEventsProtocol : BSAbstractExpensesSummaryPresenterEventsProtocol {
     func expensesByCategoryForMonth(month: Int, year : Int) -> [AnyObject]?
     func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
-    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]?
+    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
     func arrayDayNumbersInMonthFromVisibleSection(section: String) -> [String]
     func sectionNameForSelectedIndexPath(indexPath : NSIndexPath, sectionTitle: String) -> String
 }

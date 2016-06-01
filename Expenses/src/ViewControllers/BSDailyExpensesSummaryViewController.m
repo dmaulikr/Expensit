@@ -129,7 +129,7 @@
         BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
         graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
         graphViewController.modalPresentationStyle = UIModalPresentationCustom;
-        NSArray *categories = [self.showDailyEntriesPresenter categoriesForMonth:button.month.integerValue year:button.year.integerValue];
+        NSArray *categories = [self.showDailyEntriesPresenter categoriesForMonth:button.month year:button.year.integerValue];
         graphViewController.categories = [self.showDailyEntriesPresenter sortedTagsByPercentageFromSections:categories sections:sections];
         
         [graphViewController setSections:sections];

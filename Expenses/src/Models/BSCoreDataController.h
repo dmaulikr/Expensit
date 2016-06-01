@@ -72,7 +72,7 @@
 - (NSArray *)allTagImages;
 - (UIImage *)imageForCategory:(Tag *)tag;
 - (BOOL)findNoTags:(NSString *)tagName;
-- (NSArray *)categoriesForMonth:(NSNumber *)month inYear:(NSNumber *)year;
-- (NSArray *)sortedTagsByPercentageFromSections:(NSArray *)tags sections:(NSArray *)sections;
+- (NSArray *)categoriesForMonth:(nullable NSNumber *)month inYear:(nonnull NSNumber *)year;
+- (nullable NSArray *)sortedTagsByPercentageFromSections:(nonnull NSArray *)tags sections:(nullable NSArray *)sections;
 
 @end

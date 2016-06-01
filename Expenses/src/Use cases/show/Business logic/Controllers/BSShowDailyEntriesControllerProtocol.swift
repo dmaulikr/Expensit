@@ -12,5 +12,5 @@ import Foundation
 {
     func expensesByCategoryForMonth(month: Int, year : Int) -> [AnyObject]?
     func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
-    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]?
+    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
 }

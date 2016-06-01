@@ -262,7 +262,7 @@
 }
 
 
-- (NSArray *)categoriesForMonth:(NSNumber *)month inYear:(NSNumber *)year
+- (NSArray *)categoriesForMonth:(nullable NSNumber *)month inYear:(NSNumber *)year
 {
     // Get a base request
     NSFetchRequest *fetchRequest = [self baseFetchRequest];
@@ -610,14 +610,13 @@
     for (NSNumber *amount in absoluteAmountPerTag)
     {
         BSPieChartSectionInfo *info = [[BSPieChartSectionInfo alloc] init];
-        Tag *tag = nil;
-            tag = tags[i];
-            info.name = [tag name];
-            info.percentage = ([amount floatValue] / total);
-            percentageSum += info.percentage;
-            info.color = tag.color;
-            i++;
-            [sections addObject:info];
+        Tag *tag = tags[i];
+        info.name = [tag name];
+        info.percentage = ([amount floatValue] / total);
+        percentageSum += info.percentage;
+        info.color = tag.color;
+        i++;
+        [sections addObject:info];
     }
     
     NSSortDescriptor *orderASC = [NSSortDescriptor sortDescriptorWithKey:@"percentage" ascending:YES];
@@ -674,8 +673,6 @@
     [fetchRequest setPredicate:expensesPredicate];
     results = [self resultsForRequest:fetchRequest error:nil];
     CGFloat expenses = [[[results firstObject] valueForKey:@"monthlyCategoryAbsoluteSum"] floatValue];
-    
-    
     
     return (income + fabs(expenses));
 }

@@ -51,7 +51,8 @@ class BSShowMonthlyEntriesController: BSAbstractShowEntriesController, BSShowMon
         return self.coreDataController.sortedTagsByPercentageFromSections(tags, sections:sections)
     }
     
-    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]? {
+    // make month nil
+    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
         return self.coreDataController.categoriesForMonth(month, inYear: year)
     }
 

@@ -78,7 +78,7 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
         return self.showDailyEntriesController.sortedTagsByPercentageFromSections(tags, sections: sections)
     }
     
-    func categoriesForMonth(month: Int, year : Int) -> [AnyObject]? {
+    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
         return self.showDailyEntriesController.categoriesForMonth(month, year: year)
     }
 
