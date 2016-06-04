@@ -17,6 +17,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // controller and preenter
+    self.addEntryController = [[BSAddEntryController alloc] init];    
+    self.addEntryPresenter = [[BSAddEntryPresenter alloc] initWithAddEntryController:self.addEntryController userInterface:self];
+    
+    [self.addEntryPresenter userInterfaceReadyToDiplayEntry];
+
 
     // Nav Bar buttons
     BSThemeManager *manager =  ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
@@ -33,57 +40,43 @@
 
 - (IBAction) addEntryPressed:(id)sender
 {
-    NSError *error = nil;
-    if ([self saveModel:&error])
-    {
-        [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    }
-    else
-    {
+    [self.addEntryPresenter saveEntry:self.entryModel successBlock:^{
+       [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    } failureBlock:^(NSError * _Nonnull error) {
         [self displayUnableToSaveErrorwithMessage:[error userInfo][NSLocalizedDescriptionKey]];
-    }
+    }];
 }
 
 - (IBAction) cancelButtonPressed:(id)sender
 {
     if (self.isEditingEntry)
     {
-        [self.coreDataController discardChanges];
+        [self.addEntryPresenter userCancelledEditionOfExistingEntry];
     }
     else
     {
-        [self.coreDataController deleteModel:self.entryModel];
-        [self.coreDataController saveChanges];
+        [self.addEntryPresenter userCancelledCreationOfNewEntry:self.entryModel];
     }
     
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (BOOL) saveModel:(NSError **)error
-{
-    return [self.coreDataController saveEntry:self.entryModel error:error];
-}
 
 
 #pragma mark - UITextFieldDelegate
 
 /* TODO: Convert this method into a cell event*/
 - (void) textFieldShouldreturn
-{
-    
-    NSError *error = nil;
-    if ([self saveModel:&error])
-    {
+{ 
+    [self.addEntryPresenter saveEntry:self.entryModel successBlock:^{
         if (!self.isEditingEntry)
         {
-            self.entryModel = [self.coreDataController newEntry];
-            [self.tableView reloadData];
+            [self.addEntryPresenter userSelectedNext]; //calls back displayEntry:
         }
-    }
-    else
-    {
+
+    } failureBlock:^(NSError * _Nonnull error) {
         [self displayUnableToSaveErrorwithMessage:[error userInfo][NSLocalizedDescriptionKey]];
-    }
+    }];
 }
 
 - (void)displayUnableToSaveErrorwithMessage:(NSString *)message
@@ -102,6 +95,11 @@
     [alertController addAction:dismiss];
     
     [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)displayEntry:(Entry * _Nonnull)entry {
+    self.entryModel = entry;
+    [self.tableView reloadData];
 }
 
 @end

@@ -140,7 +140,7 @@ static Tag *tagBeingFilterBy = nil;
     addEntryVC.isEditingEntry = NO;
     addEntryVC.entryModel = [self.coreDataController newEntry];
     addEntryVC.cellActionDataSource = cellActionsDataSource;
-    addEntryVC.coreDataController = self.coreDataController;
+    //addEntryVC.coreDataController = self.coreDataController;
     addEntryVC.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
     
     [self presentViewController:navController animated:YES completion:completion];
@@ -185,9 +185,9 @@ static Tag *tagBeingFilterBy = nil;
         BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:NO];
         BSEntryDetailsFormViewController *addEntryVC = (BSEntryDetailsFormViewController*)navigationController.topViewController;
         addEntryVC.isEditingEntry = NO;
-        addEntryVC.entryModel = [self.coreDataController newEntry];
+        //addEntryVC.entryModel = [self.coreDataController newEntry];
         addEntryVC.cellActionDataSource = cellActionsDataSource;
-        addEntryVC.coreDataController = self.coreDataController;
+        //addEntryVC.coreDataController = self.coreDataController;
         addEntryVC.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
         
     }

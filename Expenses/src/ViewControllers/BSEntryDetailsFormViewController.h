@@ -7,11 +7,14 @@
 //
 
 #import "BSStaticFormTableViewController.h"
+#import "Expensit-Swift.h"
 
 @class BSCoreDataController;
 
-@interface BSEntryDetailsFormViewController : BSStaticFormTableViewController <UITextFieldDelegate>
+@interface BSEntryDetailsFormViewController : BSStaticFormTableViewController <UITextFieldDelegate, BSAddEntryInterfaceProtocol>
 
-@property (strong, nonatomic) BSCoreDataController *coreDataController;
+//@property (strong, nonatomic) BSCoreDataController *coreDataController;
+@property (strong, nonatomic, nullable) id<BSAddEntryPresenterEventsProtocol> addEntryPresenter;
+@property (strong, nonatomic, nullable) id<BSAddEntryControllerProtocol> addEntryController;
 
 @end

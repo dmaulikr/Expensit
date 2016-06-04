@@ -117,7 +117,7 @@
             sum += self.sections[i].numberOfEntries;
         }
         
-        editEntryViewController.coreDataController = self.coreDataController;
+        //editEntryViewController.coreDataController = self.coreDataController;
         editEntryViewController.entryModel = self.entries[sum + selectedIndexPath.row];
         editEntryViewController.isEditingEntry = YES;
         BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:YES];
