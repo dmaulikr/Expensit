@@ -14,7 +14,7 @@
 #import "BSGreenTheme.h"
 #import "BSConstants.h"
 #import "BSCoreDataFixturesManager.h"
-
+#import "Expensit-Swift.h"
 
 @implementation BSAppDelegate
 
@@ -27,8 +27,6 @@
                                                                      resourceName:@"Expenses"
                                                                         extension:@"momd"
                                                               persistentStoreName:@"expensesDataBase"];
- 
-
 
     // Theme
     self.themeManager = [BSThemeManager manager];
@@ -59,6 +57,11 @@
     // This should be after we already have any entries!!!
     BSCoreDataFixturesManager *manager = [[BSCoreDataFixturesManager alloc] init];
     [manager applyMissingFixturesOnManagedObjectModel:self.coreDataHelper.managedObjectModel coreDataController:coreDataController];
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    BSBaseNavigationTransitionManager *transitionManager = [[BSYearlySummaryNavigationTransitionManager alloc] initWithCoreDataStackHelper:self.coreDataHelper coreDataController:coreDataController];
+    BSBaseExpensesSummaryViewController *baseViewController = (BSBaseExpensesSummaryViewController *)navigationController.topViewController;
+    baseViewController.navigationTransitionManager = transitionManager;
 
     return YES;
 }

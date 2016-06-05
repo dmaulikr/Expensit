@@ -10,3 +10,6 @@
 #import "BSCoreDataControllerDelegateProtocol.h"
 #import "DateTimeHelper.h"
 #import "BSCurrencyHelper.h"
+#import "BSEntryDetailsFormViewController.h"
+#import "BSStaticTableAddEntryFormCellActionDataSource.h"
+#import "BSMonthlyExpensesSummaryViewController.h"

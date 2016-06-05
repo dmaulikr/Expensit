@@ -12,10 +12,11 @@
 #import "BSGraphViewController.h"
 #import "BSAnimatedBlurEffectTransitioningDelegate.h"
 
+@class BSDisplaySectionData;
+
 @interface BSBaseExpensesSummaryViewController ()
 
 @property (nonatomic, strong) BSAnimatedBlurEffectTransitioningDelegate *animatedBlurEffectTransitioningDelegate;
-
 @property (nonatomic, strong) NSArray <BSDisplaySectionData *>*sections;
 @property (nonatomic, strong) NSArray *entries;
 

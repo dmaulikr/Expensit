@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "BSAppDelegate.h"
 #import "BSThemeManager.h"
+#import "Expensit-Swift.h"
 
 @implementation BSEntryDetailsFormViewController
 
@@ -18,12 +19,8 @@
 {
     [super viewDidLoad];
     
-    // controller and preenter
-    self.addEntryController = [[BSAddEntryController alloc] init];    
-    self.addEntryPresenter = [[BSAddEntryPresenter alloc] initWithAddEntryController:self.addEntryController userInterface:self];
-    
+    // Ready to populate view
     [self.addEntryPresenter userInterfaceReadyToDiplayEntry];
-
 
     // Nav Bar buttons
     BSThemeManager *manager =  ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;

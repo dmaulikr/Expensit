@@ -16,7 +16,7 @@
 #import "BSGraphViewController.h"
 #import "LineGraph.h"
 #import "BSPieChartViewController.h"
-
+#import "Expensit-Swift.h"
 
 @implementation BSMonthlyExpensesSummaryViewController
 
@@ -25,13 +25,7 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    
-    self.showEntriesController = [[BSShowMonthlyEntriesController alloc] init];
-    id<BSMonthlyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowMonthlyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
-                                                                                                        showMonthlyEntriesController:(id<BSShowMonthlyEntriesControllerProtocol>)self.showEntriesController];
-    self.showEntriesPresenter = mp;
-    self.showMonthlyEntriesPresenter = mp;
+    [super viewDidLoad];    
 }
 
 

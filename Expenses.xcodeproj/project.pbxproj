@@ -13,6 +13,12 @@
 		000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3CA18E8AF36009F626E /* BSYearlySummaryViewControllerSpecs.m */; };
 		000A99CD1D02DB120045523A /* BSAddEntryInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99CC1D02DB120045523A /* BSAddEntryInterfaceProtocol.swift */; };
 		000A99CE1D02DB120045523A /* BSAddEntryInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99CC1D02DB120045523A /* BSAddEntryInterfaceProtocol.swift */; };
+		000A99D81D0309BC0045523A /* BSBaseNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99D71D0309BC0045523A /* BSBaseNavigationTransitionManager.swift */; };
+		000A99D91D0309BC0045523A /* BSBaseNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99D71D0309BC0045523A /* BSBaseNavigationTransitionManager.swift */; };
+		000A99DB1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99DA1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift */; };
+		000A99DC1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99DA1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift */; };
+		000A99DE1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99DD1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift */; };
+		000A99DF1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A99DD1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift */; };
 		000CDF56183D724100BE6266 /* BSEntryDetailsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CDF55183D724100BE6266 /* BSEntryDetailsFormViewController.m */; };
 		000D04E41775BD56002D0AB8 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E31775BD56002D0AB8 /* Entry.m */; };
 		000D04EA1775C8C5002D0AB8 /* BSBaseExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E81775C8C5002D0AB8 /* BSBaseExpensesSummaryViewController.m */; };
@@ -193,6 +199,9 @@
 		000481E91780C67A00E7F401 /* BSDailyExpensesSummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDailyExpensesSummaryTests.m; sourceTree = "<group>"; };
 		000481EB1780CEEA00E7F401 /* BSPerEntrySummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPerEntrySummaryTests.m; sourceTree = "<group>"; };
 		000A99CC1D02DB120045523A /* BSAddEntryInterfaceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSAddEntryInterfaceProtocol.swift; sourceTree = "<group>"; };
+		000A99D71D0309BC0045523A /* BSBaseNavigationTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSBaseNavigationTransitionManager.swift; sourceTree = "<group>"; };
+		000A99DA1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSYearlySummaryNavigationTransitionManager.swift; sourceTree = "<group>"; };
+		000A99DD1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSMonthlySummaryNavigationTransitionManager.swift; sourceTree = "<group>"; };
 		000CDF54183D724100BE6266 /* BSEntryDetailsFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSEntryDetailsFormViewController.h; sourceTree = "<group>"; };
 		000CDF55183D724100BE6266 /* BSEntryDetailsFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSEntryDetailsFormViewController.m; sourceTree = "<group>"; };
 		000D047E1775A92F002D0AB8 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Kiwi/build/Debug-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
@@ -574,6 +583,9 @@
 		0077D5781CED01FF00003F71 /* Wireframe */ = {
 			isa = PBXGroup;
 			children = (
+				000A99D71D0309BC0045523A /* BSBaseNavigationTransitionManager.swift */,
+				000A99DA1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift */,
+				000A99DD1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift */,
 			);
 			path = Wireframe;
 			sourceTree = "<group>";
@@ -1060,6 +1072,7 @@
 				0077D6221CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				00BD78A0182FF35A0004A808 /* BSTagToSegmentedControlCellConvertor.m in Sources */,
 				005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */,
+				000A99DE1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */,
 				009C9EE717B6939100DE1A97 /* BSThemeManager_iOS7.m in Sources */,
 				0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */,
 				009D00FA19426FA000B850D4 /* BSHeaderButton.m in Sources */,
@@ -1081,6 +1094,7 @@
 				009C9EE317B6912900DE1A97 /* BSThemeManager.m in Sources */,
 				0077D61C1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				007B825F177476780052FE84 /* BSAppDelegate.m in Sources */,
+				000A99DB1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
 				0080504B193B0DAE0029C9DA /* BSPieChartViewController.m in Sources */,
 				009D010C194307A500B850D4 /* BSChartLegendCollectionViewCell.m in Sources */,
 				00F8144B1775FC4000F2D0A8 /* BSIndividualExpensesSummaryViewController.m in Sources */,
@@ -1100,6 +1114,7 @@
 				0077D61F1CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */,
 				00D7E0F5178F3A5000474A30 /* BSMonthlyGridLayout.m in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
+				000A99D81D0309BC0045523A /* BSBaseNavigationTransitionManager.swift in Sources */,
 				005DF5F4178B5A9A00DC1800 /* LineGraph.m in Sources */,
 				00D7E0F9178F40A100474A30 /* BSDailyLayout.m in Sources */,
 				001ECAA118DDECF200B7D027 /* BSCategoryFilterViewController.m in Sources */,
@@ -1114,6 +1129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000A99D91D0309BC0045523A /* BSBaseNavigationTransitionManager.swift in Sources */,
 				00A84CFA1D027A74001C57D1 /* BSAddEntryPresenter.swift in Sources */,
 				0077D57D1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A99CE1D02DB120045523A /* BSAddEntryInterfaceProtocol.swift in Sources */,
@@ -1125,6 +1141,7 @@
 				0077D6201CF231B700003F71 /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */,
 				0077D61D1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				0077D5DD1CF0D1D000003F71 /* BSShowDailyEntriesController.swift in Sources */,
+				000A99DC1D04343B0045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
 				000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */,
 				000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */,
 				0077D5CF1CF0CC0600003F71 /* BSShowMonthlyEntriesPresenter.swift in Sources */,
@@ -1132,6 +1149,7 @@
 				0077D5871CED0E7F00003F71 /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
 				0077D5921CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */,
 				00229E7B1CF8D7D100FA772B /* BSDisplaySectionData.swift in Sources */,
+				000A99DF1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */,
 				0077D6231CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				00A84CF41D027A5B001C57D1 /* BSAddEntryController.swift in Sources */,
 				0077D5CC1CF0CBF300003F71 /* BSShowYearlyEntriesPresenter.swift in Sources */,

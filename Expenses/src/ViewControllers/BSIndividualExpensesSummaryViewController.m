@@ -13,6 +13,7 @@
 #import "BSEntryDetailsFormViewController.h"
 #import "DateTimeHelper.h"
 #import "BSBaseExpensesSummaryViewController+Protected.h"
+#import "Expensit-Swift.h"
 
 @interface BSIndividualExpensesSummaryViewController ()
 

@@ -13,9 +13,14 @@
 #import "BSCoreDataController.h"
 #import "BSStaticTableAddEntryFormCellActionDataSource.h"
 #import "BSCategoryFilterViewController.h"
-#import "Expensit-Swift.h"
+
 
 @class CoreDataStackHelper, BSCoreDataController;
+
+@protocol BSAbstractExpensesSummaryUserInterfaceProtocol;
+@protocol BSAbstractExpensesSummaryPresenterEventsProtocol;
+@protocol BSAbstractShowEntriesControllerProtocol;
+@class BSBaseNavigationTransitionManager;
 
 @protocol BSUIViewControllerAbilityToAddEntry <NSObject>
 - (void)addButtonTappedWithPresentationCompletedBlock:(void (^ __nullable)(void))completion ;
@@ -30,6 +35,7 @@
 @property (strong, nonatomic, nullable) BSCoreDataController *coreDataController;
 @property (strong, nonatomic, nullable) id<BSAbstractExpensesSummaryPresenterEventsProtocol> showEntriesPresenter;
 @property (strong, nonatomic, nullable) id<BSAbstractShowEntriesControllerProtocol> showEntriesController;
+@property (strong, nonatomic, nullable) BSBaseNavigationTransitionManager *navigationTransitionManager;
 
 /*! When the user is in a particular summary screen and selects a cell, this property is set by
  the previous viewController and used by the nextViewController to scroll to the right section.

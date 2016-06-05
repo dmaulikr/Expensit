@@ -15,7 +15,7 @@
 #import "BSBaseExpensesSummaryViewController+Protected.h"
 #import "BSMonthlyExpensesSummaryViewController.h"
 #import "CoreDataStackHelper.h"
-
+#import "Expensit-Swift.h"
 
 @implementation BSYearlyExpensesSummaryViewController
 
@@ -95,10 +95,12 @@
 {
     if ([[segue identifier] isEqualToString:@"showMonthlyEntries"])
     {
-        BSBaseExpensesSummaryViewController *monthlyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        monthlyExpensesViewController.nameOfSectionToBeShown = self.sections[selectedIndexPath.section].entries[selectedIndexPath.row].title;
+        BSYearlySummaryNavigationTransitionManager *yearlyTransitionManager = (BSYearlySummaryNavigationTransitionManager *)self.navigationTransitionManager;
+        
+        [yearlyTransitionManager configureMonthlyExpensesViewControllerWithSegue:segue nameOfSectionToBeShown:self.sections[selectedIndexPath.section].entries[selectedIndexPath.row].title];
+        
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {

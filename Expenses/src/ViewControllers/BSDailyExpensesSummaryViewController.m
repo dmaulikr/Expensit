@@ -15,6 +15,7 @@
 #import "BSBaseExpensesSummaryViewController+Protected.h"
 #import "BSPieChartViewController.h"
 #import "BSHeaderButton.h"
+#import "Expensit-Swift.h"
 
 @interface BSDailyExpensesSummaryViewController ()
 @end

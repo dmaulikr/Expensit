@@ -19,7 +19,7 @@
 #import "BSVisualEffects.h"
 #import "BSModalSelectorViewTransitioningDelegate.h"
 #import "BSAnimatedBlurEffectTransitioningDelegate.h"
-
+#import "Expensit-Swift.h"
 
 static Tag *tagBeingFilterBy = nil;
 
@@ -181,15 +181,7 @@ static Tag *tagBeingFilterBy = nil;
 {
     if ([[segue identifier] isEqualToString:@"showAddEntryForm"])
     {
-        UINavigationController *navigationController = (UINavigationController *)[segue destinationViewController];
-        BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:NO];
-        BSEntryDetailsFormViewController *addEntryVC = (BSEntryDetailsFormViewController*)navigationController.topViewController;
-        addEntryVC.isEditingEntry = NO;
-        //addEntryVC.entryModel = [self.coreDataController newEntry];
-        addEntryVC.cellActionDataSource = cellActionsDataSource;
-        //addEntryVC.coreDataController = self.coreDataController;
-        addEntryVC.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
-        
+        [self.navigationTransitionManager configureAddEntryViewControllerWithSegue:segue];        
     }
     else if ([[segue identifier] isEqualToString:@"showFilter"])
     {
