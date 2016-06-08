@@ -93,11 +93,8 @@
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        BSGraphViewController *graphViewController = (BSGraphViewController *)[segue destinationViewController];
-        [graphViewController setGraphTitle:[self visibleSectionName]];
-        [graphViewController setMoneyIn:[self.showEntriesPresenter dataForGraphFromSuplusResultsForSection:[self visibleSectionName]]];
-        [graphViewController setMoneyOut:[self.showEntriesPresenter dataForGraphFromExpensesResultsForSection:[self visibleSectionName]]];
-        [graphViewController setXValues:[self.showEntriesPresenter abscissaValues]];
+        BSMonthlySummaryNavigationTransitionManager *monthlyTransitionManager = (BSMonthlySummaryNavigationTransitionManager *)self.navigationTransitionManager;
+        [monthlyTransitionManager configureMonthlyExpensesLineGraphViewControllerWithSegue:segue section:[self visibleSectionName]];
     }
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {

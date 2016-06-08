@@ -47,9 +47,9 @@ import Foundation
             let monthlySum = dictionary["monthlySum"] as! Float
             
             if monthlySum < 0 {
-                graphData[month] = -monthlySum
+                graphData[month-1] = -monthlySum
             } else {
-                graphData[month] = monthlySum
+                graphData[month-1] = monthlySum
             }
         }
         
