@@ -14,7 +14,6 @@
 #import "BSEntryDetailsFormViewController.h"
 #import "BSBaseExpensesSummaryViewController+Protected.h"
 #import "BSMonthlyExpensesSummaryViewController.h"
-#import "CoreDataStackHelper.h"
 #import "Expensit-Swift.h"
 
 @implementation BSYearlyExpensesSummaryViewController
@@ -93,21 +92,17 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    BSYearlySummaryNavigationTransitionManager *yearlyTransitionManager = (BSYearlySummaryNavigationTransitionManager *)self.navigationTransitionManager;
     if ([[segue identifier] isEqualToString:@"showMonthlyEntries"])
     {
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        BSYearlySummaryNavigationTransitionManager *yearlyTransitionManager = (BSYearlySummaryNavigationTransitionManager *)self.navigationTransitionManager;
         
         [yearlyTransitionManager configureMonthlyExpensesViewControllerWithSegue:segue nameOfSectionToBeShown:self.sections[selectedIndexPath.section].entries[selectedIndexPath.row].title];
-        
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        BSGraphViewController *graphViewController = (BSGraphViewController *)[segue destinationViewController];
-        [graphViewController setMoneyIn:[self.showEntriesPresenter dataForGraphFromSuplusResultsForSection:@"not-used-make-nil"]];
-        [graphViewController setMoneyOut:[self.showEntriesPresenter dataForGraphFromExpensesResultsForSection:@"not-used-make-nil"]];
-        [graphViewController setXValues:[self.showEntriesPresenter abscissaValues]];
+        [yearlyTransitionManager configureYearlyExpensesLineGraphViewControllerWithSegue:segue section:@"not-used-make-nil"];
     }
     else
     {

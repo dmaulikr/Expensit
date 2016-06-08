@@ -8,12 +8,22 @@
 
 #import "BSGraphViewController.h"
 #import "BSCurrencyHelper.h"
+#import "Expensit-Swift.h"
 
 @interface BSGraphViewController ()
 
 @end
 
 @implementation BSGraphViewController
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.moneyIn = [self.lineGraphPresenter income];
+    self.moneyOut = [self.lineGraphPresenter expenses];
+    self.xValues = [self.lineGraphPresenter abscissaValues];
+}
 
 - (BOOL)prefersStatusBarHidden {
     return YES;

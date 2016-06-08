@@ -102,8 +102,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showEntriesForDay"])
     {
-        BSBaseExpensesSummaryViewController *dailyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;
-        dailyExpensesViewController.coreDataStackHelper = self.coreDataStackHelper;
+
     }
     else if ([[segue identifier] isEqualToString:@"editEntryFromEntry"])
     {
@@ -121,7 +120,7 @@
         //editEntryViewController.coreDataController = self.coreDataController;
         editEntryViewController.entryModel = self.entries[sum + selectedIndexPath.row];
         editEntryViewController.isEditingEntry = YES;
-        BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:YES];
+        BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:nil isEditing:YES];
         editEntryViewController.cellActionDataSource = cellActionsDataSource;
     }
     else

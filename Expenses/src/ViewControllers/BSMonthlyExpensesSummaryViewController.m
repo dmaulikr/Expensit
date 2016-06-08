@@ -82,8 +82,7 @@
 {
     if ([[segue identifier] isEqualToString:@"showDailyEntriesForMonth"])
     {
-        BSBaseExpensesSummaryViewController *dailyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;
-        dailyExpensesViewController.coreDataStackHelper = self.coreDataStackHelper;
+        BSBaseExpensesSummaryViewController *dailyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;        
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
         BSDisplaySectionData *sectionInfo = self.sections[selectedIndexPath.section];

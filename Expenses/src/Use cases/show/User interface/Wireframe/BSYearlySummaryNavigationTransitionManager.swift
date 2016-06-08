@@ -24,4 +24,13 @@ class BSYearlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMan
         monthlyExpensesViewController.showMonthlyEntriesPresenter = monthlyPresenter
         monthlyExpensesViewController.navigationTransitionManager = monthlyNavigationManager
     }
+    
+    func configureYearlyExpensesLineGraphViewControllerWithSegue(segue : UIStoryboardSegue, section : String)
+    {
+        let graphViewController = segue.destinationViewController as! BSGraphViewController
+        let yearlyLineGraphController : BSGraphLineControllerProtocol = BSYearlySummaryGraphLineController()
+        let yearlyLineGraphPresenter : BSGraphLinePresenterProtocol = BSYearlySummaryGraphLinePresenter(yearlySummaryGraphLineController: yearlyLineGraphController, section: section)
+        graphViewController.lineGraphPresenter = yearlyLineGraphPresenter
+    }
+    
 }

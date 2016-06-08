@@ -19,29 +19,29 @@ class BSShowMonthlyEntriesController: BSAbstractShowEntriesController, BSShowMon
         return "year"
     }
     
-    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphMonthlySurplusFetchRequestForSectionName(section)
-        
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output
-        }
-        catch {
-            return []
-        }
-    }
-    
-    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphMonthlyExpensesFetchRequestForSectionName(section)
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output
-        }
-        catch {
-            return []
-        }
-
-    }
+//    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
+//        let request = self.coreDataController.graphMonthlySurplusFetchRequestForSectionName(section)
+//        
+//        do {
+//            let output = try self.coreDataController.resultsForRequest(request)
+//            return output
+//        }
+//        catch {
+//            return []
+//        }
+//    }
+//    
+//    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
+//        let request = self.coreDataController.graphMonthlyExpensesFetchRequestForSectionName(section)
+//        do {
+//            let output = try self.coreDataController.resultsForRequest(request)
+//            return output
+//        }
+//        catch {
+//            return []
+//        }
+//
+//    }
     
     func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
         return self.coreDataController.expensesByCategoryForMonth(month, inYear:year)

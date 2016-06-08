@@ -31,8 +31,6 @@
 
 @property (strong, nonatomic, nullable) UICollectionViewLayout *layout;
 @property (strong, nonatomic, nullable) NSFetchedResultsController *fetchedResultsController;
-@property (strong, nonatomic, nullable) CoreDataStackHelper *coreDataStackHelper;
-@property (strong, nonatomic, nullable) BSCoreDataController *coreDataController;
 @property (strong, nonatomic, nullable) id<BSAbstractExpensesSummaryPresenterEventsProtocol> showEntriesPresenter;
 @property (strong, nonatomic, nullable) id<BSAbstractShowEntriesControllerProtocol> showEntriesController;
 @property (strong, nonatomic, nullable) BSBaseNavigationTransitionManager *navigationTransitionManager;

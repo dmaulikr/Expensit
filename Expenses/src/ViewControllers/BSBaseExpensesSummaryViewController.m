@@ -7,7 +7,6 @@
 //
 
 #import "BSBaseExpensesSummaryViewController.h"
-#import "CoreDataStackHelper.h"
 #import "BSBaseExpenseCell.h"
 #import "DateTimeHelper.h"
 #import "BSGraphViewController.h"
@@ -133,14 +132,11 @@ static Tag *tagBeingFilterBy = nil;
 {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
     UINavigationController *navController = (UINavigationController *)[storyBoard instantiateViewControllerWithIdentifier:@"addEntryNavigationController"];
-    
-    
-    BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:self.coreDataController isEditing:NO];
+        
+    BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:nil isEditing:NO];
     BSEntryDetailsFormViewController *addEntryVC = (BSEntryDetailsFormViewController*)navController.topViewController;
     addEntryVC.isEditingEntry = NO;
-    addEntryVC.entryModel = [self.coreDataController newEntry];
     addEntryVC.cellActionDataSource = cellActionsDataSource;
-    //addEntryVC.coreDataController = self.coreDataController;
     addEntryVC.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
     
     [self presentViewController:navController animated:YES completion:completion];

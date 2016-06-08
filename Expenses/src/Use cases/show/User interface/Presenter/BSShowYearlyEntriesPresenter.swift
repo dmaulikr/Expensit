@@ -8,52 +8,8 @@
 
 import Foundation
 
-class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter {
-    
-    override func abscissaValues() -> [String] {
-        let ra = self.showEntriesController.abscissaValues()
-        return ra.map({ (dic) -> String in
-            return "\((dic["year"] as! NSNumber))"
-        })
-    }
-
-    override func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
-        
-        var graphData = [NSNumber]()
-        let years = self.abscissaValues()
-        
-        for (i, _) in years.enumerate()
-        {
-            var monthDictionary : NSDictionary?
-            for dic in data  {
-                let dataDictionary = dic as! NSDictionary
-                let intYear = dataDictionary["year"] as! Int
-                let yearstringFromData = "\(intYear)"
-                if yearstringFromData == years[i]
-                {
-                    monthDictionary = (dic as! NSDictionary)
-                    break
-                }
-
-            }
-            if monthDictionary != nil
-            {
-                var value = monthDictionary!["yearlySum"] as! NSNumber
-                if value.compare(NSNumber(int: 0)) == .OrderedAscending {
-                    value = NSNumber(float: -value.floatValue)
-                }
-                graphData.append(value)
-            }
-            else
-            {
-                graphData.append(NSNumber(float: 0))
-            }
-        }
-        
-        return graphData
-    }
-    
-    
+class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter
+{    
     override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         var sections = [BSDisplaySectionData]()
