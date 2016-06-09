@@ -20,29 +20,6 @@ class BSShowDailyEntriesController: BSAbstractShowEntriesController, BSShowDaily
         return "monthYear"
     }
 
-    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphDailySurplusFetchRequestForSectionName(section)
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output
-        }
-        catch {
-            return []
-        }
-
-    }
-    
-    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphDailyExpensesFetchRequestForSectionName(section)
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output
-        }
-        catch {
-            return []
-        }
-    }
-    
     func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
         return self.coreDataController.expensesByCategoryForMonth(month, inYear:year)
     }

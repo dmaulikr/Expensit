@@ -10,11 +10,11 @@ import Foundation
 
 @objc class BSMonthlySummaryGraphLineController: BSAbstractShowEntriesController, BSGraphLineControllerProtocol
 {
-    override func abscissaValues() -> [NSDictionary] {
+    func abscissaValues() -> [NSDictionary] {
         return []
     }
     
-    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
+    func graphSurplusResultsForSection(section: String) -> [AnyObject] {
         let request = self.coreDataController.graphMonthlySurplusFetchRequestForSectionName(section)
         
         do {
@@ -26,7 +26,7 @@ import Foundation
         }
     }
     
-    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
+    func graphExpensesResultsForSection(section: String) -> [AnyObject] {
         let request = self.coreDataController.graphMonthlyExpensesFetchRequestForSectionName(section)
         do {
             let output = try self.coreDataController.resultsForRequest(request)

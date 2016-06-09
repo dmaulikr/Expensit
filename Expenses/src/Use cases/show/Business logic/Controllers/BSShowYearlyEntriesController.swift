@@ -17,42 +17,5 @@ class BSShowYearlyEntriesController: BSAbstractShowEntriesController {
     override func sectionNameKeyPath() -> String? {
         return nil
     }
-    
-    override func abscissaValues() -> [NSDictionary] {
-        let request = self.coreDataController.requestToGetYears()
-        
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output as! [NSDictionary]
-        }
-        catch {
-            return []
-        }
-
-    }
-
-
-    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphYearlySurplusFetchRequest()
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output
-        }
-        catch {
-            return []
-        }
-
-    }
-    
-    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphYearlyExpensesFetchRequest()
-        do {
-            let output = try self.coreDataController.resultsForRequest(request)
-            return output
-        }
-        catch {
-            return []
-        }
-    }
 
 }

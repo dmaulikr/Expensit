@@ -61,8 +61,7 @@ import Foundation
                 {
                     monthDictionary = (dic as! NSDictionary)
                     break
-                }
-                
+                }                
             }
             if monthDictionary != nil
             {

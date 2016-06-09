@@ -10,7 +10,7 @@ import Foundation
 
 @objc class BSYearlySummaryGraphLineController: BSAbstractShowEntriesController, BSGraphLineControllerProtocol
 {
-    override func abscissaValues() -> [NSDictionary] {
+    func abscissaValues() -> [NSDictionary] {
         let request = self.coreDataController.requestToGetYears()
         
         do {
@@ -22,7 +22,7 @@ import Foundation
         }
     }
     
-    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
+    func graphSurplusResultsForSection(section: String) -> [AnyObject] {
         let request = self.coreDataController.graphYearlySurplusFetchRequest()
         do {
             let output = try self.coreDataController.resultsForRequest(request)
@@ -33,7 +33,7 @@ import Foundation
         }        
     }
     
-    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
+    func graphExpensesResultsForSection(section: String) -> [AnyObject] {
         let request = self.coreDataController.graphYearlyExpensesFetchRequest()
         do {
             let output = try self.coreDataController.resultsForRequest(request)

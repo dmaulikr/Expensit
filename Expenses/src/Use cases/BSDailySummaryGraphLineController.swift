@@ -11,11 +11,11 @@ import Foundation
 
 @objc class BSDailySummaryGraphLineController: BSAbstractShowEntriesController, BSGraphLineControllerProtocol
 {
-    override func abscissaValues() -> [NSDictionary] {
+    func abscissaValues() -> [NSDictionary] {
         return []
     }
     
-    override func graphSurplusResultsForSection(section: String) -> [AnyObject] {
+    func graphSurplusResultsForSection(section: String) -> [AnyObject] {
         let request = self.coreDataController.graphDailySurplusFetchRequestForSectionName(section)
         
         do {
@@ -27,7 +27,7 @@ import Foundation
         }
     }
     
-    override func graphExpensesResultsForSection(section: String) -> [AnyObject] {
+    func graphExpensesResultsForSection(section: String) -> [AnyObject] {
         let request = self.coreDataController.graphDailyExpensesFetchRequestForSectionName(section)
         do {
             let output = try self.coreDataController.resultsForRequest(request)

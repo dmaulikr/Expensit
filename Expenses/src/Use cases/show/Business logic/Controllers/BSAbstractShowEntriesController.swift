@@ -98,24 +98,4 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
     func fetchRequest() -> NSFetchRequest {
         return NSFetchRequest()
     }
-
-    
-    
-    
-    
-    // Remove, they are in graph vie preenter clae
-    func abscissaValues() -> [NSDictionary] {
-        return []
-    }
-    
-    
-    func graphSurplusResultsForSection(section: String) -> [AnyObject] {
-        return []
-    }
-
-    func graphExpensesResultsForSection(section: String) -> [AnyObject] {
-        return []
-    }
-
-
 }

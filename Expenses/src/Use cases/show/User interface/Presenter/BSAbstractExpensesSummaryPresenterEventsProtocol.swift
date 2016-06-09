@@ -16,9 +16,4 @@ import Foundation
     func filterButtonTapped()
     func addNewEntryButtonTapped()
     func tagInfo() -> NSDictionary
-    func sectionNameKeyPath() -> String?
-    
-    func abscissaValues() -> [String]
-    func dataForGraphFromSuplusResultsForSection(section: String) -> [AnyObject]
-    func dataForGraphFromExpensesResultsForSection(section: String) -> [AnyObject]
 }

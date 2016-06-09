@@ -28,30 +28,6 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter, BSMonthlyE
         
         return nil // Not upported to enforce the use of the specialised init method
     }
-
-
-    
-//    override func abscissaValues() -> [String] {
-//        return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-//    }
-    
-//    override func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
-//        var graphData = Array<NSNumber>(count: 12, repeatedValue: 0)
-//        
-//        for dic in data {
-//            let dictionary = dic as! NSDictionary
-//            let month = dictionary["month"] as! Int
-//            let monthlySum = dictionary["monthlySum"] as! Float
-//            
-//            if monthlySum < 0 {
-//                graphData[month] = -monthlySum
-//            } else {
-//                graphData[month] = monthlySum
-//            }
-//        }
-//        
-//        return graphData
-//    }
     
     /// BSMonthlyExpensesSummaryPresenterEventsProtocol
     func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {

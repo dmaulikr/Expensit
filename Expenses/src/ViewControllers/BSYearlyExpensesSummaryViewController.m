@@ -97,8 +97,8 @@
     {
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        
-        [yearlyTransitionManager configureMonthlyExpensesViewControllerWithSegue:segue nameOfSectionToBeShown:self.sections[selectedIndexPath.section].entries[selectedIndexPath.row].title];
+        [yearlyTransitionManager configureMonthlyExpensesViewControllerWithSegue:segue
+                                                          nameOfSectionToBeShown:self.sections[selectedIndexPath.section].entries[selectedIndexPath.row].title];
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {

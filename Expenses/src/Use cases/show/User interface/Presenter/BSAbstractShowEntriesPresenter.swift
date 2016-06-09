@@ -56,29 +56,6 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
         return NSDictionary(objects: [tags, images], forKeys: ["tags", "images"])
     }
     
-    func sectionNameKeyPath() -> String? {
-        return self.showEntriesController.sectionNameKeyPath()
-    }
-        
-    func dataForGraphFromSuplusResultsForSection(section: String) -> [AnyObject] {
-        let data = self.showEntriesController.graphSurplusResultsForSection(section) // Get the data from cntroller
-        return self.dataForGraphFromQueryResults(data) // Get the data from cntroller
-    }
-    
-    func dataForGraphFromExpensesResultsForSection(section: String) -> [AnyObject]{
-        let data = self.showEntriesController.graphExpensesResultsForSection(section)
-        return self.dataForGraphFromQueryResults(data) // let presenter subclasses massage it
-    }
-
-    func abscissaValues() -> [String] {
-        return []
-    }
-    // Protected
-    
-    func dataForGraphFromQueryResults(data : [AnyObject]) -> [AnyObject] {
-        return []
-    }
-
     func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         return []

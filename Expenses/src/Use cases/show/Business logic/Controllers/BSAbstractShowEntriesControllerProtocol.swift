@@ -15,12 +15,5 @@ import Foundation
     func imageForCategoy(category :Tag?) -> UIImage?
     func allTags() -> [Tag]
     func allTagsImages() -> [UIImage]
-    
-    
-    // remove
     func sectionNameKeyPath() -> String?
-    func abscissaValues() -> [NSDictionary]
-    func graphSurplusResultsForSection(section: String) -> [AnyObject]
-    func graphExpensesResultsForSection(section: String) -> [AnyObject]
-
 }
