@@ -13,5 +13,6 @@
 #import "BSEntryDetailsFormViewController.h"
 #import "BSStaticTableAddEntryFormCellActionDataSource.h"
 #import "BSMonthlyExpensesSummaryViewController.h"
+#import "BSDailyExpensesSummaryViewController.h"
 #import "LineGraph.h"
 #import "BSGraphViewController.h"

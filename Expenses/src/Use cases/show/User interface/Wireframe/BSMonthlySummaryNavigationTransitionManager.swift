@@ -11,6 +11,21 @@ import UIKit
 
 class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionManager
 {
+    
+    func configureDailyExpensesViewControllerWithSegue(segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
+    {
+        let dailyExpensesViewController = segue.destinationViewController as! BSDailyExpensesSummaryViewController
+        dailyExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
+        let dailyController = BSShowDailyEntriesController()
+        let dailyPresenter = BSShowDailyEntriesPresenter(showEntriesUserInterface: dailyExpensesViewController, showDailyEntriesController: dailyController)
+        let dailyNavigationManager = BSDailySummaryNavigationTransitionManager(coreDataStackHelper: self.coreDataStackHelper, coreDataController: self.coreDataController)
+        
+        dailyExpensesViewController.showEntriesController = (dailyController as BSAbstractShowEntriesControllerProtocol)
+        dailyExpensesViewController.showEntriesPresenter = dailyPresenter
+        dailyExpensesViewController.showDailyEntriesPresenter = dailyPresenter
+        dailyExpensesViewController.navigationTransitionManager = dailyNavigationManager
+    }
+    
     func configureMonthlyExpensesLineGraphViewControllerWithSegue(segue : UIStoryboardSegue, section : String)
     {
         let graphViewController = segue.destinationViewController as! BSGraphViewController

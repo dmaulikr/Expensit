@@ -116,11 +116,9 @@
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        BSGraphViewController *graphViewController = (BSGraphViewController *)[segue destinationViewController];
-        [graphViewController setGraphTitle:[DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:[self visibleSectionName]]];
-        [graphViewController setMoneyIn:[self.showDailyEntriesPresenter dataForGraphFromSuplusResultsForSection:[self visibleSectionName]]];
-        [graphViewController setMoneyOut:[self.showDailyEntriesPresenter dataForGraphFromExpensesResultsForSection:[self visibleSectionName]]];
-        [graphViewController setXValues:[self.showDailyEntriesPresenter arrayDayNumbersInMonthFromVisibleSection:[self visibleSectionName]]];
+        BSDailySummaryNavigationTransitionManager *dailyTransitionManager = (BSDailySummaryNavigationTransitionManager *)self.navigationTransitionManager;
+        [dailyTransitionManager configureDailyExpensesLineGraphViewControllerWithSegue:segue section:[self visibleSectionName]];
+
     }
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
