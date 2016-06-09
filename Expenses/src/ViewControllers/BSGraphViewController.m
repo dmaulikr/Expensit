@@ -20,6 +20,7 @@
 {
     [super viewDidLoad];
     
+    self.graphTitle = [self.lineGraphPresenter graphTitle];
     self.moneyIn = [self.lineGraphPresenter income];
     self.moneyOut = [self.lineGraphPresenter expenses];
     self.xValues = [self.lineGraphPresenter abscissaValues];

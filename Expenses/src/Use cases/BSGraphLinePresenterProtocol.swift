@@ -12,6 +12,7 @@ import Foundation
 {
     var section : String { get set }
     
+    func graphTitle() -> String
     func income() -> [AnyObject]
     func expenses() -> [AnyObject]
     func abscissaValues() -> [String]

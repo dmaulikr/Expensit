@@ -102,7 +102,7 @@
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        [yearlyTransitionManager configureYearlyExpensesLineGraphViewControllerWithSegue:segue section:@"not-used-make-nil"];
+        [yearlyTransitionManager configureYearlyExpensesLineGraphViewControllerWithSegue:segue section:@""]; // not ued make nil
     }
     else
     {

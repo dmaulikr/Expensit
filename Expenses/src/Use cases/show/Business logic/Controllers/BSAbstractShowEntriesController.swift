@@ -99,6 +99,11 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
         return NSFetchRequest()
     }
 
+    
+    
+    
+    
+    // Remove, they are in graph vie preenter clae
     func abscissaValues() -> [NSDictionary] {
         return []
     }

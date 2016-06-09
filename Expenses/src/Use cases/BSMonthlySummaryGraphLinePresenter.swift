@@ -36,6 +36,10 @@ import Foundation
         return ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
     }
 
+    func graphTitle() -> String {
+        return self.section
+    }
+
     
     /// Helper private
     func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
@@ -56,7 +60,4 @@ import Foundation
         return graphData
     }
     
-    func graphTitle() -> String {
-        return ""
-    }
 }

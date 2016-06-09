@@ -41,7 +41,7 @@ import Foundation
     }
 
     func graphTitle() -> String {
-        return ""
+        return self.section
     }
 
     
