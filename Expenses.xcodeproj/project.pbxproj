@@ -41,6 +41,8 @@
 		000A9A121D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A0D1D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift */; };
 		000A9A131D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A0E1D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift */; };
 		000A9A141D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A0E1D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift */; };
+		000A9A181D09E76D0045523A /* BSGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A171D09E76D0045523A /* BSGraphViewController.m */; };
+		000A9A191D09E76D0045523A /* BSGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A171D09E76D0045523A /* BSGraphViewController.m */; };
 		000CDF56183D724100BE6266 /* BSEntryDetailsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000CDF55183D724100BE6266 /* BSEntryDetailsFormViewController.m */; };
 		000D04E41775BD56002D0AB8 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E31775BD56002D0AB8 /* Entry.m */; };
 		000D04EA1775C8C5002D0AB8 /* BSBaseExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E81775C8C5002D0AB8 /* BSBaseExpensesSummaryViewController.m */; };
@@ -56,7 +58,6 @@
 		0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0053A7D418F9E43600D63918 /* BSYearlyLayout.m */; };
 		005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5EB178B58A500DC1800 /* BSGraphView.m */; };
 		005DF5F4178B5A9A00DC1800 /* LineGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5F3178B5A9A00DC1800 /* LineGraph.m */; };
-		005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5F7178CA9D300DC1800 /* BSGraphViewController.m */; };
 		005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */; };
 		00735EB41788351200725DFD /* BSYearlyExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */; };
 		0077D57C1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0077D57B1CED09AE00003F71 /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift */; };
@@ -235,6 +236,8 @@
 		000A9A0C1D09E5590045523A /* BSYearlySummaryGraphLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSYearlySummaryGraphLineController.swift; sourceTree = "<group>"; };
 		000A9A0D1D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSYearlySummaryGraphLinePresenter.swift; sourceTree = "<group>"; };
 		000A9A0E1D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSYearlySummaryNavigationTransitionManager.swift; sourceTree = "<group>"; };
+		000A9A161D09E76D0045523A /* BSGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGraphViewController.h; sourceTree = "<group>"; };
+		000A9A171D09E76D0045523A /* BSGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGraphViewController.m; sourceTree = "<group>"; };
 		000CDF54183D724100BE6266 /* BSEntryDetailsFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSEntryDetailsFormViewController.h; sourceTree = "<group>"; };
 		000CDF55183D724100BE6266 /* BSEntryDetailsFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSEntryDetailsFormViewController.m; sourceTree = "<group>"; };
 		000D047E1775A92F002D0AB8 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Kiwi/build/Debug-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
@@ -265,8 +268,6 @@
 		005DF5EB178B58A500DC1800 /* BSGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGraphView.m; sourceTree = "<group>"; };
 		005DF5F2178B5A9A00DC1800 /* LineGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineGraph.h; sourceTree = "<group>"; };
 		005DF5F3178B5A9A00DC1800 /* LineGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineGraph.m; sourceTree = "<group>"; };
-		005DF5F6178CA9D300DC1800 /* BSGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGraphViewController.h; sourceTree = "<group>"; };
-		005DF5F7178CA9D300DC1800 /* BSGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGraphViewController.m; sourceTree = "<group>"; };
 		005F7641180991740062DAF8 /* BSCoreDataFixturesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCoreDataFixturesManager.h; sourceTree = "<group>"; };
 		005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCoreDataFixturesManager.m; sourceTree = "<group>"; };
 		00735EB21788351200725DFD /* BSYearlyExpensesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlyExpensesSummaryViewController.h; sourceTree = "<group>"; };
@@ -438,6 +439,7 @@
 		000A9A081D09E5590045523A /* Line graph */ = {
 			isa = PBXGroup;
 			children = (
+				000A9A151D09E76D0045523A /* Common */,
 				000A9A091D09E5590045523A /* Daily results */,
 				000A9A0A1D09E5590045523A /* Monthly results */,
 				000A9A0B1D09E5590045523A /* Yearly results */,
@@ -467,6 +469,15 @@
 				000A9A0E1D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift */,
 			);
 			path = "Yearly results";
+			sourceTree = "<group>";
+		};
+		000A9A151D09E76D0045523A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				000A9A161D09E76D0045523A /* BSGraphViewController.h */,
+				000A9A171D09E76D0045523A /* BSGraphViewController.m */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		000D04E11775BD56002D0AB8 /* Models */ = {
@@ -502,8 +513,6 @@
 				00E9F177177F47E000A1A212 /* BSDailyExpensesSummaryViewController.m */,
 				00735EB21788351200725DFD /* BSYearlyExpensesSummaryViewController.h */,
 				00735EB31788351200725DFD /* BSYearlyExpensesSummaryViewController.m */,
-				005DF5F6178CA9D300DC1800 /* BSGraphViewController.h */,
-				005DF5F7178CA9D300DC1800 /* BSGraphViewController.m */,
 				00D7E0EF178DE50F00474A30 /* BSNavigationControllerViewController.h */,
 				00D7E0F0178DE50F00474A30 /* BSNavigationControllerViewController.m */,
 				008C36AA17988E7200AFD340 /* BSBaseExpensesSummaryViewController+Protected.h */,
@@ -1159,7 +1168,6 @@
 				000A99FD1D0946900045523A /* BSDailySummaryGraphLineController.swift in Sources */,
 				0077D6221CF38C1C00003F71 /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				00BD78A0182FF35A0004A808 /* BSTagToSegmentedControlCellConvertor.m in Sources */,
-				005DF5F8178CA9D300DC1800 /* BSGraphViewController.m in Sources */,
 				000A99DE1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */,
 				009C9EE717B6939100DE1A97 /* BSThemeManager_iOS7.m in Sources */,
 				0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */,
@@ -1183,6 +1191,7 @@
 				008F768818D44B400059CB55 /* BSDateToDatePickerCellConvertor.m in Sources */,
 				009C9EE317B6912900DE1A97 /* BSThemeManager.m in Sources */,
 				0077D61C1CF227F100003F71 /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
+				000A9A181D09E76D0045523A /* BSGraphViewController.m in Sources */,
 				007B825F177476780052FE84 /* BSAppDelegate.m in Sources */,
 				000A9A001D0948410045523A /* BSDailySummaryNavigationTransitionManager.swift in Sources */,
 				0080504B193B0DAE0029C9DA /* BSPieChartViewController.m in Sources */,
@@ -1252,6 +1261,7 @@
 				0077D5921CEFB0C700003F71 /* BSAbstractShowEntriesPresenter.swift in Sources */,
 				000A99FB1D09467C0045523A /* BSDailySummaryGraphLinePresenter.swift in Sources */,
 				000A99F81D08AD520045523A /* BSMonthlySummaryGraphLineController.swift in Sources */,
+				000A9A191D09E76D0045523A /* BSGraphViewController.m in Sources */,
 				00229E7B1CF8D7D100FA772B /* BSDisplaySectionData.swift in Sources */,
 				000A99DF1D047E5B0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A121D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift in Sources */,
