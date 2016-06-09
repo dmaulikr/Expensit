@@ -95,6 +95,8 @@
 		000A9A931D09F71E0045523A /* BSBaseExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A901D09F71E0045523A /* BSBaseExpensesSummaryViewController.m */; };
 		000A9A961D09F7560045523A /* BSEntryDetailsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A951D09F7560045523A /* BSEntryDetailsFormViewController.m */; };
 		000A9A971D09F7560045523A /* BSEntryDetailsFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A951D09F7560045523A /* BSEntryDetailsFormViewController.m */; };
+		000A9A9A1D09F90E0045523A /* LineGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A991D09F90E0045523A /* LineGraph.m */; };
+		000A9A9B1D09F90E0045523A /* LineGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A991D09F90E0045523A /* LineGraph.m */; };
 		000D04E41775BD56002D0AB8 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E31775BD56002D0AB8 /* Entry.m */; };
 		000D04F31775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
 		000D04F41775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
@@ -105,7 +107,6 @@
 		002487AD1809B403006652DF /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 002487AC1809B403006652DF /* Tag.m */; };
 		0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0053A7D418F9E43600D63918 /* BSYearlyLayout.m */; };
 		005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5EB178B58A500DC1800 /* BSGraphView.m */; };
-		005DF5F4178B5A9A00DC1800 /* LineGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5F3178B5A9A00DC1800 /* LineGraph.m */; };
 		005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */; };
 		007B824D177476780052FE84 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824C177476780052FE84 /* Foundation.framework */; };
 		007B824F177476780052FE84 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 007B824E177476780052FE84 /* CoreGraphics.framework */; };
@@ -272,6 +273,8 @@
 		000A9A911D09F71E0045523A /* BSBaseExpensesSummaryViewController+Protected.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BSBaseExpensesSummaryViewController+Protected.h"; sourceTree = "<group>"; };
 		000A9A941D09F7560045523A /* BSEntryDetailsFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSEntryDetailsFormViewController.h; sourceTree = "<group>"; };
 		000A9A951D09F7560045523A /* BSEntryDetailsFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSEntryDetailsFormViewController.m; sourceTree = "<group>"; };
+		000A9A981D09F90E0045523A /* LineGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineGraph.h; sourceTree = "<group>"; };
+		000A9A991D09F90E0045523A /* LineGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineGraph.m; sourceTree = "<group>"; };
 		000D047E1775A92F002D0AB8 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Kiwi/build/Debug-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		000D04E21775BD56002D0AB8 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = ../Entry.h; sourceTree = "<group>"; };
 		000D04E31775BD56002D0AB8 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entry.m; path = ../Entry.m; sourceTree = "<group>"; };
@@ -295,8 +298,6 @@
 		0053A7D418F9E43600D63918 /* BSYearlyLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlyLayout.m; sourceTree = "<group>"; };
 		005DF5EA178B58A500DC1800 /* BSGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGraphView.h; sourceTree = "<group>"; };
 		005DF5EB178B58A500DC1800 /* BSGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGraphView.m; sourceTree = "<group>"; };
-		005DF5F2178B5A9A00DC1800 /* LineGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineGraph.h; sourceTree = "<group>"; };
-		005DF5F3178B5A9A00DC1800 /* LineGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineGraph.m; sourceTree = "<group>"; };
 		005F7641180991740062DAF8 /* BSCoreDataFixturesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCoreDataFixturesManager.h; sourceTree = "<group>"; };
 		005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCoreDataFixturesManager.m; sourceTree = "<group>"; };
 		00735EB6178835CD00725DFD /* BSYearlySummaryEntryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlySummaryEntryCell.h; sourceTree = "<group>"; };
@@ -463,6 +464,8 @@
 		000A9A151D09E76D0045523A /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				000A9A981D09F90E0045523A /* LineGraph.h */,
+				000A9A991D09F90E0045523A /* LineGraph.m */,
 				000A9A291D09EA980045523A /* BSGraphLineControllerProtocol.swift */,
 				000A9A2A1D09EA980045523A /* BSGraphLineInterfaceProtocol.swift */,
 				000A9A2B1D09EA980045523A /* BSGraphLinePresenterProtocol.swift */,
@@ -843,8 +846,6 @@
 				001FF01118E2178D004F06DB /* UIImage+ImageEffects.h */,
 				001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */,
 				009C9EDB17B68F2A00DE1A97 /* Themes */,
-				005DF5F2178B5A9A00DC1800 /* LineGraph.h */,
-				005DF5F3178B5A9A00DC1800 /* LineGraph.m */,
 				00BEAFC617775D6C00A59EE2 /* BSDailyEntryHeaderView.h */,
 				00BEAFC717775D6C00A59EE2 /* BSDailyEntryHeaderView.m */,
 				009D010A194307A500B850D4 /* BSChartLegendCollectionViewCell.h */,
@@ -1111,6 +1112,7 @@
 				000A9A211D09E99F0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A2C1D09EA980045523A /* BSGraphLineControllerProtocol.swift in Sources */,
 				000A9A3E1D09EB710045523A /* BSAddEntryPresenter.swift in Sources */,
+				000A9A9A1D09F90E0045523A /* LineGraph.m in Sources */,
 				00F9B3BF18E76414009F626E /* BSVisualEffects.m in Sources */,
 				000A9A8D1D09F6F90045523A /* BSDailyExpensesSummaryViewController.m in Sources */,
 				000A9A701D09F21B0045523A /* BSAbstractShowEntriesPresenter.swift in Sources */,
@@ -1171,7 +1173,6 @@
 				000A9A5F1D09F20E0045523A /* BSShowDailyEntriesController.swift in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
 				000A9A0F1D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */,
-				005DF5F4178B5A9A00DC1800 /* LineGraph.m in Sources */,
 				00D7E0F9178F40A100474A30 /* BSDailyLayout.m in Sources */,
 				000A9A511D09F2030045523A /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A9A131D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
@@ -1198,6 +1199,7 @@
 				000A9A411D09EB710045523A /* BSAddEntryPresenterEventsProtocol.swift in Sources */,
 				000A9A261D09EA110045523A /* BSDailySummaryGraphLineController.swift in Sources */,
 				000A9A8A1D09F6EF0045523A /* BSMonthlyExpensesSummaryViewController.m in Sources */,
+				000A9A9B1D09F90E0045523A /* LineGraph.m in Sources */,
 				000260D31BCC5DCF00B2444E /* BSPerEntrySummaryViewControllerSpecs.m in Sources */,
 				000A9A141D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A541D09F2030045523A /* BSShowMonthlyEntriesController.swift in Sources */,
