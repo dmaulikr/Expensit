@@ -105,12 +105,13 @@
 		000A9AA51D09FBCA0045523A /* BSCategoryFilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AA31D09FBCA0045523A /* BSCategoryFilterPresenter.swift */; };
 		000A9AA71D09FBDE0045523A /* BSCategoryFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */; };
 		000A9AA81D09FBDE0045523A /* BSCategoryFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */; };
+		000A9AAB1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */; };
+		000A9AAC1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */; };
 		000D04E41775BD56002D0AB8 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E31775BD56002D0AB8 /* Entry.m */; };
 		000D04F31775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
 		000D04F41775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
 		000D04F71775D20F002D0AB8 /* BSCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04F61775D20F002D0AB8 /* BSCoreDataController.m */; };
 		0017DB151937DC050052DCF4 /* libBSPieChartView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0017DB0C1937DBE80052DCF4 /* libBSPieChartView.a */; };
-		001ECAA118DDECF200B7D027 /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 001ECAA018DDECF200B7D027 /* BSCategoryFilterViewController.m */; };
 		001FF01318E2178D004F06DB /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */; };
 		002487AD1809B403006652DF /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 002487AC1809B403006652DF /* Tag.m */; };
 		0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0053A7D418F9E43600D63918 /* BSYearlyLayout.m */; };
@@ -287,6 +288,8 @@
 		000A9AA01D09FB760045523A /* BSCategoryFilterControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSCategoryFilterControllerProtocol.swift; sourceTree = "<group>"; };
 		000A9AA31D09FBCA0045523A /* BSCategoryFilterPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSCategoryFilterPresenter.swift; sourceTree = "<group>"; };
 		000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSCategoryFilterController.swift; sourceTree = "<group>"; };
+		000A9AA91D0AF0DB0045523A /* BSCategoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCategoryFilterViewController.h; sourceTree = "<group>"; };
+		000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCategoryFilterViewController.m; sourceTree = "<group>"; };
 		000D047E1775A92F002D0AB8 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Kiwi/build/Debug-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		000D04E21775BD56002D0AB8 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = ../Entry.h; sourceTree = "<group>"; };
 		000D04E31775BD56002D0AB8 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entry.m; path = ../Entry.m; sourceTree = "<group>"; };
@@ -295,8 +298,6 @@
 		000D04F61775D20F002D0AB8 /* BSCoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSCoreDataController.m; path = ../BSCoreDataController.m; sourceTree = "<group>"; };
 		000D04F91775D3D1002D0AB8 /* BSCoreDataControllerDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSCoreDataControllerDelegateProtocol.h; path = ../BSCoreDataControllerDelegateProtocol.h; sourceTree = "<group>"; };
 		0017DB061937DBE80052DCF4 /* BSPieChartView.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BSPieChartView.xcodeproj; path = ../BSPieChartView/BSPieChartView.xcodeproj; sourceTree = "<group>"; };
-		001ECA9F18DDECF200B7D027 /* BSCategoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCategoryFilterViewController.h; sourceTree = "<group>"; };
-		001ECAA018DDECF200B7D027 /* BSCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCategoryFilterViewController.m; sourceTree = "<group>"; };
 		001FF01118E2178D004F06DB /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ImageEffects.h"; path = "../UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "../UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		002487AB1809B403006652DF /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tag.h; path = ../Tag.h; sourceTree = "<group>"; };
@@ -569,6 +570,8 @@
 			isa = PBXGroup;
 			children = (
 				000A9A9D1D09FAD30045523A /* BSCategoryFilterPresenterEventsProtocol.swift */,
+				000A9AA91D0AF0DB0045523A /* BSCategoryFilterViewController.h */,
+				000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */,
 				000A9AA31D09FBCA0045523A /* BSCategoryFilterPresenter.swift */,
 				000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */,
 				000A9AA01D09FB760045523A /* BSCategoryFilterControllerProtocol.swift */,
@@ -593,8 +596,6 @@
 			isa = PBXGroup;
 			children = (
 				00805040193B0D2C0029C9DA /* Graphs */,
-				001ECA9F18DDECF200B7D027 /* BSCategoryFilterViewController.h */,
-				001ECAA018DDECF200B7D027 /* BSCategoryFilterViewController.m */,
 				00F9B3B918E76299009F626E /* BSModalSelectorViewTransitioningDelegate.h */,
 				00F9B3BA18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m */,
 				009D01171943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.h */,
@@ -1179,6 +1180,7 @@
 				000A9A1D1D09E99F0045523A /* BSMonthlySummaryGraphLineController.swift in Sources */,
 				0080504B193B0DAE0029C9DA /* BSPieChartViewController.m in Sources */,
 				009D010C194307A500B850D4 /* BSChartLegendCollectionViewCell.m in Sources */,
+				000A9AAB1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */,
 				000A9A6A1D09F21B0045523A /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A9A571D09F2030045523A /* BSShowMonthlyEntriesPresenter.swift in Sources */,
 				000A9A491D09F1F00045523A /* BSShowYearlyEntriesController.swift in Sources */,
@@ -1204,7 +1206,6 @@
 				00D7E0F9178F40A100474A30 /* BSDailyLayout.m in Sources */,
 				000A9A511D09F2030045523A /* BSMonthlyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A9A131D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
-				001ECAA118DDECF200B7D027 /* BSCategoryFilterViewController.m in Sources */,
 				000A9A2E1D09EA980045523A /* BSGraphLineInterfaceProtocol.swift in Sources */,
 				000A9A3C1D09EB710045523A /* BSAddEntryInterfaceProtocol.swift in Sources */,
 				000A9A891D09F6EF0045523A /* BSMonthlyExpensesSummaryViewController.m in Sources */,
@@ -1221,6 +1222,7 @@
 				000A9A8E1D09F6F90045523A /* BSDailyExpensesSummaryViewController.m in Sources */,
 				000A9A771D09F2290045523A /* BSShowAllEntriesController.swift in Sources */,
 				000A9A561D09F2030045523A /* BSShowMonthlyEntriesControllerProtocol.swift in Sources */,
+				000A9AAC1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */,
 				000A9A731D09F21B0045523A /* BSDisplaySectionData.swift in Sources */,
 				000A9A821D09F3F20045523A /* BSBaseNavigationTransitionManager.swift in Sources */,
 				000A9A1E1D09E99F0045523A /* BSMonthlySummaryGraphLineController.swift in Sources */,
