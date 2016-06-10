@@ -12,11 +12,11 @@
 #import "BSCurrencyHelper.h"
 #import "BSCoreDataController.h"
 #import "BSStaticTableAddEntryFormCellActionDataSource.h"
-#import "BSCategoryFilterViewController.h"
 
 
 @class CoreDataStackHelper, BSCoreDataController;
 
+@protocol BSCategoryFilterDelegate;
 @protocol BSAbstractExpensesSummaryUserInterfaceProtocol;
 @protocol BSAbstractExpensesSummaryPresenterEventsProtocol;
 @protocol BSAbstractShowEntriesControllerProtocol;

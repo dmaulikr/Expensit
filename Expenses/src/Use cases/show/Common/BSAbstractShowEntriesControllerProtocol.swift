@@ -13,7 +13,5 @@ import Foundation
     func filterByCategory(category : Tag) // Just changes internal configuration to filter next time entries for summary gets called
     func entriesForSummary() -> NSDictionary
     func imageForCategoy(category :Tag?) -> UIImage?
-    func allTags() -> [Tag]
-    func allTagsImages() -> [UIImage]
     func sectionNameKeyPath() -> String?
 }

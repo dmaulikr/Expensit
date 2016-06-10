@@ -51,14 +51,6 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
         return self.coreDataController.imageForCategory(category)
     }
 
-    func allTags() -> [Tag] {
-        return self.coreDataController.allTags() as! [Tag]
-    }
-    
-    func allTagsImages() -> [UIImage] {
-        return self.coreDataController.allTagImages() as! [UIImage]
-    }
-
     func sectionNameKeyPath() -> String? {
         return nil
     }

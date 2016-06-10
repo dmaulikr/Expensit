@@ -14,6 +14,5 @@ import Foundation
     func viewIsReadyToDisplayEntriesCompletionBlock(_: ( sections : [BSDisplaySectionData]) -> ())    
     func viewIsReadyToDisplayImageForCategory(category : Tag?)
     func filterButtonTapped()
-    func addNewEntryButtonTapped()
-    func tagInfo() -> NSDictionary
+    func addNewEntryButtonTapped()    
 }

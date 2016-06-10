@@ -18,6 +18,7 @@
 #import "BSVisualEffects.h"
 #import "BSModalSelectorViewTransitioningDelegate.h"
 #import "BSAnimatedBlurEffectTransitioningDelegate.h"
+#import "BSCategoryFilterViewController.h"
 #import "Expensit-Swift.h"
 
 static Tag *tagBeingFilterBy = nil;
@@ -111,23 +112,6 @@ static Tag *tagBeingFilterBy = nil;
 
 #pragma mark - NavBar button actions
 
-- (void)filterButtonTapped
-{
-    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
-    BSCategoryFilterViewController *categoryFilterViewController = (BSCategoryFilterViewController *)[storyBoard instantiateViewControllerWithIdentifier:@"categoryFilterViewController"];
-    
-    categoryFilterViewController.transitioningDelegate = self.categoryFilterViewTransitioningDelegate;
-    categoryFilterViewController.modalPresentationStyle = UIModalPresentationCustom;
-    categoryFilterViewController.delegate = self;
-    categoryFilterViewController.selectedTag = tagBeingFilterBy;
-    NSDictionary *info = [self.showEntriesPresenter tagInfo];
-    categoryFilterViewController.categories = info[@"tags"];
-    categoryFilterViewController.categoryImages = info[@"images"];
-    
-    [self presentViewController:categoryFilterViewController animated:YES completion:nil];
-}
-
-
 - (void)addButtonTappedWithPresentationCompletedBlock:(void (^ __nullable)(void))completion
 {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:[NSBundle mainBundle]];
@@ -181,15 +165,10 @@ static Tag *tagBeingFilterBy = nil;
     }
     else if ([[segue identifier] isEqualToString:@"showFilter"])
     {
-        BSCategoryFilterViewController *categoryFilterViewController = (BSCategoryFilterViewController *)[segue destinationViewController];
-        
-        categoryFilterViewController.transitioningDelegate = self.categoryFilterViewTransitioningDelegate;
-        categoryFilterViewController.modalPresentationStyle = UIModalPresentationCustom;
-        categoryFilterViewController.delegate = self;
-        categoryFilterViewController.selectedTag = tagBeingFilterBy;
-        NSDictionary *info = [self.showEntriesPresenter tagInfo];
-        categoryFilterViewController.categories = info[@"tags"];
-        categoryFilterViewController.categoryImages = info[@"images"];
+        [self.navigationTransitionManager configureCategoryFilterViewControllerWithSegue:segue
+                                                    categoryFilterViewControllerDelegate:self
+                                                                        tagBeingFilterBy:tagBeingFilterBy
+                                                 categoryFilterViewTransitioningDelegate:self.categoryFilterViewTransitioningDelegate];
     }
 }
 

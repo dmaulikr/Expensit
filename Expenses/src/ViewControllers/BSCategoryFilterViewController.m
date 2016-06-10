@@ -9,11 +9,14 @@
 #import "BSCategoryFilterViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "BSAppDelegate.h"
+#import "Tag.h"
+#import "Expensit-Swift.h"
 
 static NSString const * kNofilterText = @"No Filter"; // make it a localizable key
 
 @interface BSCategoryFilterViewController ()
-
+@property (nonatomic, strong) NSArray *categories;
+@property (nonatomic, strong) NSArray *categoryImages;
 @end
 
 @implementation BSCategoryFilterViewController
@@ -22,6 +25,11 @@ static NSString const * kNofilterText = @"No Filter"; // make it a localizable k
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSDictionary *info = [self.categoryFilterPresenter tagInfo];
+    self.categories = info[@"tags"];
+    self.categoryImages = info[@"images"];
+
     
     UIView *contentView = [self.view viewWithTag:100];
     

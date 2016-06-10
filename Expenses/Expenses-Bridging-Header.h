@@ -16,3 +16,5 @@
 #import "BSDailyExpensesSummaryViewController.h"
 #import "LineGraph.h"
 #import "BSGraphViewController.h"
+#import "BSModalSelectorViewTransitioningDelegate.h"
+#import "BSCategoryFilterViewController.h"

@@ -49,12 +49,6 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
     func addNewEntryButtonTapped() {
         
     }
-
-    func tagInfo() -> NSDictionary {
-        let tags = self.showEntriesController.allTags()
-        let images = self.showEntriesController.allTagsImages()
-        return NSDictionary(objects: [tags, images], forKeys: ["tags", "images"])
-    }
     
     func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {

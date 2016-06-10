@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Tag.h"
 
 
+@class Tag;
 @protocol BSCategoryFilterDelegate <NSObject>
-
 /*!
  @discussion The argument is already a Tag* reference or nil
  */
@@ -19,11 +18,11 @@
 
 @end
 
+@protocol BSCategoryFilterPresenterEventsProtocol;
+
 @interface BSCategoryFilterViewController : UIViewController
 
-@property (nonatomic, strong) NSArray *categories;
-
-@property (nonatomic, strong) NSArray *categoryImages;
+@property (strong, nonatomic, nullable) id<BSCategoryFilterPresenterEventsProtocol> categoryFilterPresenter;
 
 @property (nonatomic, weak) id <BSCategoryFilterDelegate> delegate;
 
