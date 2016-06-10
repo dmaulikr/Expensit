@@ -107,6 +107,8 @@
 		000A9AA81D09FBDE0045523A /* BSCategoryFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */; };
 		000A9AAB1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */; };
 		000A9AAC1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */; };
+		000A9AAF1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */; };
+		000A9AB01D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */; };
 		000D04E41775BD56002D0AB8 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E31775BD56002D0AB8 /* Entry.m */; };
 		000D04F31775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
 		000D04F41775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
@@ -159,7 +161,6 @@
 		00E9F16C177F1A2C00A1A212 /* BSBaseExpenseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F16B177F1A2C00A1A212 /* BSBaseExpenseCell.m */; };
 		00E9F174177F2E1F00A1A212 /* BSCurrencyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F173177F2E1F00A1A212 /* BSCurrencyHelper.m */; };
 		00F9213A17FF769000CACB4D /* OCMock in Resources */ = {isa = PBXBuildFile; fileRef = 00F9213917FF769000CACB4D /* OCMock */; };
-		00F9B3BB18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3BA18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m */; };
 		00F9B3BF18E76414009F626E /* BSVisualEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3BE18E76414009F626E /* BSVisualEffects.m */; };
 		EFE250C42B1E431B916B4A53 /* libPods-ExpensesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDFF005933C413E97D8C439 /* libPods-ExpensesTests.a */; };
 /* End PBXBuildFile section */
@@ -290,6 +291,8 @@
 		000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSCategoryFilterController.swift; sourceTree = "<group>"; };
 		000A9AA91D0AF0DB0045523A /* BSCategoryFilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSCategoryFilterViewController.h; sourceTree = "<group>"; };
 		000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCategoryFilterViewController.m; sourceTree = "<group>"; };
+		000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalSelectorViewTransitioningDelegate.m; sourceTree = "<group>"; };
+		000A9AAE1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalSelectorViewTransitioningDelegate.h; sourceTree = "<group>"; };
 		000D047E1775A92F002D0AB8 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Kiwi/build/Debug-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		000D04E21775BD56002D0AB8 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = ../Entry.h; sourceTree = "<group>"; };
 		000D04E31775BD56002D0AB8 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entry.m; path = ../Entry.m; sourceTree = "<group>"; };
@@ -391,8 +394,6 @@
 		00E9F17A1780500C00A1A212 /* BSMonthlyExpensesSummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMonthlyExpensesSummaryTests.m; sourceTree = "<group>"; };
 		00F9213917FF769000CACB4D /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = ExpensesTests/OCMock; sourceTree = "<group>"; };
 		00F9213F1807456000CACB4D /* v1.0.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.1.xcdatamodel; sourceTree = "<group>"; };
-		00F9B3B918E76299009F626E /* BSModalSelectorViewTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalSelectorViewTransitioningDelegate.h; sourceTree = "<group>"; };
-		00F9B3BA18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalSelectorViewTransitioningDelegate.m; sourceTree = "<group>"; };
 		00F9B3BD18E76414009F626E /* BSVisualEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSVisualEffects.h; sourceTree = "<group>"; };
 		00F9B3BE18E76414009F626E /* BSVisualEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSVisualEffects.m; sourceTree = "<group>"; };
 		00F9B3CA18E8AF36009F626E /* BSYearlySummaryViewControllerSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlySummaryViewControllerSpecs.m; sourceTree = "<group>"; };
@@ -570,6 +571,8 @@
 			isa = PBXGroup;
 			children = (
 				000A9A9D1D09FAD30045523A /* BSCategoryFilterPresenterEventsProtocol.swift */,
+				000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */,
+				000A9AAE1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.h */,
 				000A9AA91D0AF0DB0045523A /* BSCategoryFilterViewController.h */,
 				000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */,
 				000A9AA31D09FBCA0045523A /* BSCategoryFilterPresenter.swift */,
@@ -596,8 +599,6 @@
 			isa = PBXGroup;
 			children = (
 				00805040193B0D2C0029C9DA /* Graphs */,
-				00F9B3B918E76299009F626E /* BSModalSelectorViewTransitioningDelegate.h */,
-				00F9B3BA18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m */,
 				009D01171943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.h */,
 				009D01181943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m */,
 				00D7E0EF178DE50F00474A30 /* BSNavigationControllerViewController.h */,
@@ -1128,7 +1129,6 @@
 			files = (
 				000A9A251D09EA110045523A /* BSDailySummaryGraphLineController.swift in Sources */,
 				002487AD1809B403006652DF /* Tag.m in Sources */,
-				00F9B3BB18E76299009F626E /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
 				000D04E41775BD56002D0AB8 /* Entry.m in Sources */,
 				0080504F193B16E60029C9DA /* BSCategoryPieChartView.m in Sources */,
 				000A9A611D09F20E0045523A /* BSShowDailyEntriesControllerProtocol.swift in Sources */,
@@ -1199,6 +1199,7 @@
 				000A9A6E1D09F21B0045523A /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
 				00D7E0F5178F3A5000474A30 /* BSMonthlyGridLayout.m in Sources */,
 				000A9AA71D09FBDE0045523A /* BSCategoryFilterController.swift in Sources */,
+				000A9AAF1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
 				000A9A5F1D09F20E0045523A /* BSShowDailyEntriesController.swift in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
 				000A9A0F1D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */,
@@ -1235,6 +1236,7 @@
 				000A9A141D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A541D09F2030045523A /* BSShowMonthlyEntriesController.swift in Sources */,
 				000A9A391D09EB710045523A /* BSAddEntryController.swift in Sources */,
+				000A9AB01D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
 				000A9A6F1D09F21B0045523A /* BSAbstractShowEntriesControllerProtocol.swift in Sources */,
 				000A9AA51D09FBCA0045523A /* BSCategoryFilterPresenter.swift in Sources */,
 				000A9A4C1D09F1F00045523A /* BSShowYearlyEntriesPresenter.swift in Sources */,
