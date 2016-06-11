@@ -7,11 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BSPieChartView.h"
 
 
+@protocol BSPieGraphPresenterProtocol;
+@protocol BSPieChartDataSource;
+@protocol BSPieChartDelegate;
+
+@class BSPieChartView;
 
 @interface BSPieChartViewController : UIViewController <BSPieChartDataSource, BSPieChartDelegate>
+
+@property (strong, nonatomic, nullable) id<BSPieGraphPresenterProtocol> pieGraphPresenter;
 
 @property (nonatomic, weak) IBOutlet BSPieChartView *pieChartView;
 
@@ -24,13 +30,6 @@
 @property (nonatomic, weak) IBOutlet UIButton *doneLabel;
 
 @property (nonatomic, weak) IBOutlet UILabel *unitLabel;
-
-@property (nonatomic, strong) NSArray *sections;
-
-@property (nonatomic, strong) NSArray *categories;
-
-
-
 
 
 - (IBAction) cancelButtonPressed:(id)sender;

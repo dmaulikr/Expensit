@@ -109,6 +109,16 @@
 		000A9AAC1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */; };
 		000A9AAF1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */; };
 		000A9AB01D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */; };
+		000A9AC61D0C14000045523A /* BSPieGraphControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AB81D0C14000045523A /* BSPieGraphControllerProtocol.swift */; };
+		000A9AC71D0C14000045523A /* BSPieGraphControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AB81D0C14000045523A /* BSPieGraphControllerProtocol.swift */; };
+		000A9AC81D0C14000045523A /* BSPieGraphInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AB91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift */; };
+		000A9AC91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AB91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift */; };
+		000A9ACA1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9ABA1D0C14000045523A /* BSPieGraphPresenterProtocol.swift */; };
+		000A9ACB1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9ABA1D0C14000045523A /* BSPieGraphPresenterProtocol.swift */; };
+		000A9AD91D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AD81D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift */; };
+		000A9ADA1D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9AD81D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift */; };
+		000A9ADC1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9ADB1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift */; };
+		000A9ADD1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9ADB1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift */; };
 		000D04E41775BD56002D0AB8 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 000D04E31775BD56002D0AB8 /* Entry.m */; };
 		000D04F31775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
 		000D04F41775C96C002D0AB8 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 000D04F21775C96C002D0AB8 /* Storyboard.storyboard */; };
@@ -293,6 +303,11 @@
 		000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSCategoryFilterViewController.m; sourceTree = "<group>"; };
 		000A9AAD1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSModalSelectorViewTransitioningDelegate.m; sourceTree = "<group>"; };
 		000A9AAE1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSModalSelectorViewTransitioningDelegate.h; sourceTree = "<group>"; };
+		000A9AB81D0C14000045523A /* BSPieGraphControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSPieGraphControllerProtocol.swift; sourceTree = "<group>"; };
+		000A9AB91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSPieGraphInterfaceProtocol.swift; sourceTree = "<group>"; };
+		000A9ABA1D0C14000045523A /* BSPieGraphPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSPieGraphPresenterProtocol.swift; sourceTree = "<group>"; };
+		000A9AD81D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSExpensesSummaryPieGraphPresenter.swift; sourceTree = "<group>"; };
+		000A9ADB1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSExpensesSummaryPieGraphController.swift; sourceTree = "<group>"; };
 		000D047E1775A92F002D0AB8 /* libKiwi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libKiwi.a; path = "../Kiwi/build/Debug-iphoneos/libKiwi.a"; sourceTree = "<group>"; };
 		000D04E21775BD56002D0AB8 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Entry.h; path = ../Entry.h; sourceTree = "<group>"; };
 		000D04E31775BD56002D0AB8 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Entry.m; path = ../Entry.m; sourceTree = "<group>"; };
@@ -582,6 +597,50 @@
 			path = "Category filter";
 			sourceTree = "<group>";
 		};
+		000A9AB61D0C14000045523A /* Pie graph */ = {
+			isa = PBXGroup;
+			children = (
+				000A9AB71D0C14000045523A /* Common */,
+				000A9ABF1D0C14000045523A /* Daily results */,
+				000A9AC21D0C14000045523A /* Monthly results */,
+				000A9AC51D0C14000045523A /* Yearly results */,
+			);
+			path = "Pie graph";
+			sourceTree = "<group>";
+		};
+		000A9AB71D0C14000045523A /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				000A9AB81D0C14000045523A /* BSPieGraphControllerProtocol.swift */,
+				000A9AB91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift */,
+				000A9ABA1D0C14000045523A /* BSPieGraphPresenterProtocol.swift */,
+				000A9AD81D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift */,
+				000A9ADB1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		000A9ABF1D0C14000045523A /* Daily results */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Daily results";
+			sourceTree = "<group>";
+		};
+		000A9AC21D0C14000045523A /* Monthly results */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Monthly results";
+			sourceTree = "<group>";
+		};
+		000A9AC51D0C14000045523A /* Yearly results */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Yearly results";
+			sourceTree = "<group>";
+		};
 		000D04E11775BD56002D0AB8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -660,6 +719,7 @@
 		0077D5671CED00D300003F71 /* Use cases */ = {
 			isa = PBXGroup;
 			children = (
+				000A9AB61D0C14000045523A /* Pie graph */,
 				000A9A9C1D09FAB00045523A /* Category filter */,
 				000A9A321D09EB710045523A /* Add entry */,
 				000A9A081D09E5590045523A /* Line graph */,
@@ -1161,9 +1221,11 @@
 				009D01191943A08B00B850D4 /* BSAnimatedBlurEffectTransitioningDelegate.m in Sources */,
 				000D04F71775D20F002D0AB8 /* BSCoreDataController.m in Sources */,
 				000A9A921D09F71E0045523A /* BSBaseExpensesSummaryViewController.m in Sources */,
+				000A9AD91D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */,
 				00BEAFCA17775D6C00A59EE2 /* BSDailyEntryHeaderView.m in Sources */,
 				000A9A631D09F20E0045523A /* BSShowDailyEntriesPresenter.swift in Sources */,
 				008F768818D44B400059CB55 /* BSDateToDatePickerCellConvertor.m in Sources */,
+				000A9ADC1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift in Sources */,
 				000A9A5D1D09F20E0045523A /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				009C9EE317B6912900DE1A97 /* BSThemeManager.m in Sources */,
 				000A9A1F1D09E99F0045523A /* BSMonthlySummaryGraphLinePresenter.swift in Sources */,
@@ -1179,6 +1241,7 @@
 				007B825F177476780052FE84 /* BSAppDelegate.m in Sources */,
 				000A9A1D1D09E99F0045523A /* BSMonthlySummaryGraphLineController.swift in Sources */,
 				0080504B193B0DAE0029C9DA /* BSPieChartViewController.m in Sources */,
+				000A9ACA1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */,
 				009D010C194307A500B850D4 /* BSChartLegendCollectionViewCell.m in Sources */,
 				000A9AAB1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */,
 				000A9A6A1D09F21B0045523A /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,
@@ -1202,6 +1265,7 @@
 				000A9AAF1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
 				000A9A5F1D09F20E0045523A /* BSShowDailyEntriesController.swift in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
+				000A9AC81D0C14000045523A /* BSPieGraphInterfaceProtocol.swift in Sources */,
 				000A9A0F1D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */,
 				000A9AA11D09FB760045523A /* BSCategoryFilterControllerProtocol.swift in Sources */,
 				00D7E0F9178F40A100474A30 /* BSDailyLayout.m in Sources */,
@@ -1210,6 +1274,7 @@
 				000A9A2E1D09EA980045523A /* BSGraphLineInterfaceProtocol.swift in Sources */,
 				000A9A3C1D09EB710045523A /* BSAddEntryInterfaceProtocol.swift in Sources */,
 				000A9A891D09F6EF0045523A /* BSMonthlyExpensesSummaryViewController.m in Sources */,
+				000A9AC61D0C14000045523A /* BSPieGraphControllerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				000A9AC91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift in Sources */,
 				000A9A9F1D09FAD30045523A /* BSCategoryFilterPresenterEventsProtocol.swift in Sources */,
 				000A9A7C1D09F3B50045523A /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift in Sources */,
 				000A9A971D09F7560045523A /* BSEntryDetailsFormViewController.m in Sources */,
@@ -1234,6 +1300,7 @@
 				000A9A9B1D09F90E0045523A /* LineGraph.m in Sources */,
 				000260D31BCC5DCF00B2444E /* BSPerEntrySummaryViewControllerSpecs.m in Sources */,
 				000A9A141D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
+				000A9AC71D0C14000045523A /* BSPieGraphControllerProtocol.swift in Sources */,
 				000A9A541D09F2030045523A /* BSShowMonthlyEntriesController.swift in Sources */,
 				000A9A391D09EB710045523A /* BSAddEntryController.swift in Sources */,
 				000A9AB01D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
@@ -1244,11 +1311,14 @@
 				000A9A621D09F20E0045523A /* BSShowDailyEntriesControllerProtocol.swift in Sources */,
 				000A9A711D09F21B0045523A /* BSAbstractShowEntriesPresenter.swift in Sources */,
 				000A9A4A1D09F1F00045523A /* BSShowYearlyEntriesController.swift in Sources */,
+				000A9ADA1D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */,
 				000A9A281D09EA110045523A /* BSDailySummaryGraphLinePresenter.swift in Sources */,
+				000A9ACB1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */,
 				000A9A861D09F6E10045523A /* BSYearlyExpensesSummaryViewController.m in Sources */,
 				000A9A6D1D09F21B0045523A /* BSAbstractShowEntriesController.swift in Sources */,
 				000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */,
 				000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */,
+				000A9ADD1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift in Sources */,
 				000A9A5E1D09F20E0045523A /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A9A3F1D09EB710045523A /* BSAddEntryPresenter.swift in Sources */,
 				000A9A6B1D09F21B0045523A /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,

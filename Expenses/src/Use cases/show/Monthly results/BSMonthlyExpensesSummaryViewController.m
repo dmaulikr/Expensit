@@ -97,14 +97,7 @@
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
         BSHeaderButton *button = (BSHeaderButton *)sender;
-        NSArray *sections = [self.showMonthlyEntriesPresenter expensesByCategoryForMonth:button.month year:button.year.integerValue];
-        BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
-        graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
-        graphViewController.modalPresentationStyle = UIModalPresentationCustom;        
-        NSArray *categories = [self.showMonthlyEntriesPresenter categoriesForMonth:button.month year:button.year.integerValue];
-        graphViewController.categories = [self.showMonthlyEntriesPresenter sortedTagsByPercentageFromSections:categories sections:sections];
-
-        [graphViewController setSections:sections];
+        [monthlyTransitionManager configureMonthlyExpensesPieGraphViewControllerWithSegue:segue month:button.month year:button.year.integerValue animatedBlurEffectTransitioningDelegate:self.animatedBlurEffectTransitioningDelegate];
     }
     else
     {

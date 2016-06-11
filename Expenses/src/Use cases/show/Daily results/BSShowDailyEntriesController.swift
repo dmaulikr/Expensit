@@ -20,16 +20,4 @@ class BSShowDailyEntriesController: BSAbstractShowEntriesController, BSShowDaily
         return "monthYear"
     }
 
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.coreDataController.expensesByCategoryForMonth(month, inYear:year)
-    }
-    
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
-        return self.coreDataController.sortedTagsByPercentageFromSections(tags, sections:sections)
-    }
-    
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.coreDataController.categoriesForMonth(month, inYear: year)
-    }
-
 }

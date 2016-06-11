@@ -33,4 +33,16 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
         let monthlyLineGraphPresenter : BSGraphLinePresenterProtocol = BSMonthlySummaryGraphLinePresenter(monthlySummaryGraphLineController: monthlyLineGraphController, section: section)
         graphViewController.lineGraphPresenter = monthlyLineGraphPresenter
     }
+    
+    func configureMonthlyExpensesPieGraphViewControllerWithSegue(segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
+    {
+        let graphViewController = segue.destinationViewController as! BSPieChartViewController
+        graphViewController.transitioningDelegate = animatedBlurEffectTransitioningDelegate;
+        graphViewController.modalPresentationStyle = .Custom;
+
+        let pieGraphController : BSPieGraphControllerProtocol = BSExpensesSummaryPieGraphController()
+        let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: year)
+        graphViewController.pieGraphPresenter = pieGraphPresenter
+    }
+
 }

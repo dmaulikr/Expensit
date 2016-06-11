@@ -18,18 +18,5 @@ class BSShowMonthlyEntriesController: BSAbstractShowEntriesController, BSShowMon
     override func sectionNameKeyPath() -> String? {
         return "year"
     }
-        
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.coreDataController.expensesByCategoryForMonth(month, inYear:year)
-    }
-    
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
-        return self.coreDataController.sortedTagsByPercentageFromSections(tags, sections:sections)
-    }
-    
-    // make month nil
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.coreDataController.categoriesForMonth(month, inYear: year)
-    }
-
+            
 }

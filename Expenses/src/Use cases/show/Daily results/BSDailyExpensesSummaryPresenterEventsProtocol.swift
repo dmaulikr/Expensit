@@ -9,10 +9,7 @@
 import Foundation
 
 
-@objc protocol BSDailyExpensesSummaryPresenterEventsProtocol : BSAbstractExpensesSummaryPresenterEventsProtocol {
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
+@objc protocol BSDailyExpensesSummaryPresenterEventsProtocol : BSAbstractExpensesSummaryPresenterEventsProtocol {    
     func arrayDayNumbersInMonthFromVisibleSection(section: String) -> [String]
     func sectionNameForSelectedIndexPath(indexPath : NSIndexPath, sectionTitle: String) -> String
 }

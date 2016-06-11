@@ -9,7 +9,5 @@
 import Foundation
 
 @objc protocol BSMonthlyExpensesSummaryPresenterEventsProtocol : BSAbstractExpensesSummaryPresenterEventsProtocol {
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
+    
 }

@@ -37,18 +37,7 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
     }
     
     /// BSDailyExpensesSummaryPresenterEventsProtocol
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.showDailyEntriesController.expensesByCategoryForMonth(month, year: year)
-    }
     
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
-        return self.showDailyEntriesController.sortedTagsByPercentageFromSections(tags, sections: sections)
-    }
-    
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.showDailyEntriesController.categoriesForMonth(month, year: year)
-    }
-
     override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {        
         var sections = [BSDisplaySectionData]()

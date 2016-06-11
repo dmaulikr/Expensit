@@ -30,18 +30,7 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter, BSMonthlyE
     }
     
     /// BSMonthlyExpensesSummaryPresenterEventsProtocol
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.showMonthlyEntriesController.expensesByCategoryForMonth(month, year: year)
-    }
     
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
-        return self.showMonthlyEntriesController.sortedTagsByPercentageFromSections(tags, sections: sections)
-    }
-    
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.showMonthlyEntriesController.categoriesForMonth(month, year: year)
-    }
-
     override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         var sections = [BSDisplaySectionData]()

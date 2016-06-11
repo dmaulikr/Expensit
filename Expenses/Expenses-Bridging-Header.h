@@ -18,3 +18,5 @@
 #import "BSGraphViewController.h"
 #import "BSModalSelectorViewTransitioningDelegate.h"
 #import "BSCategoryFilterViewController.h"
+#import "BSPieChartViewController.h"
+#import "BSAnimatedBlurEffectTransitioningDelegate.h"

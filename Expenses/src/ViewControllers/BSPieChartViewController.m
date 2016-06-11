@@ -9,9 +9,12 @@
 #import "BSPieChartViewController.h"
 #import "BSChartLegendCollectionViewCell.h"
 #import "Tag.h"
+#import "BSPieChartView.h"
+#import "Expensit-Swift.h"
 
 @interface BSPieChartViewController ()
-
+@property (nonatomic, strong) NSArray *sections;
+@property (nonatomic, strong) NSArray *categories;
 @end
 
 @implementation BSPieChartViewController
@@ -30,7 +33,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
+    self.categories = [self.pieGraphPresenter categories];
+    self.sections = [self.pieGraphPresenter sections];
+    
     self.legendsCollectionView.alpha = 0.0;
     self.titleLabel.alpha = 0.0;
     self.doneLabel.alpha = 0.0;
