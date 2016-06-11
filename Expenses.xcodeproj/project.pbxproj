@@ -688,13 +688,6 @@
 			path = CoreData;
 			sourceTree = "<group>";
 		};
-		0022AD50180FA651006C736C /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
 		0045FD79182989860074AAD1 /* CellActionDataSources */ = {
 			isa = PBXGroup;
 			children = (
@@ -857,7 +850,6 @@
 			isa = PBXGroup;
 			children = (
 				0077D5671CED00D300003F71 /* Use cases */,
-				0022AD50180FA651006C736C /* Protocols */,
 				00BEAFC517775D6C00A59EE2 /* Views */,
 				000D04E61775C864002D0AB8 /* ViewControllers */,
 				000D04E11775BD56002D0AB8 /* Models */,

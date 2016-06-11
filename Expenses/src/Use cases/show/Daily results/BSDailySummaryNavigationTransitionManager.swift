@@ -19,4 +19,16 @@ class BSDailySummaryNavigationTransitionManager : BSBaseNavigationTransitionMana
         let dailyLineGraphPresenter : BSGraphLinePresenterProtocol = BSDailySummaryGraphLinePresenter(dailySummaryGraphLineController: dailyLineGraphController, section: section)
         graphViewController.lineGraphPresenter = dailyLineGraphPresenter
     }
+
+    func configureMonthlyExpensesPieGraphViewControllerWithSegue(segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
+    {
+        let graphViewController = segue.destinationViewController as! BSPieChartViewController
+        graphViewController.transitioningDelegate = animatedBlurEffectTransitioningDelegate;
+        graphViewController.modalPresentationStyle = .Custom;
+        
+        let pieGraphController : BSPieGraphControllerProtocol = BSExpensesSummaryPieGraphController()
+        let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: year)
+        graphViewController.pieGraphPresenter = pieGraphPresenter
+    }
+
 }

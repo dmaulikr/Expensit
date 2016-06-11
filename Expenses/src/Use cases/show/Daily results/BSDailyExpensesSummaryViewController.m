@@ -105,6 +105,8 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
+    BSDailySummaryNavigationTransitionManager *dailyTransitionManager = (BSDailySummaryNavigationTransitionManager *)self.navigationTransitionManager;
+
     if ([[segue identifier] isEqualToString:@"showEntriesForDay"])
     {
         BSBaseExpensesSummaryViewController *dailyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;
@@ -116,20 +118,13 @@
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {
-        BSDailySummaryNavigationTransitionManager *dailyTransitionManager = (BSDailySummaryNavigationTransitionManager *)self.navigationTransitionManager;
         [dailyTransitionManager configureDailyExpensesLineGraphViewControllerWithSegue:segue section:[self visibleSectionName]];
 
     }
     else if ([[segue identifier] isEqualToString:@"DisplayPieGraphView"])
     {
-//        BSHeaderButton *button = (BSHeaderButton *)sender;
-//        NSArray *sections = [self.showDailyEntriesPresenter expensesByCategoryForMonth:button.month year:button.year.integerValue];
-//        BSPieChartViewController *graphViewController = (BSPieChartViewController *)[segue destinationViewController];
-//        graphViewController.transitioningDelegate = self.animatedBlurEffectTransitioningDelegate;
-//        graphViewController.modalPresentationStyle = UIModalPresentationCustom;
-//        NSArray *categories = [self.showDailyEntriesPresenter categoriesForMonth:button.month year:button.year.integerValue];
-//        graphViewController.categories = [self.showDailyEntriesPresenter sortedTagsByPercentageFromSections:categories sections:sections];
-//        [graphViewController setSections:sections];
+        BSHeaderButton *button = (BSHeaderButton *)sender;
+        [dailyTransitionManager configureMonthlyExpensesPieGraphViewControllerWithSegue:segue month:button.month year:button.year.integerValue animatedBlurEffectTransitioningDelegate:self.animatedBlurEffectTransitioningDelegate];
     }
     else
     {
