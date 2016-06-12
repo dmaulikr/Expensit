@@ -11,6 +11,4 @@
 @protocol BSMonthlyExpensesSummaryPresenterEventsProtocol;
 
 @interface BSMonthlyExpensesSummaryViewController : BSBaseExpensesSummaryViewController
-// In order to extend the bae protocol, conformed by the uper cla, i create a econd reference to a more pecialied protocol
-@property (strong, nonatomic, nullable) id<BSMonthlyExpensesSummaryPresenterEventsProtocol> showMonthlyEntriesPresenter;
 @end

@@ -12,21 +12,7 @@ import Foundation
 class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpensesSummaryPresenterEventsProtocol {
 
     var visibleSection : String = ""
-    var showDailyEntriesController : BSShowDailyEntriesControllerProtocol
-    
-    /// Initialization
-    init(showEntriesUserInterface: BSAbstractExpensesSummaryUserInterfaceProtocol, showDailyEntriesController : BSShowDailyEntriesControllerProtocol)
-    {
-        self.showDailyEntriesController = showDailyEntriesController
-        super.init(showEntriesUserInterface: showEntriesUserInterface, showEntriesController: showDailyEntriesController)
-    }
-    
-    override init!(showEntriesUserInterface: BSAbstractExpensesSummaryUserInterfaceProtocol,
-                   showEntriesController : BSAbstractShowEntriesControllerProtocol) {
         
-        return nil // Not upported to enforce the use of the specialised init method
-    }
-    
     func arrayDayNumbersInMonthFromVisibleSection(section: String) -> [String]
     {
         let monthNumber = section.componentsSeparatedByString("/")[0]

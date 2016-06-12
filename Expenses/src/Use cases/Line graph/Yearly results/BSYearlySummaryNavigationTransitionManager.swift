@@ -16,12 +16,11 @@ class BSYearlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMan
         let monthlyExpensesViewController = segue.destinationViewController as! BSMonthlyExpensesSummaryViewController
         monthlyExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
         let monthlyController = BSShowMonthlyEntriesController()
-        let monthlyPresenter = BSShowMonthlyEntriesPresenter(showEntriesUserInterface: monthlyExpensesViewController, showMonthlyEntriesController: monthlyController)        
+        let monthlyPresenter = BSShowMonthlyEntriesPresenter(showEntriesUserInterface: monthlyExpensesViewController, showEntriesController: monthlyController)
         let monthlyNavigationManager = BSMonthlySummaryNavigationTransitionManager(coreDataStackHelper: self.coreDataStackHelper, coreDataController: self.coreDataController)
         
         monthlyExpensesViewController.showEntriesController = (monthlyController as BSAbstractShowEntriesControllerProtocol)
-        monthlyExpensesViewController.showEntriesPresenter = monthlyPresenter
-        monthlyExpensesViewController.showMonthlyEntriesPresenter = monthlyPresenter
+        monthlyExpensesViewController.showEntriesPresenter = monthlyPresenter        
         monthlyExpensesViewController.navigationTransitionManager = monthlyNavigationManager
     }
     

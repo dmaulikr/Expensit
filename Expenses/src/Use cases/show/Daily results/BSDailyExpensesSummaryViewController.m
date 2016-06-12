@@ -28,7 +28,7 @@
     
     self.showEntriesController = [[BSShowDailyEntriesController alloc] init];
     id<BSDailyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowDailyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
-                                                                                                        showDailyEntriesController:(id<BSShowDailyEntriesControllerProtocol>)self.showEntriesController];
+                                                                                                           showEntriesController:self.showEntriesController];
     self.showEntriesPresenter = mp;
     self.showDailyEntriesPresenter = mp;
 }

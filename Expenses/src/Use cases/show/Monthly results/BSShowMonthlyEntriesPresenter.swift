@@ -9,27 +9,9 @@
 import Foundation
 
 
-class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter, BSMonthlyExpensesSummaryPresenterEventsProtocol {
-
-    var showMonthlyEntriesController : BSShowMonthlyEntriesControllerProtocol
-    
-    
-    init(showEntriesUserInterface: BSAbstractExpensesSummaryUserInterfaceProtocol,
-         showMonthlyEntriesController : BSShowMonthlyEntriesControllerProtocol) {
-        
-        self.showMonthlyEntriesController = showMonthlyEntriesController
-        
-        super.init(showEntriesUserInterface: showEntriesUserInterface,
-                   showEntriesController : showMonthlyEntriesController)
-    }
-
-    override init!(showEntriesUserInterface: BSAbstractExpensesSummaryUserInterfaceProtocol,
-         showEntriesController : BSAbstractShowEntriesControllerProtocol) {
-        
-        return nil // Not upported to enforce the use of the specialised init method
-    }
-    
-    /// BSMonthlyExpensesSummaryPresenterEventsProtocol
+class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter
+{    
+    /// From BSAbstractShowEntriesPresenter
     
     override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {

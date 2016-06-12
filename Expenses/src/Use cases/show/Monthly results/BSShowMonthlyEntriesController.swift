@@ -9,8 +9,8 @@
 import Foundation
 
 
-class BSShowMonthlyEntriesController: BSAbstractShowEntriesController, BSShowMonthlyEntriesControllerProtocol {
-    
+class BSShowMonthlyEntriesController: BSAbstractShowEntriesController
+{    
     override func fetchRequest() -> NSFetchRequest {
         return self.coreDataController.fetchRequestForMonthlySummary()
     }

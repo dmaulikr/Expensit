@@ -17,7 +17,7 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
         let dailyExpensesViewController = segue.destinationViewController as! BSDailyExpensesSummaryViewController
         dailyExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
         let dailyController = BSShowDailyEntriesController()
-        let dailyPresenter = BSShowDailyEntriesPresenter(showEntriesUserInterface: dailyExpensesViewController, showDailyEntriesController: dailyController)
+        let dailyPresenter = BSShowDailyEntriesPresenter(showEntriesUserInterface: dailyExpensesViewController, showEntriesController: dailyController)
         let dailyNavigationManager = BSDailySummaryNavigationTransitionManager(coreDataStackHelper: self.coreDataStackHelper, coreDataController: self.coreDataController)
         
         dailyExpensesViewController.showEntriesController = (dailyController as BSAbstractShowEntriesControllerProtocol)

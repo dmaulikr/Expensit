@@ -29,8 +29,7 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
     
     func viewIsReadyToDisplayEntriesCompletionBlock(block: ( sections : [BSDisplaySectionData] ) -> () )
     {
-        let dictionary = self.showEntriesController.entriesForSummary()
-        //let ent = dictionary["entries"] as! [AnyObject]?
+        let dictionary = self.showEntriesController.entriesForSummary()        
         let sec = dictionary["sections"] as! [NSFetchedResultsSectionInfo]
         let output = self.displayDataFromEntriesForSummary(sec)
         // CallBack hen data i ready
