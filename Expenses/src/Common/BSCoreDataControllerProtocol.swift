@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BSCoreDataControllerProtocol
+@objc protocol BSCoreDataControllerProtocol
 {
     init(coreDataStackHelper : CoreDataStackHelper, coreDataController : BSCoreDataController)
 }

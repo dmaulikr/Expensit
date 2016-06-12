@@ -20,19 +20,6 @@
 
 
 
-#pragma mark - View Cycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.showEntriesController = [[BSShowYearlyEntriesController alloc] init];
-    self.showEntriesPresenter = [[BSShowYearlyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
-                                                                                 showEntriesController:self.showEntriesController];
-}
-
-
-
 #pragma mark - UICollectionViewDataSource
 
 - (NSInteger) numberOfSectionsInCollectionView:(UICollectionView *)collectionView

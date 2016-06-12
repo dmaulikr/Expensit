@@ -9,6 +9,7 @@
 #import "BSAppDelegate.h"
 #import "CoreDataStackHelper.h"
 #import "BSBaseExpensesSummaryViewController.h"
+#import "BSYearlyExpensesSummaryViewController.h"
 #import "BSCoreDataController.h"
 #import "DateTimeHelper.h"
 #import "BSGreenTheme.h"
@@ -60,8 +61,15 @@
     
     UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
     BSBaseNavigationTransitionManager *transitionManager = [[BSYearlySummaryNavigationTransitionManager alloc] initWithCoreDataStackHelper:self.coreDataHelper coreDataController:coreDataController];
-    BSBaseExpensesSummaryViewController *baseViewController = (BSBaseExpensesSummaryViewController *)navigationController.topViewController;
+    
+    BSYearlyExpensesSummaryViewController *baseViewController = (BSYearlyExpensesSummaryViewController *)navigationController.topViewController;
     baseViewController.navigationTransitionManager = transitionManager;
+    BSShowYearlyEntriesController *yearlyController = [[BSShowYearlyEntriesController alloc] initWithCoreDataStackHelper:self.coreDataHelper
+                                                                                                      coreDataController:coreDataController];
+    
+    baseViewController.showEntriesPresenter = [[BSShowYearlyEntriesPresenter alloc] initWithShowEntriesUserInterface:baseViewController
+                                                                                               showEntriesController:yearlyController];
+    
 
     return YES;
 }

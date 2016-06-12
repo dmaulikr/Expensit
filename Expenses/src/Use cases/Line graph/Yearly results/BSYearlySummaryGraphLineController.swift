@@ -8,8 +8,21 @@
 
 import Foundation
 
-@objc class BSYearlySummaryGraphLineController: BSAbstractShowEntriesController, BSGraphLineControllerProtocol
+@objc class BSYearlySummaryGraphLineController: NSObject, BSCoreDataControllerProtocol, BSGraphLineControllerProtocol
 {
+    var coreDataStackHelper : CoreDataStackHelper
+    var coreDataController : BSCoreDataController
+    
+    /// CoreDataController protocol
+    required init(coreDataStackHelper : CoreDataStackHelper, coreDataController : BSCoreDataController)
+    {
+        self.coreDataStackHelper = coreDataStackHelper
+        self.coreDataController = coreDataController
+    }
+
+    
+    /// BSGraphLineControllerProtocol
+        
     func abscissaValues() -> [NSDictionary] {
         let request = self.coreDataController.requestToGetYears()
         

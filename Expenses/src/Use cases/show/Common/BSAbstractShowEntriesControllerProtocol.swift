@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc protocol BSAbstractShowEntriesControllerProtocol {
+@objc protocol BSAbstractShowEntriesControllerProtocol : BSCoreDataControllerProtocol {
     
     func filterByCategory(category : Tag) // Just changes internal configuration to filter next time entries for summary gets called
     func entriesForSummary() -> NSDictionary

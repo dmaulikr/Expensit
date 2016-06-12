@@ -8,8 +8,22 @@
 
 import Foundation
 
-@objc class BSMonthlySummaryGraphLineController: BSAbstractShowEntriesController, BSGraphLineControllerProtocol
+@objc class BSMonthlySummaryGraphLineController: NSObject, BSCoreDataControllerProtocol, BSGraphLineControllerProtocol
 {
+    
+    var coreDataStackHelper : CoreDataStackHelper
+    var coreDataController : BSCoreDataController
+    
+    /// CoreDataController protocol
+    required init(coreDataStackHelper : CoreDataStackHelper, coreDataController : BSCoreDataController)
+    {
+        self.coreDataStackHelper = coreDataStackHelper
+        self.coreDataController = coreDataController
+    }
+
+
+    /// BSGraphLineControllerProtocol
+    
     func abscissaValues() -> [NSDictionary] {
         return []
     }

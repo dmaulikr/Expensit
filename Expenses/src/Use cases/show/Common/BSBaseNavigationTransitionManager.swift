@@ -44,7 +44,7 @@ class BSBaseNavigationTransitionManager: NSObject
     {
         
         let categoryFilterViewController = segue.destinationViewController as! BSCategoryFilterViewController
-        let categoryFilterController = BSCategoryFilterController()
+        let categoryFilterController = BSCategoryFilterController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         categoryFilterViewController.categoryFilterPresenter = BSCategoryFilterPresenter(categoryFilterController: categoryFilterController)
         categoryFilterViewController.transitioningDelegate = categoryFilterViewTransitioningDelegate
         categoryFilterViewController.modalPresentationStyle = .Custom

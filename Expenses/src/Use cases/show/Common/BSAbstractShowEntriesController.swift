@@ -17,12 +17,10 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
     
     /// Initializer
     
-    override init()
+    required init(coreDataStackHelper : CoreDataStackHelper, coreDataController : BSCoreDataController)
     {
-        let delegate = UIApplication.sharedApplication().delegate as! BSAppDelegate
-        self.coreDataStackHelper = delegate.coreDataHelper;
-        self.coreDataController = BSCoreDataController(entityName : "Entry", delegate:nil, coreDataHelper:self.coreDataStackHelper)
-        
+        self.coreDataStackHelper = coreDataStackHelper
+        self.coreDataController = coreDataController
         super.init()
     }
     
