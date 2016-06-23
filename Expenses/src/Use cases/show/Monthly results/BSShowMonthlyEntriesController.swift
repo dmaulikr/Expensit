@@ -11,7 +11,7 @@ import Foundation
 
 class BSShowMonthlyEntriesController: BSAbstractShowEntriesController
 {    
-    override func fetchRequest() -> NSFetchRequest {
+    override func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return self.coreDataController.fetchRequestForMonthlySummary()
     }
 

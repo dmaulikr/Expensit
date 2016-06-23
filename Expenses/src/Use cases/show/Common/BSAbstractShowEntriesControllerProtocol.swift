@@ -10,8 +10,8 @@ import Foundation
 
 @objc protocol BSAbstractShowEntriesControllerProtocol : BSCoreDataControllerProtocol {
     
-    func filterByCategory(category : Tag) // Just changes internal configuration to filter next time entries for summary gets called
+    func filter(by category : Tag) // Just changes internal configuration to filter next time entries for summary gets called
     func entriesForSummary() -> NSDictionary
-    func imageForCategoy(category :Tag?) -> UIImage?
+    func image(for category :Tag?) -> UIImage?
     func sectionNameKeyPath() -> String?
 }

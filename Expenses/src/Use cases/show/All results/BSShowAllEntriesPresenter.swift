@@ -10,16 +10,16 @@ import Foundation
 
 class BSShowAllEntriesPresenter : BSAbstractShowEntriesPresenter {
  
-    override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
+    override func displayDataFromEntriesForSummary(_ data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         var sections = [BSDisplaySectionData]()
         
         for coreDatasectionInfo in data
         {
             var entries = [BSDisplayEntry]()
-            for var i=0; i<coreDatasectionInfo.numberOfObjects; i += 1 {
+            for i in 0 ..< coreDatasectionInfo.numberOfObjects {
                 let coreDataEntry : Entry = coreDatasectionInfo.objects![i] as! Entry
-                let entryData = BSDisplayEntry(title: coreDataEntry.desc , value: BSCurrencyHelper.amountFormatter().stringFromNumber(coreDataEntry.value), signOfAmount: .Zero)
+                let entryData = BSDisplayEntry(title: coreDataEntry.desc , value: BSCurrencyHelper.amountFormatter().string(from: coreDataEntry.value), signOfAmount: .zero)
                 entries.append(entryData)
             }
                         

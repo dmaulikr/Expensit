@@ -16,7 +16,7 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
     
     override init()
     {
-        let delegate = UIApplication.sharedApplication().delegate as! BSAppDelegate
+        let delegate = UIApplication.shared().delegate as! BSAppDelegate
         self.coreDataStackHelper = delegate.coreDataHelper;
         self.coreDataController = BSCoreDataController(entityName : "Entry", delegate:nil, coreDataHelper:self.coreDataStackHelper)
         
@@ -25,14 +25,14 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
 
     /// BSAddEntryControllerProtocol
     
-    func saveEntry(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
+    func save(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
     {
         do
         {
-            try self.coreDataController.saveEntry(entry)
+            try self.coreDataController.save(entry)
             successBlock()
         }
-        catch is ErrorType
+        catch is ErrorProtocol
         {
             failureBlock(error: NSError(domain: "Could not save", code: 1, userInfo: nil))
         }
@@ -43,7 +43,7 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
         self.coreDataController.discardChanges()
     }
     
-    func deleteEntry(entry : Entry) {
+    func delete(entry : Entry) {
         self.coreDataController.deleteModel(entry)
     }
     

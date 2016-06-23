@@ -459,7 +459,7 @@
 }
 
 
-- (void)modifyfetchRequest:(NSFetchRequest*)request toFilterByCategory:(id)category
+- (void)modifyfetchRequest:(NSFetchRequest <NSFetchRequestResult>*)request toFilterByCategory:(id)category
 {
     NSPredicate *predicate = nil;
     

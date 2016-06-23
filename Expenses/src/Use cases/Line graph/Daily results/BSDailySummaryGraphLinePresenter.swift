@@ -24,21 +24,21 @@ import Foundation
     
     
     func income() -> [AnyObject] {
-        let data = self.dailySummaryGraphLineController.graphSurplusResultsForSection(self.section) // Get the data from cntroller
+        let data = self.dailySummaryGraphLineController.graphSurplusResults(for: self.section) // Get the data from cntroller
         return self.dataForGraphFromQueryResults(data) // Get the data from cntroller
 
     }
     
     func expenses() -> [AnyObject] {
-        let data = self.dailySummaryGraphLineController.graphExpensesResultsForSection(self.section)
+        let data = self.dailySummaryGraphLineController.graphExpensesResults(for: self.section)
         return self.dataForGraphFromQueryResults(data)
     }
     
     func abscissaValues() -> [String] {
         var days = [String]()
-        let monthNumber = self.section.componentsSeparatedByString("/")[0]
-        let numberOfDayInMonths = DateTimeHelper.numberOfDaysInMonth(monthNumber).length
-        for var i=0; i<numberOfDayInMonths; i += 1 {
+        let monthNumber = self.section.components(separatedBy: "/")[0]
+        let numberOfDayInMonths = DateTimeHelper.numberOfDays(inMonth: monthNumber).length
+        for i in 0 ..< numberOfDayInMonths {
             days.append("\(i+1)")
         }
 
@@ -51,10 +51,10 @@ import Foundation
     
     
     /// Helper private
-    func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
-        let monthNumber = self.section.componentsSeparatedByString("/")[0]
-        let numberOfDaysInMonth = DateTimeHelper.numberOfDaysInMonth(monthNumber)
-        var graphData = Array<NSNumber>(count: numberOfDaysInMonth.length, repeatedValue: 0)
+    func dataForGraphFromQueryResults(_ data : [AnyObject])  -> [AnyObject] {
+        let monthNumber = self.section.components(separatedBy: "/")[0]
+        let numberOfDaysInMonth = DateTimeHelper.numberOfDays(inMonth: monthNumber)
+        var graphData = Array<NSNumber>(repeating: 0, count: numberOfDaysInMonth.length)
         
         for dic in data {
             let dictionary = dic as! NSDictionary

@@ -1011,8 +1011,10 @@
 				TargetAttributes = {
 					007B8248177476780052FE84 = {
 						DevelopmentTeam = HDWMV7DY5P;
+						LastSwiftMigration = 0800;
 					};
 					007B8268177476780052FE84 = {
+						LastSwiftMigration = 0800;
 						TestTargetID = 007B8248177476780052FE84;
 					};
 				};
@@ -1463,6 +1465,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expenses-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1501,6 +1504,7 @@
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/Expenses-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1548,6 +1552,7 @@
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
 				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/ExpensesTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};
@@ -1590,6 +1595,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
 				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/ExpensesTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
 			};

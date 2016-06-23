@@ -10,7 +10,7 @@ import Foundation
 
 class BSShowYearlyEntriesController: BSAbstractShowEntriesController {
     
-    override func fetchRequest() -> NSFetchRequest {
+    override func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return self.coreDataController.fetchRequestForYearlySummary()
     }
 

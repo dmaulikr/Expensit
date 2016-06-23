@@ -42,15 +42,15 @@
 /*!
  @discussion category can be either a Tag instance or an NSString instance signifying 'No filter'
  */
-- (void)modifyfetchRequest:(NSFetchRequest*)request toFilterByCategory:(id)category;
+- (void)modifyfetchRequest:(NSFetchRequest <NSFetchRequestResult>*)request toFilterByCategory:(id)category;
 
 #pragma mark - Line Graph requests
-- (NSFetchRequest *)graphYearlySurplusFetchRequest;
-- (NSFetchRequest *)graphYearlyExpensesFetchRequest;
-- (NSFetchRequest *)graphMonthlySurplusFetchRequestForSectionName:(NSString *)sectionName;
-- (NSFetchRequest *)graphMonthlyExpensesFetchRequestForSectionName:(NSString *)sectionName;
-- (NSFetchRequest *)graphDailySurplusFetchRequestForSectionName:(NSString *)sectionName;
-- (NSFetchRequest *)graphDailyExpensesFetchRequestForSectionName:(NSString *)sectionName;
+- (NSFetchRequest <NSFetchRequestResult>*)graphYearlySurplusFetchRequest;
+- (NSFetchRequest <NSFetchRequestResult>*)graphYearlyExpensesFetchRequest;
+- (NSFetchRequest <NSFetchRequestResult>*)graphMonthlySurplusFetchRequestForSectionName:(NSString *)sectionName;
+- (NSFetchRequest <NSFetchRequestResult>*)graphMonthlyExpensesFetchRequestForSectionName:(NSString *)sectionName;
+- (NSFetchRequest <NSFetchRequestResult>*)graphDailySurplusFetchRequestForSectionName:(NSString *)sectionName;
+- (NSFetchRequest <NSFetchRequestResult>*)graphDailyExpensesFetchRequestForSectionName:(NSString *)sectionName;
 
 #pragma mark - Pie Chart Graph requests
 - (NSFetchRequest *)expensesByCategoryMonthlyFetchRequest;

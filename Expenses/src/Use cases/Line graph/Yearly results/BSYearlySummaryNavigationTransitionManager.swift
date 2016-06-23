@@ -11,7 +11,7 @@ import UIKit
 
 class BSYearlySummaryNavigationTransitionManager : BSBaseNavigationTransitionManager
 {    
-    func configureMonthlyExpensesViewControllerWithSegue(segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
+    func configureMonthlyExpensesViewControllerWithSegue(_ segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
     {
         let monthlyExpensesViewController = segue.destinationViewController as! BSMonthlyExpensesSummaryViewController
         monthlyExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
@@ -24,7 +24,7 @@ class BSYearlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMan
         monthlyExpensesViewController.navigationTransitionManager = monthlyNavigationManager
     }
     
-    func configureYearlyExpensesLineGraphViewControllerWithSegue(segue : UIStoryboardSegue, section : String)
+    func configureYearlyExpensesLineGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, section : String)
     {
         let graphViewController = segue.destinationViewController as! BSGraphViewController
         let yearlyLineGraphController : BSGraphLineControllerProtocol = BSYearlySummaryGraphLineController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)

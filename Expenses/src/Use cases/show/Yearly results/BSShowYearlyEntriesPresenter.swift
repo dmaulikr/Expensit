@@ -10,7 +10,7 @@ import Foundation
 
 class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter
 {    
-    override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
+    override func displayDataFromEntriesForSummary(_ data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         var sections = [BSDisplaySectionData]()
         for coreDatasectionInfo in data
@@ -18,22 +18,22 @@ class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter
             var entries = [BSDisplayEntry]()
             for entryDic in (coreDatasectionInfo.objects)!
             {
-                let value = entryDic.valueForKey("yearlySum") as! NSNumber
-                let r : NSComparisonResult = value.compare(0)
+                let value = entryDic.value(forKey: "yearlySum") as! NSNumber
+                let r : ComparisonResult = value.compare(0)
                 var sign : BSNumberSignType
                 
                 switch r
                 {
-                    case NSComparisonResult.OrderedAscending:
-                        sign = .Negative
-                    case NSComparisonResult.OrderedDescending:
-                        sign = .Positive
-                    case NSComparisonResult.OrderedSame:
-                        sign = .Zero
+                    case ComparisonResult.orderedAscending:
+                        sign = .negative
+                    case ComparisonResult.orderedDescending:
+                        sign = .positive
+                    case ComparisonResult.orderedSame:
+                        sign = .zero
                 }
-                let year = entryDic.valueForKey("year") as! NSNumber
+                let year = entryDic.value(forKey: "year") as! NSNumber
                 let yearString = NSString(format:"\(year)")
-                let yearlySumString = BSCurrencyHelper.amountFormatter().stringFromNumber(value)!
+                let yearlySumString = BSCurrencyHelper.amountFormatter().string(from: value)!
                 
                 let entryData = BSDisplayEntry(title: yearString as String , value: yearlySumString as String, signOfAmount: sign)
                 entries.append(entryData)

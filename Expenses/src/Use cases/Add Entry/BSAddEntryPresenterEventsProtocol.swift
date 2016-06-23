@@ -10,10 +10,14 @@ import Foundation
 
 @objc protocol BSAddEntryPresenterEventsProtocol {
     
-    func saveEntry(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
-    func userCancelledEditionOfExistingEntry()
-    func userCancelledCreationOfNewEntry(entry : Entry)
-    func userSelectedNext() // Submit + new one
-    func userInterfaceReadyToDiplayEntry()
+    @objc(saveEntry:successBlock:failureBlock:)
+    func save(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
     
+    func userCancelledEditionOfExistingEntry()
+    
+    func userCancelledCreationOfNewEntry(_ entry : Entry)
+    
+    func userSelectedNext() // Submit + new one
+    
+    func userInterfaceReadyToDiplayEntry()
 }

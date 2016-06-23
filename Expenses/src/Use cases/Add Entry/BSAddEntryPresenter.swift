@@ -18,8 +18,8 @@ class BSAddEntryPresenter: NSObject, BSAddEntryPresenterEventsProtocol {
         self.userInterface = userInterface
     }
     
-    func saveEntry(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () ) {
-        self.addEntryController.saveEntry(entry, successBlock: { 
+    func save(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () ) {
+        self.addEntryController.save(entry: entry, successBlock: {
             successBlock()
             }) { (error) in
                 failureBlock(error: error)
@@ -30,19 +30,19 @@ class BSAddEntryPresenter: NSObject, BSAddEntryPresenterEventsProtocol {
         self.addEntryController.discardChanges()
     }
     
-    func userCancelledCreationOfNewEntry(entry : Entry) {
-        self.addEntryController.deleteEntry(entry)
+    func userCancelledCreationOfNewEntry(_ entry : Entry) {
+        self.addEntryController.delete(entry: entry)
         self.addEntryController.saveChanges()
     }
     
     func userSelectedNext() {
         let entry = self.addEntryController.newEntry()
-        self.userInterface.displayEntry(entry)
+        self.userInterface.display(entry: entry)
     }
     
     func userInterfaceReadyToDiplayEntry() {
         let entry = self.addEntryController.newEntry()
-        self.userInterface.displayEntry(entry)
+        self.userInterface.display(entry: entry)
     }
 
 }

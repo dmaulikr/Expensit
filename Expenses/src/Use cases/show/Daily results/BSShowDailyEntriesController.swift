@@ -12,7 +12,7 @@ import Foundation
 
 class BSShowDailyEntriesController: BSAbstractShowEntriesController {
     
-    override func fetchRequest() -> NSFetchRequest {
+    override func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return self.coreDataController.fetchRequestForDaylySummary()
     }
 

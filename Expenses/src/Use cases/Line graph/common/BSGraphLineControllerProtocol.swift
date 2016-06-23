@@ -11,6 +11,6 @@ import Foundation
 protocol BSGraphLineControllerProtocol
 {
     func abscissaValues() -> [NSDictionary]
-    func graphSurplusResultsForSection(section: String) -> [AnyObject]
-    func graphExpensesResultsForSection(section: String) -> [AnyObject]
+    func graphSurplusResults(for section: String) -> [AnyObject]
+    func graphExpensesResults(for section: String) -> [AnyObject]
 }

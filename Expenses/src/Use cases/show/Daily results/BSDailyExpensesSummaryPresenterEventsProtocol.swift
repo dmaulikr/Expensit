@@ -10,6 +10,8 @@ import Foundation
 
 
 @objc protocol BSDailyExpensesSummaryPresenterEventsProtocol : BSAbstractExpensesSummaryPresenterEventsProtocol {    
-    func arrayDayNumbersInMonthFromVisibleSection(section: String) -> [String]
-    func sectionNameForSelectedIndexPath(indexPath : NSIndexPath, sectionTitle: String) -> String
+    func arrayDayNumbersInMonthFromVisibleSection(_ section: String) -> [String]
+    
+    @objc(sectionNameForSelectedIndexPath:sectionTitle:)
+    func sectionName(forSelected indexPath : IndexPath, sectionTitle: String) -> String
 }

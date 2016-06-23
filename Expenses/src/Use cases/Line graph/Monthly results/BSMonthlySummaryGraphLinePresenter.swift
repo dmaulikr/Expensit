@@ -23,12 +23,12 @@ import Foundation
     
     
     func income() -> [AnyObject] {
-        let data = self.monthlySummaryGraphLineController.graphSurplusResultsForSection(self.section) // Get the data from cntroller
+        let data = self.monthlySummaryGraphLineController.graphSurplusResults(for: self.section) // Get the data from cntroller
         return self.dataForGraphFromQueryResults(data)
     }
     
     func expenses() -> [AnyObject] {
-        let data = self.monthlySummaryGraphLineController.graphExpensesResultsForSection(self.section)
+        let data = self.monthlySummaryGraphLineController.graphExpensesResults(for: self.section)
         return self.dataForGraphFromQueryResults(data)
     }
     
@@ -42,8 +42,8 @@ import Foundation
 
     
     /// Helper private
-    func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
-        var graphData = Array<NSNumber>(count: 12, repeatedValue: 0)
+    func dataForGraphFromQueryResults(_ data : [AnyObject])  -> [AnyObject] {
+        var graphData = Array<NSNumber>(repeating: 0, count: 12)
         
         for dic in data {
             let dictionary = dic as! NSDictionary

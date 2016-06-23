@@ -13,10 +13,10 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
 
     var visibleSection : String = ""
         
-    func arrayDayNumbersInMonthFromVisibleSection(section: String) -> [String]
+    func arrayDayNumbersInMonthFromVisibleSection(_ section: String) -> [String]
     {
-        let monthNumber = section.componentsSeparatedByString("/")[0]
-        let numberOfDaysInMonth = DateTimeHelper.numberOfDaysInMonth(monthNumber)
+        let monthNumber = section.components(separatedBy: "/")[0]
+        let numberOfDaysInMonth = DateTimeHelper.numberOfDays(inMonth: monthNumber)
         let dayNumbers : [Int] = Array(1...numberOfDaysInMonth.length)
         
         return dayNumbers.map { "\($0)" }
@@ -24,42 +24,42 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
     
     /// BSDailyExpensesSummaryPresenterEventsProtocol
     
-    override func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
+    override func displayDataFromEntriesForSummary(_ data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {        
         var sections = [BSDisplaySectionData]()
         
         for coreDatasectionInfo in data
         {
             var entries = [BSDisplayEntry]()
-            let monthNumber = coreDatasectionInfo.name.componentsSeparatedByString("/")[0]
-            let numberOfDayInMonths = DateTimeHelper.numberOfDaysInMonth(monthNumber).length
-            for var i=0; i<numberOfDayInMonths; i += 1 {
+            let monthNumber = coreDatasectionInfo.name.components(separatedBy: "/")[0]
+            let numberOfDayInMonths = DateTimeHelper.numberOfDays(inMonth: monthNumber).length
+            for i in 0 ..< numberOfDayInMonths {
                 
-                let dayData = BSDisplayEntry(title: "\(i+1)" , value: "", signOfAmount: .Zero)
+                let dayData = BSDisplayEntry(title: "\(i+1)" , value: "", signOfAmount: .zero)
                 entries.append(dayData)
             }
             
             for entryDic in (coreDatasectionInfo.objects)!
             {
-                let value = entryDic.valueForKey("dailySum") as! NSNumber
-                let r : NSComparisonResult = value.compare(0)
+                let value = entryDic.value(forKey: "dailySum") as! NSNumber
+                let r : ComparisonResult = value.compare(0)
                 var sign : BSNumberSignType
                 
                 switch r
                 {
-                case NSComparisonResult.OrderedAscending:
-                    sign = .Negative
-                case NSComparisonResult.OrderedDescending:
-                    sign = .Positive
-                case NSComparisonResult.OrderedSame:
-                    sign = .Zero
+                case ComparisonResult.orderedAscending:
+                    sign = .negative
+                case ComparisonResult.orderedDescending:
+                    sign = .positive
+                case ComparisonResult.orderedSame:
+                    sign = .zero
                 }
-                let day = entryDic.valueForKey("day") as! NSNumber
+                let day = entryDic.value(forKey: "day") as! NSNumber
                 let dayString = "\(day)"
-                let dailySumString = BSCurrencyHelper.amountFormatter().stringFromNumber(value)!
+                let dailySumString = BSCurrencyHelper.amountFormatter().string(from: value)!
                 
                 let entryData = BSDisplayEntry(title: dayString as String , value: dailySumString as String, signOfAmount: sign)
-                entries[day.integerValue - 1] = entryData
+                entries[day.intValue - 1] = entryData
             }
             
             let sectionData = BSDisplaySectionData(title: coreDatasectionInfo.name, entries: entries)
@@ -70,10 +70,10 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
     }
     
     
-    func sectionNameForSelectedIndexPath(indexPath : NSIndexPath, sectionTitle: String) -> String {
-        let month = sectionTitle.componentsSeparatedByString("/")[0]
-        let year = sectionTitle.componentsSeparatedByString("/")[1]
-        return "\(year)/\(month)/\(indexPath.row + 1)"
+    func sectionName(forSelected indexPath : IndexPath, sectionTitle: String) -> String {
+        let month = sectionTitle.components(separatedBy: "/")[0]
+        let year = sectionTitle.components(separatedBy: "/")[1]
+        return "\(year)/\(month)/\((indexPath as NSIndexPath).row + 1)"
     }
 
 }

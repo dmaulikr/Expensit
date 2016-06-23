@@ -1,4 +1,5 @@
 //
+
 //  AbstractShowEntriesController.swift
 //  Expenses
 //
@@ -13,7 +14,7 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
  
     var coreDataStackHelper : CoreDataStackHelper
     var coreDataController : BSCoreDataController
-    private var _fetchedResultsController: NSFetchedResultsController?
+    private var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     
     /// Initializer
     
@@ -28,11 +29,11 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
     
     /// BSAbstractShowEntriesControllerProtocol
     
-    func filterByCategory(category : Tag)
+    func filter(by category : Tag)
     {
         if (_fetchedResultsController != nil)
         {
-            let request = _fetchedResultsController!.fetchRequest
+            let request = _fetchedResultsController!.fetchRequest 
             self.coreDataController.modifyfetchRequest(request, toFilterByCategory:category)
         }
     }
@@ -44,9 +45,9 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
         return NSDictionary(objects: [entries!, sections!], forKeys: ["entries", "sections"])
     }
     
-    func imageForCategoy(category :Tag?) -> UIImage?
+    func image(for category :Tag?) -> UIImage?
     {
-        return self.coreDataController.imageForCategory(category)
+        return self.coreDataController.image(forCategory: category)
     }
 
     func sectionNameKeyPath() -> String? {
@@ -54,7 +55,7 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
     }
 
     // FETCH CONTROLLER
-    func fetchedResultsController() -> NSFetchedResultsController?
+    func fetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult>?
     {
         
         if (_fetchedResultsController != nil) {
@@ -85,7 +86,7 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
 
     }
     
-    func fetchRequest() -> NSFetchRequest {
+    func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest()
     }
 }

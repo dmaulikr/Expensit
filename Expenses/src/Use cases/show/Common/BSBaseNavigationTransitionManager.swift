@@ -24,12 +24,12 @@ class BSBaseNavigationTransitionManager: NSObject
         super.init()
     }
     
-    func configureAddEntryViewControllerWithSegue(segue : UIStoryboardSegue)
+    func configureAddEntryViewControllerWithSegue(_ segue : UIStoryboardSegue)
     {
         let navigationController = segue.destinationViewController as! UINavigationController
         let cellActionsDataSource = BSStaticTableAddEntryFormCellActionDataSource(coreDataController: self.coreDataController, isEditing:true);
         let addEntryVC = navigationController.topViewController as! BSEntryDetailsFormViewController
-        let appDelegate = UIApplication.sharedApplication().delegate as! BSAppDelegate
+        let appDelegate = UIApplication.shared().delegate as! BSAppDelegate
 
         addEntryVC.addEntryController = BSAddEntryController()
         addEntryVC.addEntryPresenter = BSAddEntryPresenter(addEntryController: addEntryVC.addEntryController!, userInterface:addEntryVC)
@@ -40,14 +40,14 @@ class BSBaseNavigationTransitionManager: NSObject
     
     
     // TODO: Creating the instance of categoryFilterViewTransitioningDelegate in this method does not ork, there is a crash
-    func configureCategoryFilterViewControllerWithSegue(segue : UIStoryboardSegue, categoryFilterViewControllerDelegate: BSCategoryFilterDelegate, tagBeingFilterBy: AnyObject, categoryFilterViewTransitioningDelegate: BSModalSelectorViewTransitioningDelegate)
+    func configureCategoryFilterViewControllerWithSegue(_ segue : UIStoryboardSegue, categoryFilterViewControllerDelegate: BSCategoryFilterDelegate, tagBeingFilterBy: AnyObject, categoryFilterViewTransitioningDelegate: BSModalSelectorViewTransitioningDelegate)
     {
         
         let categoryFilterViewController = segue.destinationViewController as! BSCategoryFilterViewController
         let categoryFilterController = BSCategoryFilterController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         categoryFilterViewController.categoryFilterPresenter = BSCategoryFilterPresenter(categoryFilterController: categoryFilterController)
         categoryFilterViewController.transitioningDelegate = categoryFilterViewTransitioningDelegate
-        categoryFilterViewController.modalPresentationStyle = .Custom
+        categoryFilterViewController.modalPresentationStyle = .custom
         categoryFilterViewController.delegate = categoryFilterViewControllerDelegate
         categoryFilterViewController.selectedTag = tagBeingFilterBy
     }

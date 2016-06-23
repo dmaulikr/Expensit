@@ -28,11 +28,11 @@ import Foundation
         return []
     }
     
-    func graphSurplusResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphMonthlySurplusFetchRequestForSectionName(section)
+    func graphSurplusResults(for section: String) -> [AnyObject] {
+        let request = self.coreDataController.graphMonthlySurplusFetchRequest(forSectionName: section)
         
         do {
-            let output = try self.coreDataController.resultsForRequest(request)
+            let output = try self.coreDataController.results(for: request)
             return output
         }
         catch {
@@ -40,10 +40,10 @@ import Foundation
         }
     }
     
-    func graphExpensesResultsForSection(section: String) -> [AnyObject] {
-        let request = self.coreDataController.graphMonthlyExpensesFetchRequestForSectionName(section)
+    func graphExpensesResults(for section: String) -> [AnyObject] {
+        let request = self.coreDataController.graphMonthlyExpensesFetchRequest(forSectionName: section)
         do {
-            let output = try self.coreDataController.resultsForRequest(request)
+            let output = try self.coreDataController.results(for: request)
             return output
         }
         catch {

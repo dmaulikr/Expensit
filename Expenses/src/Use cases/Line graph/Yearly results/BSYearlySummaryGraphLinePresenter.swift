@@ -24,12 +24,12 @@ import Foundation
     
     
     func income() -> [AnyObject] {
-        let data = self.yearlySummaryGraphLineController.graphSurplusResultsForSection(self.section) // Get the data from cntroller
+        let data = self.yearlySummaryGraphLineController.graphSurplusResults(for: self.section) // Get the data from cntroller
         return self.dataForGraphFromQueryResults(data)
     }
 
     func expenses() -> [AnyObject] {
-        let data = self.yearlySummaryGraphLineController.graphExpensesResultsForSection(self.section)
+        let data = self.yearlySummaryGraphLineController.graphExpensesResults(for: self.section)
         return self.dataForGraphFromQueryResults(data)
     }
     
@@ -45,12 +45,12 @@ import Foundation
     }
 
     
-    func dataForGraphFromQueryResults(data : [AnyObject])  -> [AnyObject] {
+    func dataForGraphFromQueryResults(_ data : [AnyObject])  -> [AnyObject] {
         
         var graphData = [NSNumber]()
         let years = self.abscissaValues()
         
-        for (i, _) in years.enumerate()
+        for (i, _) in years.enumerated()
         {
             var monthDictionary : NSDictionary?
             for dic in data  {
@@ -66,14 +66,14 @@ import Foundation
             if monthDictionary != nil
             {
                 var value = monthDictionary!["yearlySum"] as! NSNumber
-                if value.compare(NSNumber(int: 0)) == .OrderedAscending {
-                    value = NSNumber(float: -value.floatValue)
+                if value.compare(NSNumber(value: 0)) == .orderedAscending {
+                    value = NSNumber(value: -value.floatValue)
                 }
                 graphData.append(value)
             }
             else
             {
-                graphData.append(NSNumber(float: 0))
+                graphData.append(NSNumber(value: 0))
             }
         }
         

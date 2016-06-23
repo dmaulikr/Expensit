@@ -23,11 +23,11 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
     
     /// BSBaseExpensesSummaryPresenterEventsProtocol
     
-    func filterChangedToCategory(category : Tag) {
-        self.showEntriesController.filterByCategory(category)
+    func filterChanged(to category : Tag) {
+        self.showEntriesController.filter(by : category)
     }
     
-    func viewIsReadyToDisplayEntriesCompletionBlock(block: ( sections : [BSDisplaySectionData] ) -> () )
+    func viewIsReadyToDisplayEntriesCompletionBlock(_ block: ( sections : [BSDisplaySectionData] ) -> () )
     {
         let dictionary = self.showEntriesController.entriesForSummary()        
         let sec = dictionary["sections"] as! [NSFetchedResultsSectionInfo]
@@ -36,9 +36,9 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
         block( sections: output)
     }
     
-    func viewIsReadyToDisplayImageForCategory(category : Tag?) {
-        let image = self.showEntriesController.imageForCategoy(category)
-        self.userInteface.displayImageForCategory(image!)
+    func viewIsReadyToDisplayImage(for category : Tag?) {
+        let image = self.showEntriesController.image(for: category)
+        self.userInteface.displayImage( for : image!)
     }
     
     func filterButtonTapped() {
@@ -49,7 +49,7 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
         
     }
     
-    func displayDataFromEntriesForSummary(data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
+    func displayDataFromEntriesForSummary(_ data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         return []
     }

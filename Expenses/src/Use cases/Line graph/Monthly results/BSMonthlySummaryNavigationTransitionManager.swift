@@ -12,7 +12,7 @@ import UIKit
 class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionManager
 {
     
-    func configureDailyExpensesViewControllerWithSegue(segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
+    func configureDailyExpensesViewControllerWithSegue(_ segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
     {
         let dailyExpensesViewController = segue.destinationViewController as! BSDailyExpensesSummaryViewController
         dailyExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
@@ -26,7 +26,7 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
         dailyExpensesViewController.navigationTransitionManager = dailyNavigationManager
     }
     
-    func configureMonthlyExpensesLineGraphViewControllerWithSegue(segue : UIStoryboardSegue, section : String)
+    func configureMonthlyExpensesLineGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, section : String)
     {
         let graphViewController = segue.destinationViewController as! BSGraphViewController
         let monthlyLineGraphController : BSGraphLineControllerProtocol = BSMonthlySummaryGraphLineController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
@@ -34,11 +34,11 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
         graphViewController.lineGraphPresenter = monthlyLineGraphPresenter
     }
     
-    func configureMonthlyExpensesPieGraphViewControllerWithSegue(segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
+    func configureMonthlyExpensesPieGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
     {
         let graphViewController = segue.destinationViewController as! BSPieChartViewController
         graphViewController.transitioningDelegate = animatedBlurEffectTransitioningDelegate;
-        graphViewController.modalPresentationStyle = .Custom;
+        graphViewController.modalPresentationStyle = .custom;
 
         let pieGraphController : BSPieGraphControllerProtocol = BSExpensesSummaryPieGraphController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: year)

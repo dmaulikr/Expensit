@@ -24,11 +24,11 @@ class BSExpensesSummaryPieGraphPresenter : NSObject, BSPieGraphPresenterProtocol
     
     func categories() -> [AnyObject]? {
         let sections = self.sections()
-        let categories = self.pieGraphController.categoriesForMonth(self.month, year: self.year) as! [Tag]
-        return self.pieGraphController.sortedTagsByPercentageFromSections(categories, sections:sections)
+        let categories = self.pieGraphController.categories(forMonth: self.month, year: self.year) as! [Tag]
+        return self.pieGraphController.sortedTagsByPercentage(fromSections: categories, sections:sections)
     }
     
     func sections() -> [AnyObject]? {
-        return self.pieGraphController.expensesByCategoryForMonth(self.month, year: self.year)
+        return self.pieGraphController.expensesByCategory(forMonth: self.month, year: self.year)
     }
 }

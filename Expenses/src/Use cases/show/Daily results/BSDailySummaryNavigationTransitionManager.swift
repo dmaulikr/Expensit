@@ -12,7 +12,7 @@ import UIKit
 
 class BSDailySummaryNavigationTransitionManager : BSBaseNavigationTransitionManager
 {
-    func configureDailyExpensesLineGraphViewControllerWithSegue(segue : UIStoryboardSegue, section : String)
+    func configureDailyExpensesLineGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, section : String)
     {
         let graphViewController = segue.destinationViewController as! BSGraphViewController
         let dailyLineGraphController : BSGraphLineControllerProtocol = BSDailySummaryGraphLineController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
@@ -20,11 +20,11 @@ class BSDailySummaryNavigationTransitionManager : BSBaseNavigationTransitionMana
         graphViewController.lineGraphPresenter = dailyLineGraphPresenter
     }
 
-    func configureMonthlyExpensesPieGraphViewControllerWithSegue(segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
+    func configureMonthlyExpensesPieGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
     {
         let graphViewController = segue.destinationViewController as! BSPieChartViewController
         graphViewController.transitioningDelegate = animatedBlurEffectTransitioningDelegate;
-        graphViewController.modalPresentationStyle = .Custom;
+        graphViewController.modalPresentationStyle = .custom;
         
         let pieGraphController : BSPieGraphControllerProtocol = BSExpensesSummaryPieGraphController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: year)

@@ -10,9 +10,15 @@ import Foundation
 
 @objc protocol BSAbstractExpensesSummaryPresenterEventsProtocol
 {
-    func filterChangedToCategory(category : Tag)
-    func viewIsReadyToDisplayEntriesCompletionBlock(_: ( sections : [BSDisplaySectionData]) -> ())    
-    func viewIsReadyToDisplayImageForCategory(category : Tag?)
+    @objc(filterChangedToCategory:)
+    func filterChanged(to category : Tag)
+    
+    func viewIsReadyToDisplayEntriesCompletionBlock(_: ( sections : [BSDisplaySectionData]) -> ())
+    
+    @objc(viewIsReadyToDisplayImageForCategory:)
+    func viewIsReadyToDisplayImage(for category : Tag?)
+    
     func filterButtonTapped()
+    
     func addNewEntryButtonTapped()    
 }

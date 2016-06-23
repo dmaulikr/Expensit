@@ -10,7 +10,7 @@ import Foundation
 
 @objc enum BSNumberSignType : Int
 {
-    case Zero = 0, Positive, Negative
+    case zero = 0, positive, negative
 }
 
 class BSDisplaySectionData : NSObject

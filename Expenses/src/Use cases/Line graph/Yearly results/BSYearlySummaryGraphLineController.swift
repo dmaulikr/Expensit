@@ -27,7 +27,7 @@ import Foundation
         let request = self.coreDataController.requestToGetYears()
         
         do {
-            let output = try self.coreDataController.resultsForRequest(request)
+            let output = try self.coreDataController.results(for: request)
             return output as! [NSDictionary]
         }
         catch {
@@ -35,10 +35,10 @@ import Foundation
         }
     }
     
-    func graphSurplusResultsForSection(section: String) -> [AnyObject] {
+    func graphSurplusResults(for section: String) -> [AnyObject] {
         let request = self.coreDataController.graphYearlySurplusFetchRequest()
         do {
-            let output = try self.coreDataController.resultsForRequest(request)
+            let output = try self.coreDataController.results(for: request)
             return output
         }
         catch {
@@ -46,10 +46,10 @@ import Foundation
         }        
     }
     
-    func graphExpensesResultsForSection(section: String) -> [AnyObject] {
+    func graphExpensesResults(for section: String) -> [AnyObject] {
         let request = self.coreDataController.graphYearlyExpensesFetchRequest()
         do {
-            let output = try self.coreDataController.resultsForRequest(request)
+            let output = try self.coreDataController.results(for: request)
             return output
         }
         catch {

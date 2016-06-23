@@ -10,9 +10,9 @@ import Foundation
 
 @objc protocol BSAddEntryControllerProtocol {
  
-    func saveEntry(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
+    func save(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
     func discardChanges()
-    func deleteEntry(entry : Entry)
+    func delete(entry : Entry)
     func saveChanges()
     func newEntry() -> Entry
 

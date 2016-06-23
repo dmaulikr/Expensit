@@ -10,7 +10,7 @@ import Foundation
 
 protocol BSPieGraphControllerProtocol
 {
-    func sortedTagsByPercentageFromSections(tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
-    func categoriesForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
-    func expensesByCategoryForMonth(month: NSNumber?, year : Int) -> [AnyObject]?
+    func sortedTagsByPercentage(fromSections tags: [Tag], sections : [AnyObject]?) -> [AnyObject]?
+    func categories(forMonth month: NSNumber?, year : Int) -> [AnyObject]?
+    func expensesByCategory(forMonth month: NSNumber?, year : Int) -> [AnyObject]?
 }
