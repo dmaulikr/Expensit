@@ -30,5 +30,18 @@ class BSDailySummaryNavigationTransitionManager : BSBaseNavigationTransitionMana
         let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: year)
         graphViewController.pieGraphPresenter = pieGraphPresenter
     }
+    
+    func configureAllExpensesViewControllerWithSegue(_ segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
+    {
+        let allExpensesViewController = segue.destinationViewController as! BSIndividualExpensesSummaryViewController
+        allExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
+        let allController = BSShowDailyEntriesController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
+        let allPresenter = BSShowDailyEntriesPresenter(showEntriesUserInterface: allExpensesViewController, showEntriesController: allController)
+                
+        allExpensesViewController.showEntriesController = (allController as BSAbstractShowEntriesControllerProtocol)
+        allExpensesViewController.showEntriesPresenter = allPresenter
+        
+    }
+
 
 }

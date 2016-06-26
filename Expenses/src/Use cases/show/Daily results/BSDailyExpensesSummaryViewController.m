@@ -22,16 +22,7 @@
 
 @implementation BSDailyExpensesSummaryViewController
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.showEntriesController = [[BSShowDailyEntriesController alloc] init];
-    id<BSDailyExpensesSummaryPresenterEventsProtocol> mp = [[BSShowDailyEntriesPresenter alloc] initWithShowEntriesUserInterface:self
-                                                                                                           showEntriesController:self.showEntriesController];
-    self.showEntriesPresenter = mp;
-    self.showDailyEntriesPresenter = mp;
-}
+
 
 #pragma mark - UICollectionViewDataSource
 
@@ -109,12 +100,12 @@
 
     if ([[segue identifier] isEqualToString:@"showEntriesForDay"])
     {
-        BSBaseExpensesSummaryViewController *dailyExpensesViewController = (BSBaseExpensesSummaryViewController*)segue.destinationViewController;
-        
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-        NSString *sectionTitle = self.sections[selectedIndexPath.section].title;        
-        dailyExpensesViewController.nameOfSectionToBeShown = [self.showDailyEntriesPresenter sectionNameForSelectedIndexPath:selectedIndexPath sectionTitle:sectionTitle];// sectionNameToScrollTo;
+        NSString *sectionTitle = self.sections[selectedIndexPath.section].title;
+
+        [dailyTransitionManager configureAllExpensesViewControllerWithSegue:segue
+                                                     nameOfSectionToBeShown:[self.showDailyEntriesPresenter sectionNameForSelectedIndexPath:selectedIndexPath sectionTitle:sectionTitle]];        
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])
     {

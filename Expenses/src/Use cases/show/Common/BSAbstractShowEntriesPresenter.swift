@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresenterEventsProtocol {
     
@@ -38,7 +39,7 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
     
     func viewIsReadyToDisplayImage(for category : Tag?) {
         let image = self.showEntriesController.image(for: category)
-        self.userInteface.displayImage( for : image!)
+        // TODO: It crah the app. self.userInteface.displayImage(for : image!)
     }
     
     func filterButtonTapped() {

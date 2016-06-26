@@ -142,6 +142,8 @@
 		008F766C18D2E9C80059CB55 /* libBSStaticFormTableViewControllerComponent.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 008F766518D2E9910059CB55 /* libBSStaticFormTableViewControllerComponent.a */; };
 		008F767C18D32EF50059CB55 /* BSStaticTableAddEntryFormCellActionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 0045FD7B182989B70074AAD1 /* BSStaticTableAddEntryFormCellActionDataSource.m */; };
 		008F768818D44B400059CB55 /* BSDateToDatePickerCellConvertor.m in Sources */ = {isa = PBXBuildFile; fileRef = 008F768718D44B400059CB55 /* BSDateToDatePickerCellConvertor.m */; };
+		009332681D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009332671D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m */; };
+		009332691D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 009332671D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m */; };
 		009C9EDF17B68FD300DE1A97 /* BSGreenTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EDE17B68FD300DE1A97 /* BSGreenTheme.m */; };
 		009C9EE317B6912900DE1A97 /* BSThemeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EE217B6912900DE1A97 /* BSThemeManager.m */; };
 		009C9EE717B6939100DE1A97 /* BSThemeManager_iOS7.m in Sources */ = {isa = PBXBuildFile; fileRef = 009C9EE617B6939100DE1A97 /* BSThemeManager_iOS7.m */; };
@@ -353,6 +355,8 @@
 		008F765F18D2E9900059CB55 /* BSStaticFormTableViewControllerComponent.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = BSStaticFormTableViewControllerComponent.xcodeproj; path = ../BSStaticFormTableViewControllerComponent/BSStaticFormTableViewControllerComponent.xcodeproj; sourceTree = "<group>"; };
 		008F768618D44B400059CB55 /* BSDateToDatePickerCellConvertor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSDateToDatePickerCellConvertor.h; sourceTree = "<group>"; };
 		008F768718D44B400059CB55 /* BSDateToDatePickerCellConvertor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDateToDatePickerCellConvertor.m; sourceTree = "<group>"; };
+		009332661D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSIndividualExpensesSummaryViewController.h; sourceTree = "<group>"; };
+		009332671D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSIndividualExpensesSummaryViewController.m; sourceTree = "<group>"; };
 		009C9EDC17B68F5300DE1A97 /* BSUIThemeProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSUIThemeProtocol.h; sourceTree = "<group>"; };
 		009C9EDD17B68FD300DE1A97 /* BSGreenTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSGreenTheme.h; sourceTree = "<group>"; };
 		009C9EDE17B68FD300DE1A97 /* BSGreenTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSGreenTheme.m; sourceTree = "<group>"; };
@@ -563,6 +567,8 @@
 		000A9A461D09EF710045523A /* All results */ = {
 			isa = PBXGroup;
 			children = (
+				009332661D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.h */,
+				009332671D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m */,
 				000A9A741D09F2290045523A /* BSShowAllEntriesController.swift */,
 				000A9A751D09F2290045523A /* BSShowAllEntriesPresenter.swift */,
 			);
@@ -1203,6 +1209,7 @@
 				000A9A381D09EB710045523A /* BSAddEntryController.swift in Sources */,
 				009D00FA19426FA000B850D4 /* BSHeaderButton.m in Sources */,
 				000A9A111D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift in Sources */,
+				009332681D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m in Sources */,
 				00E9F16C177F1A2C00A1A212 /* BSBaseExpenseCell.m in Sources */,
 				000A9A531D09F2030045523A /* BSShowMonthlyEntriesController.swift in Sources */,
 				007B8262177476780052FE84 /* Expenses.xcdatamodeld in Sources */,
@@ -1297,6 +1304,7 @@
 				000A9AA21D09FB760045523A /* BSCategoryFilterControllerProtocol.swift in Sources */,
 				000A9A711D09F21B0045523A /* BSAbstractShowEntriesPresenter.swift in Sources */,
 				000A9A4A1D09F1F00045523A /* BSShowYearlyEntriesController.swift in Sources */,
+				009332691D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m in Sources */,
 				000A9ADA1D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */,
 				000A9A281D09EA110045523A /* BSDailySummaryGraphLinePresenter.swift in Sources */,
 				000A9ACB1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */,

@@ -73,7 +73,8 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
     func sectionName(forSelected indexPath : IndexPath, sectionTitle: String) -> String {
         let month = sectionTitle.components(separatedBy: "/")[0]
         let year = sectionTitle.components(separatedBy: "/")[1]
-        return "\(year)/\(month)/\((indexPath as NSIndexPath).row + 1)"
+        return "\(month)/\(year)"
+        //return "\((indexPath as NSIndexPath).row + 1)/\(month)/\(year)"
     }
 
 }

@@ -23,15 +23,6 @@
 
 #pragma mark - View Cycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    self.showEntriesController = [[BSShowAllEntriesController alloc] init];
-    self.showEntriesPresenter = [[BSShowAllEntriesPresenter alloc] initWithShowEntriesUserInterface:self
-                                                                                 showEntriesController:self.showEntriesController];
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if ([self.sections count] == 0) {

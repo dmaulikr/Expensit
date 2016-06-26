@@ -14,9 +14,11 @@
 #import "BSStaticTableAddEntryFormCellActionDataSource.h"
 #import "BSMonthlyExpensesSummaryViewController.h"
 #import "BSDailyExpensesSummaryViewController.h"
+#import "BSIndividualExpensesSummaryViewController.h"
 #import "LineGraph.h"
 #import "BSGraphViewController.h"
 #import "BSModalSelectorViewTransitioningDelegate.h"
 #import "BSCategoryFilterViewController.h"
 #import "BSPieChartViewController.h"
 #import "BSAnimatedBlurEffectTransitioningDelegate.h"
+
