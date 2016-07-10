@@ -50,10 +50,6 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
         return self.coreDataController.image(forCategory: category)
     }
 
-    func sectionNameKeyPath() -> String? {
-        return nil
-    }
-
     // FETCH CONTROLLER
     func fetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult>?
     {
@@ -86,6 +82,10 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
 
     }
     
+    func sectionNameKeyPath() -> String? {
+        return nil
+    }
+
     func fetchRequest() -> NSFetchRequest<NSFetchRequestResult> {
         return NSFetchRequest()
     }

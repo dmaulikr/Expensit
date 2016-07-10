@@ -118,6 +118,8 @@
 		0017DB151937DC050052DCF4 /* libBSPieChartView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0017DB0C1937DBE80052DCF4 /* libBSPieChartView.a */; };
 		001FF01318E2178D004F06DB /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */; };
 		002487AD1809B403006652DF /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 002487AC1809B403006652DF /* Tag.m */; };
+		00418B8C1D23045F00DB4528 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00418B8B1D23045F00DB4528 /* PaddingLabel.swift */; };
+		00418B8D1D23045F00DB4528 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00418B8B1D23045F00DB4528 /* PaddingLabel.swift */; };
 		0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0053A7D418F9E43600D63918 /* BSYearlyLayout.m */; };
 		005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5EB178B58A500DC1800 /* BSGraphView.m */; };
 		005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */; };
@@ -315,6 +317,7 @@
 		002E2EBD191EB93E003630B2 /* v1.0.7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.7.xcdatamodel; sourceTree = "<group>"; };
 		0038B1F018B415580095CBF6 /* BSYearlyExpensesSummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlyExpensesSummaryTests.m; sourceTree = "<group>"; };
 		0039450E1A990C110081A5EE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = ExpensesTests/OCMock/libOCMock.a; sourceTree = "<group>"; };
+		00418B8B1D23045F00DB4528 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		0045FD7A182989B70074AAD1 /* BSStaticTableAddEntryFormCellActionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSStaticTableAddEntryFormCellActionDataSource.h; sourceTree = "<group>"; };
 		0045FD7B182989B70074AAD1 /* BSStaticTableAddEntryFormCellActionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSStaticTableAddEntryFormCellActionDataSource.m; sourceTree = "<group>"; };
 		0053A7D318F9E43600D63918 /* BSYearlyLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSYearlyLayout.h; sourceTree = "<group>"; };
@@ -951,6 +954,7 @@
 				00A5DB7517C12DC300FCE765 /* BSTriangularAccesoryView.m */,
 				009D00F819426FA000B850D4 /* BSHeaderButton.h */,
 				009D00F919426FA000B850D4 /* BSHeaderButton.m */,
+				00418B8B1D23045F00DB4528 /* PaddingLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1261,6 +1265,7 @@
 				000A9AAF1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
 				000A9A5F1D09F20E0045523A /* BSShowDailyEntriesController.swift in Sources */,
 				00D7E0F1178DE50F00474A30 /* BSNavigationControllerViewController.m in Sources */,
+				00418B8C1D23045F00DB4528 /* PaddingLabel.swift in Sources */,
 				000A9AC81D0C14000045523A /* BSPieGraphInterfaceProtocol.swift in Sources */,
 				000A9A0F1D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */,
 				000A9AA11D09FB760045523A /* BSCategoryFilterControllerProtocol.swift in Sources */,
@@ -1321,6 +1326,7 @@
 				000A9A601D09F20E0045523A /* BSShowDailyEntriesController.swift in Sources */,
 				000A9A121D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift in Sources */,
 				000A9A3B1D09EB710045523A /* BSAddEntryControllerProtocol.swift in Sources */,
+				00418B8D1D23045F00DB4528 /* PaddingLabel.swift in Sources */,
 				000A9A7F1D09F3CB0045523A /* BSDailySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A311D09EA980045523A /* BSGraphLinePresenterProtocol.swift in Sources */,
 				000A9A101D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */,

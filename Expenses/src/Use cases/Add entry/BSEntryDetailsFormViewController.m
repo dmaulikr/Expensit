@@ -81,8 +81,7 @@
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Couldn't save", nil)
                                                                              message:message
                                                                       preferredStyle:UIAlertControllerStyleAlert];
-    
-    
+        
     UIAlertAction *dismiss = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", nil)
                                                       style:UIAlertActionStyleCancel
                                                     handler:^(UIAlertAction * _Nonnull action) {

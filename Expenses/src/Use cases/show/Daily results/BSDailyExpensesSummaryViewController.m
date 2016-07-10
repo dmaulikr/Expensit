@@ -52,6 +52,20 @@
     cell.title.text = dayLabelText;
     cell.amountLabel.text = valueLabeltext;
     
+    switch (itemForDayMonthYear.signOfAmount)
+    {
+        case BSNumberSignTypeZero:
+            cell.isPositive = YES;
+            break;
+        case BSNumberSignTypePositive:
+            cell.isPositive = YES;
+            break;
+        case BSNumberSignTypeNegative:
+            cell.isPositive = NO;
+            break;
+    }
+
+    
     return cell;
 }
 

@@ -57,6 +57,19 @@
     [cell configure];
     cell.title.text = monthLabelText;
     cell.amountLabel.text = valueLabeltext;
+    
+    switch (itemForMonth.signOfAmount)
+    {
+        case BSNumberSignTypeZero:
+            cell.isPositive = YES;
+            break;
+        case BSNumberSignTypePositive:
+            cell.isPositive = YES;
+            break;
+        case BSNumberSignTypeNegative:
+            cell.isPositive = NO;
+            break;
+    }
 
     return cell;
 }

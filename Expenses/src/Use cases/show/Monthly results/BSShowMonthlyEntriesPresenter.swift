@@ -22,7 +22,7 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter
             var entries = [BSDisplayEntry]()
             for i in 0 ..< 12 {
                 
-                let monthData = BSDisplayEntry(title: DateTimeHelper.monthName(forMonthNumber: NSNumber(value: i+1)) , value: "", signOfAmount: .zero)
+                let monthData = BSDisplayEntry(title: DateTimeHelper.monthName(forMonthNumber: NSNumber(value: i+1)).uppercased() , value: "", signOfAmount: .zero)
                 entries.append(monthData)
             }
 
@@ -42,10 +42,10 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter
                     sign = .zero
                 }
                 let month = entryDic.value(forKey: "month") as! NSNumber
-                let monthString = DateTimeHelper.monthName(forMonthNumber: month)
+                let monthString = DateTimeHelper.monthName(forMonthNumber: month).uppercased()
                 let monthlySumString = BSCurrencyHelper.amountFormatter().string(from: value)!
                 
-                let entryData = BSDisplayEntry(title: monthString! as String , value: monthlySumString as String, signOfAmount: sign)
+                let entryData = BSDisplayEntry(title: monthString as String , value: monthlySumString as String, signOfAmount: sign)
                 entries[month.intValue - 1] = entryData
             }
             

@@ -42,9 +42,15 @@
     // Configure
     
     if (_isPositive) {
-        self.amountLabel.textColor = [UIColor greenColor];//[((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme greenColor];
-    } else {    
+        self.amountLabel.textColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme greenColor];
+        if (self.amountLabel.text.length != 0 ) {
+          self.amountLabel.backgroundColor = [[((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme greenColor] colorWithAlphaComponent:0.1];
+        }
+    } else {
         self.amountLabel.textColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme redColor];
+        if (self.amountLabel.text.length != 0 ) {
+          self.amountLabel.backgroundColor = [[((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme redColor] colorWithAlphaComponent:0.1];
+        }
     }
 }
 
@@ -52,6 +58,8 @@
 
 - (void) configure
 {
+    //self.amountLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.1];
+    self.amountLabel.layer.cornerRadius = 5.0;
     self.amountLabel.adjustsFontSizeToFitWidth = YES;
     if (![self selectedBackgroundView])
     {
