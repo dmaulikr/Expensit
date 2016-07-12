@@ -74,7 +74,11 @@
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
     
     NSString *sectionTitle = self.sections[indexPath.section].title;
-    headerView.titleLabel.text = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:sectionTitle];
+    headerView.titleLabel.text = self.sections[indexPath.section].title;
+    [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateNormal];
+    [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateSelected];
+    [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateHighlighted];
+
     BSHeaderButton *headerButton = (BSHeaderButton *)headerView.pieChartButton;
     
     // TODO: Move this to a model in the view or figure out a better way to get the indexPath of the section header the button is in.

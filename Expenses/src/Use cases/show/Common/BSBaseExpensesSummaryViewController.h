@@ -30,7 +30,7 @@
 @interface BSBaseExpensesSummaryViewController : UICollectionViewController <UICollectionViewDataSource, UICollectionViewDelegate, NSFetchedResultsControllerDelegate, UICollectionViewDelegateFlowLayout, BSCategoryFilterDelegate, BSUIViewControllerAbilityToAddEntry, BSAbstractExpensesSummaryUserInterfaceProtocol>
 
 @property (strong, nonatomic, nullable) UICollectionViewLayout *layout;
-@property (strong, nonatomic, nullable) NSFetchedResultsController *fetchedResultsController;
+//@property (strong, nonatomic, nullable) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic, nullable) id<BSAbstractExpensesSummaryPresenterEventsProtocol> showEntriesPresenter;
 @property (strong, nonatomic, nullable) id<BSAbstractShowEntriesControllerProtocol> showEntriesController;
 @property (strong, nonatomic, nullable) BSBaseNavigationTransitionManager *navigationTransitionManager;
@@ -40,6 +40,8 @@
  This property exists because in certain screens we don't show all items, for example, we just show
  months that have entries in the daily summary screen.*/
 @property (copy, nonatomic, nullable) NSString *nameOfSectionToBeShown;
+
+@property (strong, nonatomic, nullable) NSString *indexPathToScrollTo;
 
 @property (assign, nonatomic) BOOL shouldScrollToSelectedSection;
 

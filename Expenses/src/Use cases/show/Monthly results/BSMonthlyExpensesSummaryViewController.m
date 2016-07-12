@@ -69,8 +69,10 @@
         case BSNumberSignTypeNegative:
             cell.isPositive = NO;
             break;
-    }
+    
 
+    }
+    
     return cell;
 }
 
@@ -81,6 +83,9 @@
                                                                             withReuseIdentifier:[self reuseIdentifierForHeader]
                                                                                    forIndexPath:indexPath];
     headerView.titleLabel.text = self.sections[indexPath.section].title;
+    [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateNormal];
+    [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateSelected];
+    [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateHighlighted];
     BSHeaderButton *headerButton = (BSHeaderButton *)headerView.pieChartButton;
     
     // TODO: Move this to a model in the view or figure out a better way to get the indexPath of the section header the button is in.
@@ -90,6 +95,24 @@
     return headerView;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+    [collectionView deselectItemAtIndexPath:indexPath animated:NO];
+    BSMonthlySummaryEntryCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ExpenseCell" forIndexPath:indexPath];
+ 
+    UICubicTimingParameters *timing = [[UICubicTimingParameters alloc] initWithAnimationCurve:UIViewAnimationCurveEaseOut];
+    UIViewPropertyAnimator *animator = [[UIViewPropertyAnimator alloc] initWithDuration:0.7 timingParameters:timing];
+    [animator addAnimations:^{
+        cell.contentView.transform = CGAffineTransformMakeScale(2, 2);
+        [collectionView.collectionViewLayout invalidateLayout];
+    }];
+    
+    [animator startAnimation];
+    
+    
+
+}
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -100,7 +123,7 @@
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
         BSDisplaySectionData *sectionInfo = self.sections[selectedIndexPath.section];
-        NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.title]; // there are 12 months (0-11) that's why we add 1. The section name is the year
+        NSString *sectionNameToScrollTo = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:[NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.title]];  // there are 12 months (0-11) that's why we add 1. The section name is the year
         [monthlyTransitionManager configureDailyExpensesViewControllerWithSegue:segue nameOfSectionToBeShown:sectionNameToScrollTo];
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])

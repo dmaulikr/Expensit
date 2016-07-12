@@ -9,5 +9,7 @@
 import Foundation
 
 @objc protocol BSAddEntryInterfaceProtocol {
+    
+    @objc(displayEntry:)
     func display(entry : Entry)
 }
