@@ -16,7 +16,7 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
     
     override init()
     {
-        let delegate = UIApplication.shared().delegate as! BSAppDelegate
+        let delegate = UIApplication.shared.delegate as! BSAppDelegate
         self.coreDataStackHelper = delegate.coreDataHelper;
         self.coreDataController = BSCoreDataController(entityName : "Entry", delegate:nil, coreDataHelper:self.coreDataStackHelper)
         
@@ -32,7 +32,7 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
             try self.coreDataController.save(entry)
             successBlock()
         }
-        catch is ErrorProtocol
+        catch is Error
         {
             failureBlock(error: NSError(domain: "Could not save", code: 1, userInfo: nil))
         }

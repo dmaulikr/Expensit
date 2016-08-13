@@ -14,7 +14,7 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
     
     func configureDailyExpensesViewControllerWithSegue(_ segue : UIStoryboardSegue, nameOfSectionToBeShown : String)
     {
-        let dailyExpensesViewController = segue.destinationViewController as! BSDailyExpensesSummaryViewController
+        let dailyExpensesViewController = segue.destination as! BSDailyExpensesSummaryViewController
         dailyExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
         let dailyController = BSShowDailyEntriesController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         let dailyPresenter = BSShowDailyEntriesPresenter(showEntriesUserInterface: dailyExpensesViewController, showEntriesController: dailyController)
@@ -28,7 +28,7 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
     
     func configureMonthlyExpensesLineGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, section : String)
     {
-        let graphViewController = segue.destinationViewController as! BSGraphViewController
+        let graphViewController = segue.destination as! BSGraphViewController
         let monthlyLineGraphController : BSGraphLineControllerProtocol = BSMonthlySummaryGraphLineController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         let monthlyLineGraphPresenter : BSGraphLinePresenterProtocol = BSMonthlySummaryGraphLinePresenter(monthlySummaryGraphLineController: monthlyLineGraphController, section: section)
         graphViewController.lineGraphPresenter = monthlyLineGraphPresenter
@@ -36,7 +36,7 @@ class BSMonthlySummaryNavigationTransitionManager : BSBaseNavigationTransitionMa
     
     func configureMonthlyExpensesPieGraphViewControllerWithSegue(_ segue : UIStoryboardSegue, month : NSNumber?, year: Int, animatedBlurEffectTransitioningDelegate: BSAnimatedBlurEffectTransitioningDelegate)
     {
-        let graphViewController = segue.destinationViewController as! BSPieChartViewController
+        let graphViewController = segue.destination as! BSPieChartViewController
         graphViewController.transitioningDelegate = animatedBlurEffectTransitioningDelegate;
         graphViewController.modalPresentationStyle = .custom;
 

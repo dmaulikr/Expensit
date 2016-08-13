@@ -26,10 +26,10 @@ class BSBaseNavigationTransitionManager: NSObject
     
     func configureAddEntryViewControllerWithSegue(_ segue : UIStoryboardSegue)
     {
-        let navigationController = segue.destinationViewController as! UINavigationController
-        let cellActionsDataSource = BSStaticTableAddEntryFormCellActionDataSource(coreDataController: self.coreDataController, isEditing:true);
+        let navigationController = segue.destination as! UINavigationController
+        let cellActionsDataSource = BSStaticTableAddEntryFormCellActionDataSource(coreDataController: self.coreDataController, isEditing:false);
         let addEntryVC = navigationController.topViewController as! BSEntryDetailsFormViewController
-        let appDelegate = UIApplication.shared().delegate as! BSAppDelegate
+        let appDelegate = UIApplication.shared.delegate as! BSAppDelegate
 
         addEntryVC.addEntryController = BSAddEntryController()
         addEntryVC.addEntryPresenter = BSAddEntryPresenter(addEntryController: addEntryVC.addEntryController!, userInterface:addEntryVC)
@@ -43,7 +43,7 @@ class BSBaseNavigationTransitionManager: NSObject
     func configureCategoryFilterViewControllerWithSegue(_ segue : UIStoryboardSegue, categoryFilterViewControllerDelegate: BSCategoryFilterDelegate, tagBeingFilterBy: AnyObject, categoryFilterViewTransitioningDelegate: BSModalSelectorViewTransitioningDelegate)
     {
         
-        let categoryFilterViewController = segue.destinationViewController as! BSCategoryFilterViewController
+        let categoryFilterViewController = segue.destination as! BSCategoryFilterViewController
         let categoryFilterController = BSCategoryFilterController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         categoryFilterViewController.categoryFilterPresenter = BSCategoryFilterPresenter(categoryFilterController: categoryFilterController)
         categoryFilterViewController.transitioningDelegate = categoryFilterViewTransitioningDelegate

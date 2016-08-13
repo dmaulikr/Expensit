@@ -294,9 +294,8 @@ static Tag *tagBeingFilterBy = nil;
     [self.showEntriesPresenter filterChangedToCategory:tag]; // thi could be unified ith previou
     
     [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^( NSArray * _Nullable sections) {
-        //self.entries = entries;
-        self.sections = sections;
         
+        self.sections = sections;
         [self.collectionView reloadData];
         
         if (shouldTakeScreenshot)

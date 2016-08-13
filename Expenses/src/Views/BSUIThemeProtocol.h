@@ -21,6 +21,7 @@
 - (UIColor *)orangeColor;
 - (UIColor *)grayColor;
 - (UIColor *)selectedCellColor;
+- (UIColor *)unselectedCellColor;
 
 - (UIImage *)stretchableImageForNavBarDecisionButtonsWithStrokeColor:(UIColor *)strokeColor fillColor:(UIColor *)fillColor;
 

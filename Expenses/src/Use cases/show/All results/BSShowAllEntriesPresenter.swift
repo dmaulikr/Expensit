@@ -22,8 +22,13 @@ class BSShowAllEntriesPresenter : BSAbstractShowEntriesPresenter {
                 let entryData = BSDisplayEntry(title: coreDataEntry.desc , value: BSCurrencyHelper.amountFormatter().string(from: coreDataEntry.value), signOfAmount: .zero)
                 entries.append(entryData)
             }
-                        
-            let sectionData = BSDisplaySectionData(title: coreDatasectionInfo.name, entries: entries)
+            
+            let components = coreDatasectionInfo.name.components(separatedBy: "/")
+            let year = components[0]
+            let month = components[1]
+            let day = components[2]
+            let reversed = "\(day)/\(month)/\(year)"
+            let sectionData = BSDisplaySectionData(title: reversed, entries: entries)
             sections.append(sectionData)
         }
         

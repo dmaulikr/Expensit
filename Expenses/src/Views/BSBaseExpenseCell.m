@@ -54,19 +54,44 @@
     }
 }
 
-
-
-- (void) configure
-{
-    //self.amountLabel.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.1];
+- (void)configure
+{    
     self.amountLabel.layer.cornerRadius = 5.0;
     self.amountLabel.adjustsFontSizeToFitWidth = YES;
+    
     if (![self selectedBackgroundView])
     {
+        UIColor *selectedColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme selectedCellColor];
         self.selectedBackgroundView = [[UIView alloc] initWithFrame:self.frame];
-        self.selectedBackgroundView.backgroundColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme selectedCellColor];
+        self.selectedBackgroundView.backgroundColor = selectedColor ;
+    }
+}
+
+- (void)setHighlighted:(BOOL)highlighted
+{
+    [super setHighlighted:highlighted];
+    [self changeColor:highlighted];
+}
+
+- (void)setSelected:(BOOL)selected
+{
+    [super setSelected:selected];
+    [self changeColor:selected];
+}
+
+- (void)changeColor:(BOOL)on {
+    if (on)
+    {
+        UIColor *selectedColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme selectedCellColor];
+        self.title.backgroundColor = selectedColor;
+    }
+    else
+    {
+        UIColor *unselectedColor = [((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager.theme unselectedCellColor];
+        self.title.backgroundColor = unselectedColor;
     }
 
 }
+
 
 @end

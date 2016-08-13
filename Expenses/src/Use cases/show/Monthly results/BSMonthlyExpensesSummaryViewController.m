@@ -123,7 +123,7 @@
         UICollectionViewCell *selectedCell = (UICollectionViewCell*)sender;
         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
         BSDisplaySectionData *sectionInfo = self.sections[selectedIndexPath.section];
-        NSString *sectionNameToScrollTo = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:[NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.title]];  // there are 12 months (0-11) that's why we add 1. The section name is the year
+        NSString *sectionNameToScrollTo = [NSString stringWithFormat:@"%ld/%@", selectedIndexPath.row+1 ,sectionInfo.title]; // there are 12 months (0-11) that's why we add 1. The section name is the year
         [monthlyTransitionManager configureDailyExpensesViewControllerWithSegue:segue nameOfSectionToBeShown:sectionNameToScrollTo];
     }
     else if ([[segue identifier] isEqualToString:@"DisplayGraphView"])

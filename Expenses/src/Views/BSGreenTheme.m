@@ -63,10 +63,14 @@
     return [UIColor colorWithRed:50.0/255.0 green:50.0/255.0 blue:50.0/255.0 alpha:1.0];
 }
 
-
 - (UIColor *)selectedCellColor
 {
-    return [UIColor colorWithRed:86.0/255.0 green:130.0/255.0 blue:61.0/255.0 alpha:0.2];
+    return [UIColor colorWithRed:0.624 green:0.816 blue:0.902 alpha:1.00];
+}
+
+- (UIColor *)unselectedCellColor
+{
+    return [UIColor colorWithRed:253.0/255.0 green:253.0/255.0 blue:253.0/255.0 alpha:1];
 }
 
 - (UIImage *)stretchableImageForNavBarDecisionButtonsWithStrokeColor:(UIColor *)strokeColor fillColor:(UIColor *)fillColor

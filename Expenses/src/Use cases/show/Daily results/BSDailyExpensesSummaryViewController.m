@@ -50,7 +50,7 @@
     // configure the cell
     [cell configure];
     cell.title.text = dayLabelText;
-    cell.amountLabel.text = valueLabeltext;
+    cell.amountLabel.text = valueLabeltext;    
     
     switch (itemForDayMonthYear.signOfAmount)
     {
@@ -64,17 +64,17 @@
             cell.isPositive = NO;
             break;
     }
-
     
     return cell;
 }
+
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
 {
     BSDailyEntryHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:kind withReuseIdentifier:[self reuseIdentifierForHeader] forIndexPath:indexPath];
     
-    NSString *sectionTitle = self.sections[indexPath.section].title;
-    headerView.titleLabel.text = self.sections[indexPath.section].title;
+    NSString *sectionTitle = self.sections[indexPath.section].title;    
+    headerView.titleLabel.text = [DateTimeHelper monthNameAndYearStringFromMonthNumberAndYear:sectionTitle];
     [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateNormal];
     [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateSelected];
     [headerView.pieChartButton setTitle:@"Graph" forState:UIControlStateHighlighted];
