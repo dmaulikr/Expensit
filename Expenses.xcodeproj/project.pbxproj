@@ -169,6 +169,8 @@
 		00E9F16C177F1A2C00A1A212 /* BSBaseExpenseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F16B177F1A2C00A1A212 /* BSBaseExpenseCell.m */; };
 		00E9F174177F2E1F00A1A212 /* BSCurrencyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F173177F2E1F00A1A212 /* BSCurrencyHelper.m */; };
 		00F9213A17FF769000CACB4D /* OCMock in Resources */ = {isa = PBXBuildFile; fileRef = 00F9213917FF769000CACB4D /* OCMock */; };
+		00F95EE31D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F95EE21D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift */; };
+		00F95EE41D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00F95EE21D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift */; };
 		00F9B3BF18E76414009F626E /* BSVisualEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3BE18E76414009F626E /* BSVisualEffects.m */; };
 		EFE250C42B1E431B916B4A53 /* libPods-ExpensesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FCDFF005933C413E97D8C439 /* libPods-ExpensesTests.a */; };
 /* End PBXBuildFile section */
@@ -407,6 +409,7 @@
 		00E9F17A1780500C00A1A212 /* BSMonthlyExpensesSummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMonthlyExpensesSummaryTests.m; sourceTree = "<group>"; };
 		00F9213917FF769000CACB4D /* OCMock */ = {isa = PBXFileReference; lastKnownFileType = folder; name = OCMock; path = ExpensesTests/OCMock; sourceTree = "<group>"; };
 		00F9213F1807456000CACB4D /* v1.0.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.1.xcdatamodel; sourceTree = "<group>"; };
+		00F95EE21D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSIndividualEntriesSummaryNavigationTransitionManager.swift; sourceTree = "<group>"; };
 		00F9B3BD18E76414009F626E /* BSVisualEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSVisualEffects.h; sourceTree = "<group>"; };
 		00F9B3BE18E76414009F626E /* BSVisualEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSVisualEffects.m; sourceTree = "<group>"; };
 		00F9B3CA18E8AF36009F626E /* BSYearlySummaryViewControllerSpecs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlySummaryViewControllerSpecs.m; sourceTree = "<group>"; };
@@ -572,6 +575,7 @@
 			children = (
 				009332661D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.h */,
 				009332671D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m */,
+				00F95EE21D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift */,
 				000A9A741D09F2290045523A /* BSShowAllEntriesController.swift */,
 				000A9A751D09F2290045523A /* BSShowAllEntriesPresenter.swift */,
 			);
@@ -1205,6 +1209,7 @@
 				000A9A9E1D09FAD30045523A /* BSCategoryFilterPresenterEventsProtocol.swift in Sources */,
 				005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */,
 				00BD78A8183195F50004A808 /* BSAmountToTextControlCellConvertor.m in Sources */,
+				00F95EE31D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift in Sources */,
 				007B825B177476780052FE84 /* main.m in Sources */,
 				00BD78A0182FF35A0004A808 /* BSTagToSegmentedControlCellConvertor.m in Sources */,
 				009C9EE717B6939100DE1A97 /* BSThemeManager_iOS7.m in Sources */,
@@ -1311,6 +1316,7 @@
 				000A9A4A1D09F1F00045523A /* BSShowYearlyEntriesController.swift in Sources */,
 				009332691D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m in Sources */,
 				000A9ADA1D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */,
+				00F95EE41D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift in Sources */,
 				000A9A281D09EA110045523A /* BSDailySummaryGraphLinePresenter.swift in Sources */,
 				000A9ACB1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */,
 				000A9A861D09F6E10045523A /* BSYearlyExpensesSummaryViewController.m in Sources */,

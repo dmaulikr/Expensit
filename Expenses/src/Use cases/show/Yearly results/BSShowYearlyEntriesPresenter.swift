@@ -18,7 +18,7 @@ class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter
             var entries = [BSDisplayEntry]()
             for entryDic in (coreDatasectionInfo.objects)!
             {
-                let value = entryDic.value(forKey: "yearlySum") as! NSNumber
+                let value = (entryDic as AnyObject).value(forKey: "yearlySum") as! NSNumber
                 let r : ComparisonResult = value.compare(0)
                 var sign : BSNumberSignType
                 
@@ -31,8 +31,8 @@ class BSShowYearlyEntriesPresenter : BSAbstractShowEntriesPresenter
                     case ComparisonResult.orderedSame:
                         sign = .zero
                 }
-                let year = entryDic.value(forKey: "year") as! NSNumber
-                let yearString = NSString(format:"\(year)")
+                let year = (entryDic as AnyObject).value(forKey: "year") as! NSNumber
+                let yearString = NSString(format:"\(year)" as NSString)
                 let yearlySumString = BSCurrencyHelper.amountFormatter().string(from: value)!
                 
                 let entryData = BSDisplayEntry(title: yearString as String , value: yearlySumString as String, signOfAmount: sign)

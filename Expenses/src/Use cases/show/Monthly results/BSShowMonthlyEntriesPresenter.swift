@@ -28,7 +28,7 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter
 
             for entryDic in (coreDatasectionInfo.objects)!
             {
-                let value = entryDic.value(forKey: "monthlySum") as! NSNumber
+                let value = (entryDic as AnyObject).value(forKey: "monthlySum") as! NSNumber
                 let r : ComparisonResult = value.compare(0)
                 var sign : BSNumberSignType
                 
@@ -41,7 +41,7 @@ class BSShowMonthlyEntriesPresenter : BSAbstractShowEntriesPresenter
                 case ComparisonResult.orderedSame:
                     sign = .zero
                 }
-                let month = entryDic.value(forKey: "month") as! NSNumber
+                let month = (entryDic as AnyObject).value(forKey: "month") as! NSNumber
                 let monthString = DateTimeHelper.monthName(forMonthNumber: month).uppercased()
                 let monthlySumString = BSCurrencyHelper.amountFormatter().string(from: value)!
                 

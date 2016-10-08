@@ -40,7 +40,7 @@ class BSBaseNavigationTransitionManager: NSObject
     
     
     // TODO: Creating the instance of categoryFilterViewTransitioningDelegate in this method does not ork, there is a crash
-    func configureCategoryFilterViewControllerWithSegue(_ segue : UIStoryboardSegue, categoryFilterViewControllerDelegate: BSCategoryFilterDelegate, tagBeingFilterBy: AnyObject, categoryFilterViewTransitioningDelegate: BSModalSelectorViewTransitioningDelegate)
+    func configureCategoryFilterViewControllerWithSegue(_ segue : UIStoryboardSegue, categoryFilterViewControllerDelegate: BSCategoryFilterDelegate, tagBeingFilterBy: AnyObject?, categoryFilterViewTransitioningDelegate: BSModalSelectorViewTransitioningDelegate)
     {
         
         let categoryFilterViewController = segue.destination as! BSCategoryFilterViewController

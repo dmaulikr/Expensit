@@ -21,7 +21,7 @@ class BSCategoryFilterPresenter: NSObject, BSCategoryFilterPresenterEventsProtoc
     func tagInfo() -> NSDictionary {
         let tags = self.categoryFilterController.allTags()
         let images = self.categoryFilterController.allTagsImages()
-        return NSDictionary(objects: [tags, images], forKeys: ["tags", "images"])
+        return NSDictionary(objects: [tags, images], forKeys: ["tags" as NSCopying, "images" as NSCopying])
     }
 
 }

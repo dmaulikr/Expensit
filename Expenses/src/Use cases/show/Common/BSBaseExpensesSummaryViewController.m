@@ -67,8 +67,7 @@ static Tag *tagBeingFilterBy = nil;
     [super viewWillAppear:animated];
     
     // Request data
-    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^( NSArray * _Nullable sections) {
-        //self.entries = entries;
+    [self.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^( NSArray * _Nullable sections) {        
         self.sections = sections;
         [self.collectionView reloadData];
         

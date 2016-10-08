@@ -41,7 +41,7 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
             
             for entryDic in (coreDatasectionInfo.objects)!
             {
-                let value = entryDic.value(forKey: "dailySum") as! NSNumber
+                let value = (entryDic as AnyObject).value(forKey: "dailySum") as! NSNumber
                 let r : ComparisonResult = value.compare(0)
                 var sign : BSNumberSignType
                 
@@ -54,7 +54,7 @@ class BSShowDailyEntriesPresenter : BSAbstractShowEntriesPresenter, BSDailyExpen
                 case ComparisonResult.orderedSame:
                     sign = .zero
                 }
-                let day = entryDic.value(forKey: "day") as! NSNumber
+                let day = (entryDic as AnyObject).value(forKey: "day") as! NSNumber
                 let dayString = "\(day)"
                 let dailySumString = BSCurrencyHelper.amountFormatter().string(from: value)!
                 

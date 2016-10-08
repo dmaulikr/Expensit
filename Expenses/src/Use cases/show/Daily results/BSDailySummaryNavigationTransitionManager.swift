@@ -27,7 +27,7 @@ class BSDailySummaryNavigationTransitionManager : BSBaseNavigationTransitionMana
         graphViewController.modalPresentationStyle = .custom;
         
         let pieGraphController : BSPieGraphControllerProtocol = BSExpensesSummaryPieGraphController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
-        let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: year)
+        let pieGraphPresenter : BSPieGraphPresenterProtocol = BSExpensesSummaryPieGraphPresenter(pieGraphController: pieGraphController, month: month, year: NSNumber(integerLiteral: year))
         graphViewController.pieGraphPresenter = pieGraphPresenter
     }
     
@@ -35,6 +35,8 @@ class BSDailySummaryNavigationTransitionManager : BSBaseNavigationTransitionMana
     {
         let allExpensesViewController = segue.destination as! BSIndividualExpensesSummaryViewController
         allExpensesViewController.nameOfSectionToBeShown = nameOfSectionToBeShown;
+        let dailyNavigationManager = BSIndividualEntriesSummaryNavigationTransitionManager(coreDataStackHelper: self.coreDataStackHelper, coreDataController: self.coreDataController)
+        allExpensesViewController.navigationTransitionManager = dailyNavigationManager
         let allController = BSShowAllEntriesController(coreDataStackHelper : self.coreDataStackHelper, coreDataController : self.coreDataController)
         let allPresenter = BSShowAllEntriesPresenter(showEntriesUserInterface: allExpensesViewController, showEntriesController: allController)
                 

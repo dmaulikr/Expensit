@@ -12,9 +12,9 @@ class BSExpensesSummaryPieGraphPresenter : NSObject, BSPieGraphPresenterProtocol
 {
     let pieGraphController : BSPieGraphControllerProtocol
     let month : NSNumber?
-    let year : Int
+    let year : NSNumber
     
-    init(pieGraphController: BSPieGraphControllerProtocol, month: NSNumber?, year: Int)
+    init(pieGraphController: BSPieGraphControllerProtocol, month: NSNumber?, year: NSNumber)
     {
         self.pieGraphController = pieGraphController
         self.month = month

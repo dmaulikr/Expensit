@@ -11,16 +11,16 @@ import Foundation
 class BSExpensesSummaryPieGraphController : BSAbstractShowEntriesController, BSPieGraphControllerProtocol {
  
     func sortedTagsByPercentage(fromSections tags: [Tag], sections : [AnyObject]?) -> [AnyObject]? {
-        return self.coreDataController.sortedTagsByPercentage(fromSections: tags, sections:sections)
+        return self.coreDataController.sortedTagsByPercentage(fromSections: tags, sections:sections) as [AnyObject]?
     }
     
     // make month nil
-    func categories(forMonth month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.coreDataController.categories(forMonth: month, inYear: year)
+    func categories(forMonth month: NSNumber?, year : NSNumber) -> [AnyObject]? {
+        return self.coreDataController.categories(forMonth: month, inYear: year) as [AnyObject]?
     }
     
-    func expensesByCategory(forMonth month: NSNumber?, year : Int) -> [AnyObject]? {
-        return self.coreDataController.expensesByCategory(forMonth: month, inYear:year)
+    func expensesByCategory(forMonth month: NSNumber?, year : NSNumber) -> [AnyObject]? {
+        return self.coreDataController.expensesByCategory(forMonth: month, inYear:year) as [AnyObject]?
     }
 
 }

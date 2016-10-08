@@ -11,7 +11,7 @@ import Foundation
 @objc protocol BSAddEntryPresenterEventsProtocol {
     
     @objc(saveEntry:successBlock:failureBlock:)
-    func save(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
+    func save(entry : Entry, successBlock :()->(), failureBlock:(_ error : NSError) -> () )
     
     func userCancelledEditionOfExistingEntry()
     

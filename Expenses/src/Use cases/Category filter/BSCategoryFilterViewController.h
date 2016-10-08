@@ -24,13 +24,13 @@
 
 @property (strong, nonatomic, nullable) id<BSCategoryFilterPresenterEventsProtocol> categoryFilterPresenter;
 
-@property (nonatomic, weak) id <BSCategoryFilterDelegate> delegate;
+@property (nonatomic, weak, nullable) id <BSCategoryFilterDelegate> delegate;
 
-@property (nonatomic, weak) IBOutlet UIPickerView *pickerView;
+@property (nonatomic, weak, nullable) IBOutlet UIPickerView *pickerView;
 
-@property (nonatomic, weak) IBOutlet UILabel *statusLabel;
+@property (nonatomic, weak, nullable) IBOutlet UILabel *statusLabel;
 
-@property (nonatomic, strong) id selectedTag;
+@property (nonatomic, strong, nullable) id selectedTag;
 
 
 @end

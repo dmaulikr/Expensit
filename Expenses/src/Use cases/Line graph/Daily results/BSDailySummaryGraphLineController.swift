@@ -31,7 +31,7 @@ import Foundation
         
         do {
             let output = try self.coreDataController.results(for: request)
-            return output
+            return output as [AnyObject]
         }
         catch {
             return []
@@ -42,7 +42,7 @@ import Foundation
         let request = self.coreDataController.graphDailyExpensesFetchRequest(forSectionName: section)
         do {
             let output = try self.coreDataController.results(for: request)
-            return output
+            return output as [AnyObject]
         }
         catch {
             return []

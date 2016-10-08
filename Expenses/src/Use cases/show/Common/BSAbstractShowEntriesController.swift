@@ -42,7 +42,7 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
     {
         let (entries, sections) = self.performFetch()
         
-        return NSDictionary(objects: [entries!, sections!], forKeys: ["entries", "sections"])
+        return NSDictionary(objects: [entries!, sections!], forKeys: ["entries" as NSCopying, "sections" as NSCopying])
     }
     
     func image(for category :Tag?) -> UIImage?

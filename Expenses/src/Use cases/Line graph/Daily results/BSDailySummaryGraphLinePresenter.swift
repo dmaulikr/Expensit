@@ -59,12 +59,12 @@ import Foundation
         for dic in data {
             let dictionary = dic as! NSDictionary
             let day = dictionary["day"] as! Int
-            let dailySum = dictionary["dailySum"] as! Float
-            
-            if dailySum > 0 {
-                graphData[day] = dailySum
+            let dailySum = dictionary["dailySum"] as! NSNumber
+            let dailySumAsFloat = dailySum.floatValue
+            if dailySumAsFloat > 0 {
+                graphData[day] = NSNumber(value: dailySumAsFloat)
             } else {
-                graphData[day] = -dailySum
+                graphData[day] = NSNumber(value: -dailySumAsFloat)
             }
         }
         

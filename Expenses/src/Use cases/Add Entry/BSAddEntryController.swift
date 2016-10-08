@@ -25,16 +25,16 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
 
     /// BSAddEntryControllerProtocol
     
-    func save(entry : Entry, successBlock :()->(), failureBlock:(error : NSError) -> () )
+    func save(entry : Entry, successBlock :()->(), failureBlock:(_ error : NSError) -> () )
     {
         do
         {
             try self.coreDataController.save(entry)
             successBlock()
         }
-        catch is Error
+        catch
         {
-            failureBlock(error: NSError(domain: "Could not save", code: 1, userInfo: nil))
+            failureBlock(NSError(domain: "Could not save", code: 1, userInfo: nil))
         }
         
     }
@@ -54,5 +54,11 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
     func newEntry() -> Entry {
         return self.coreDataController.newEntry()
     }
-
+    
+    func entryAtIndexPath( _ index : NSIndexPath) -> Entry {
+        // get requet
+        // tell coredatacontroller to execute requet
+        
+        return Entry()
+    }
 }

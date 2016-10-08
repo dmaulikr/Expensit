@@ -28,17 +28,17 @@ class BSAbstractShowEntriesPresenter : NSObject, BSAbstractExpensesSummaryPresen
         self.showEntriesController.filter(by : category)
     }
     
-    func viewIsReadyToDisplayEntriesCompletionBlock(_ block: ( sections : [BSDisplaySectionData] ) -> () )
+    func viewIsReadyToDisplayEntriesCompletionBlock(_ block: ( _ sections : [BSDisplaySectionData] ) -> () )
     {
         let dictionary = self.showEntriesController.entriesForSummary()        
         let sec = dictionary["sections"] as! [NSFetchedResultsSectionInfo]
         let output = self.displayDataFromEntriesForSummary(sec)
         // CallBack hen data i ready
-        block( sections: output)
+        block( output)
     }
     
     func viewIsReadyToDisplayImage(for category : Tag?) {
-        let image = self.showEntriesController.image(for: category)
+        _ = self.showEntriesController.image(for: category)
         // TODO: It crah the app. self.userInteface.displayImage(for : image!)
     }
     

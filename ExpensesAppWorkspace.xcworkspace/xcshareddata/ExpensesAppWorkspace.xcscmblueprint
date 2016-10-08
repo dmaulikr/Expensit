@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "2B031A5B115D95FE8FD66D1549A97AA1F81D26C4",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E47C5DAC48C91F63041F9715C70E3D3F58165609" : 9223372036854775807,
+    "4FD7C20106F5BD91089CFF7BC197AC2E448D173B" : 9223372036854775807,
+    "2B031A5B115D95FE8FD66D1549A97AA1F81D26C4" : 9223372036854775807,
+    "C8671C8B06C57E1D4F0976E276ADB20BA6263573" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "28E3C253-86F6-42DC-A07C-FDD05EC728B2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E47C5DAC48C91F63041F9715C70E3D3F58165609" : "BSPieChartView\/",
+    "4FD7C20106F5BD91089CFF7BC197AC2E448D173B" : "Kiwi\/",
+    "2B031A5B115D95FE8FD66D1549A97AA1F81D26C4" : "Expenses\/",
+    "C8671C8B06C57E1D4F0976E276ADB20BA6263573" : "BSStaticFormTableViewControllerComponent\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ExpensesAppWorkspace",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ExpensesAppWorkspace.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/newboadki\/Expensit.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "2B031A5B115D95FE8FD66D1549A97AA1F81D26C4"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/allending\/Kiwi.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4FD7C20106F5BD91089CFF7BC197AC2E448D173B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/newboadki\/BSStaticFormTableViewControllerComponent.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "C8671C8B06C57E1D4F0976E276ADB20BA6263573"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/newboadki\/BSPieChartView.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E47C5DAC48C91F63041F9715C70E3D3F58165609"
+    }
+  ]
+}
