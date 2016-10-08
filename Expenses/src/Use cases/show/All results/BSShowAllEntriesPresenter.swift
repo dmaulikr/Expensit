@@ -9,7 +9,7 @@
 import Foundation
 
 class BSShowAllEntriesPresenter : BSAbstractShowEntriesPresenter {
- 
+     
     override func displayDataFromEntriesForSummary(_ data : [NSFetchedResultsSectionInfo]) -> [BSDisplaySectionData]
     {
         var sections = [BSDisplaySectionData]()

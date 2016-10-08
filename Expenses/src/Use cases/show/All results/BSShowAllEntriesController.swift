@@ -18,7 +18,6 @@ class BSShowAllEntriesController: BSAbstractShowEntriesController {
 
     override func sectionNameKeyPath() -> String? {
         return "yearMonthDay"
-    }
-    
+    }    
 
 }

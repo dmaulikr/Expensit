@@ -14,4 +14,5 @@ import Foundation
     func entriesForSummary() -> NSDictionary
     func image(for category :Tag?) -> UIImage?
     func sectionNameKeyPath() -> String?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>? {get}
 }

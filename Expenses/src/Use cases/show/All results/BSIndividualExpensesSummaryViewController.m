@@ -98,32 +98,12 @@
     else if ([[segue identifier] isEqualToString:@"editEntryFromEntry"])
     {
         BSIndividualEntriesSummaryNavigationTransitionManager *individualEntriesTransitionManager = (BSIndividualEntriesSummaryNavigationTransitionManager *)self.navigationTransitionManager;
-
         
-        /*        UINavigationController *navController =(UINavigationController*)segue.destinationViewController;
-         BSEntryDetailsFormViewController *editEntryViewController = (BSEntryDetailsFormViewController*)[navController topViewController];
-         editEntryViewController.appearanceDelegate = ((BSAppDelegate *)[[UIApplication sharedApplication] delegate]).themeManager;
-         UICollectionViewCell *selectedCell = (UICollectionViewCell *)sender;
-         NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
-         int sum = 0;
-         for (int i=0; i<selectedIndexPath.section; i++)
-         {
-         sum += self.sections[i].numberOfEntries;
-         }
-         
-         //editEntryViewController.coreDataController = self.coreDataController;
-         editEntryViewController.entryModel = self.entries[sum + selectedIndexPath.row];
-         editEntryViewController.isEditingEntry = YES;
-         BSStaticTableAddEntryFormCellActionDataSource *cellActionsDataSource = [[BSStaticTableAddEntryFormCellActionDataSource alloc] initWithCoreDataController:nil isEditing:YES];
-         editEntryViewController.cellActionDataSource = cellActionsDataSource;*/
-        
-
-        
-        
-//        BSDisplaySectionData *section = self.sections[selectedIndexPath.section];
-//        BSDisplayEntry *displayEntry = section.entries[selectedIndexPath.row];
-//        //[individualEntriesTransitionManager configureEditEntryViewControllerWithSegue:segue andEntry:displayEntry];
-//        [individualEntriesTransitionManager configureEditEntryViewControllerWithSegue:segue selectedIndexPath: selectedIndexPath];
+        UICollectionViewCell *selectedCell = (UICollectionViewCell *)sender;
+        NSIndexPath *selectedIndexPath = [self.collectionView indexPathForCell:selectedCell];
+        [individualEntriesTransitionManager configureEditEntryViewControllerWithSegue:segue
+                                                                    selectedIndexPath:selectedIndexPath
+                                                                  allEntriesPresenter:self.showEntriesPresenter];
     }
     else
     {

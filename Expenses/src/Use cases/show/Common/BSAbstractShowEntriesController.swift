@@ -14,7 +14,7 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
  
     var coreDataStackHelper : CoreDataStackHelper
     var coreDataController : BSCoreDataController
-    private var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
+    var _fetchedResultsController: NSFetchedResultsController<NSFetchRequestResult>?
     
     /// Initializer
     

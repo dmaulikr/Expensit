@@ -10,6 +10,9 @@ import Foundation
 
 @objc protocol BSAbstractExpensesSummaryPresenterEventsProtocol
 {
+    
+    var showEntriesController : BSAbstractShowEntriesControllerProtocol {get}
+    
     @objc(filterChangedToCategory:)
     func filterChanged(to category : Tag)
     

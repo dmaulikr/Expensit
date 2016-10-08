@@ -49,12 +49,10 @@ class BSAddEntryPresenter: NSObject, BSAddEntryPresenterEventsProtocol {
     
     func userInterfaceReadyToDiplayEntry()
     {
-        if let indexPath = self.indexPathOfEntryToEdit
+        if let entry = self.addEntryController.editingEntry
         {
-            // Editing
-            let entry = self.addEntryController.entryAtIndexPath(indexPath)
-            //tranform entry into diplay entry
-            //self.userInterface.display(entry: diplayentry)
+            // Editing            
+            self.userInterface.display(entry: entry)
         }
         else
         {

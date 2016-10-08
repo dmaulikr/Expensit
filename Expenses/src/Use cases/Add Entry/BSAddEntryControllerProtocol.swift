@@ -15,5 +15,5 @@ import Foundation
     func delete(entry : Entry)
     func saveChanges()
     func newEntry() -> Entry
-    func entryAtIndexPath(_ index : NSIndexPath) -> Entry
+    var editingEntry : Entry? {get}
 }

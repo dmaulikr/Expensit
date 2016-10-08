@@ -12,11 +12,13 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
     
     var coreDataStackHelper : CoreDataStackHelper
     var coreDataController : BSCoreDataController
+    var editingEntry : Entry?
 
     
-    override init()
+    init(entryToEdit : Entry?)
     {
         let delegate = UIApplication.shared.delegate as! BSAppDelegate
+        self.editingEntry = entryToEdit
         self.coreDataStackHelper = delegate.coreDataHelper;
         self.coreDataController = BSCoreDataController(entityName : "Entry", delegate:nil, coreDataHelper:self.coreDataStackHelper)
         
@@ -53,12 +55,5 @@ class BSAddEntryController: NSObject, BSAddEntryControllerProtocol {
     
     func newEntry() -> Entry {
         return self.coreDataController.newEntry()
-    }
-    
-    func entryAtIndexPath( _ index : NSIndexPath) -> Entry {
-        // get requet
-        // tell coredatacontroller to execute requet
-        
-        return Entry()
-    }
+    }    
 }

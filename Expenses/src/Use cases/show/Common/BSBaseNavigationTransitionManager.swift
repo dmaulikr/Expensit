@@ -31,7 +31,7 @@ class BSBaseNavigationTransitionManager: NSObject
         let addEntryVC = navigationController.topViewController as! BSEntryDetailsFormViewController
         let appDelegate = UIApplication.shared.delegate as! BSAppDelegate
 
-        addEntryVC.addEntryController = BSAddEntryController()
+        addEntryVC.addEntryController = BSAddEntryController(entryToEdit:nil)
         addEntryVC.addEntryPresenter = BSAddEntryPresenter(addEntryController: addEntryVC.addEntryController!, userInterface:addEntryVC)
         addEntryVC.isEditingEntry = false;
         addEntryVC.cellActionDataSource = cellActionsDataSource;
