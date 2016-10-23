@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11191" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sxs-pF-qCy">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="sxs-pF-qCy">
     <dependencies>
         <deployment version="2336" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11156"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
@@ -29,8 +29,8 @@
         <!--Yearly-->
         <scene sceneID="4Jy-9v-7CR">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="hVc-YE-t2T" customClass="BSYearlyExpensesSummaryViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="xt9-c7-2OQ">
+                <collectionViewController storyboardIdentifier="BSYearlyExpensesSummaryViewController" autoresizesArchivedViewToFullSize="NO" id="hVc-YE-t2T" customClass="BSYearlyExpensesSummaryViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="xt9-c7-2OQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -215,12 +215,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" tag="300" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bco-Z4-Rs4" userLabel="Background Image View">
-                                <frame key="frameInset" minY="-71" width="375" height="668"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1u3-A2-Al2" userLabel="Background Image View">
-                                <frame key="frameInset" width="375" height="527"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" tag="300" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bco-Z4-Rs4" userLabel="Background Image View"/>
+                            <imageView userInteractionEnabled="NO" tag="200" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1u3-A2-Al2" userLabel="Background Image View"/>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2W-eo-0US" customClass="BSCategoryPieChartView">
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -312,9 +308,7 @@
                                     <action selector="cancelButtonPressed:" destination="9hF-Up-ZXc" eventType="touchUpInside" id="g4S-lz-351"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.0" tag="500" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-eE-5oI" userLabel="TearDownAnimation_From">
-                                <frame key="frameInset" width="375" height="527"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" alpha="0.0" tag="500" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YYV-eE-5oI" userLabel="TearDownAnimation_From"/>
                             <imageView userInteractionEnabled="NO" alpha="0.0" tag="400" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hdM-D4-ADA" userLabel="TearDownAnimation_To"/>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -356,12 +350,12 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="7SC-kq-KJc"/>
-                                <exclude reference="MdB-mI-hUO"/>
-                                <exclude reference="blO-Hr-eUy"/>
                                 <exclude reference="5sR-hs-6K8"/>
                                 <exclude reference="JhJ-T9-JYR"/>
                                 <exclude reference="RYU-X0-3t9"/>
+                                <exclude reference="7SC-kq-KJc"/>
+                                <exclude reference="MdB-mI-hUO"/>
+                                <exclude reference="blO-Hr-eUy"/>
                                 <exclude reference="9Ju-ib-1Pv"/>
                             </mask>
                         </variation>
@@ -513,7 +507,7 @@
                                 <rect key="frame" x="0.0" y="252" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="7AV-1F-6oL" id="J9F-nH-0iW">
-                                    <frame key="frameInset" minX="0.0%" minY="0.0%" width="375" height="43"/>
+                                    <frame key="frameInset" minX="0.0%" minY="0.0%" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="EEK-9u-Wdx">
@@ -647,8 +641,8 @@
         <!--Monthly-->
         <scene sceneID="dND-11-XUn">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="atE-XM-VWQ" customClass="BSMonthlyExpensesSummaryViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="40P-kb-ihY">
+                <collectionViewController storyboardIdentifier="BSMonthlyExpensesSummaryViewController" autoresizesArchivedViewToFullSize="NO" id="atE-XM-VWQ" customClass="BSMonthlyExpensesSummaryViewController" sceneMemberID="viewController">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="40P-kb-ihY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99215686270000003" green="0.99215686270000003" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -760,7 +754,7 @@
         <scene sceneID="3uM-AG-LiF">
             <objects>
                 <collectionViewController autoresizesArchivedViewToFullSize="NO" id="DkI-cO-Haw" customClass="BSDailyExpensesSummaryViewController" sceneMemberID="viewController">
-                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="E3n-KP-lBX">
+                    <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="E3n-KP-lBX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.99215686274509807" green="0.99215686274509807" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -881,7 +875,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ExpenseCell" id="CqC-Bq-eKo" customClass="BSSingleEntryCell">
-                                <rect key="frame" x="28" y="53" width="320" height="41"/>
+                                <rect key="frame" x="27" y="53" width="320" height="41"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="41"/>
@@ -966,9 +960,9 @@
         <image name="filter_all" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LOK-DZ-fZ1"/>
-        <segue reference="3Wo-jm-gLj"/>
-        <segue reference="ppL-ZX-bTD"/>
-        <segue reference="xiw-zN-IxC"/>
+        <segue reference="kPC-HB-T5S"/>
+        <segue reference="kAZ-wN-jUI"/>
+        <segue reference="VMT-65-EvS"/>
+        <segue reference="Omz-ET-bsl"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,16 +9,16 @@
 import Foundation
 
 
-@objc class BSDailySummaryGraphLinePresenter: NSObject, BSGraphLinePresenterProtocol {
+@objc public class BSDailySummaryGraphLinePresenter: NSObject, BSGraphLinePresenterProtocol {
     
     var dailySummaryGraphLineController : BSGraphLineControllerProtocol
     var section: String
     
     
-    init(dailySummaryGraphLineController : BSGraphLineControllerProtocol, section: String)
+    init!(dailySummaryGraphLineController : BSGraphLineControllerProtocol, section: String)
     {
         self.dailySummaryGraphLineController = dailySummaryGraphLineController
-        self.section = section
+        self.section = section as String
         super.init()
     }
     
@@ -51,7 +51,7 @@ import Foundation
     
     
     /// Helper private
-    func dataForGraphFromQueryResults(_ data : [AnyObject])  -> [AnyObject] {
+    func dataForGraphFromQueryResults(_ data : [AnyObject])  -> [NSNumber] {
         let monthNumber = self.section.components(separatedBy: "/")[0]
         let numberOfDaysInMonth = DateTimeHelper.numberOfDays(inMonth: monthNumber)
         var graphData = Array<NSNumber>(repeating: 0, count: numberOfDaysInMonth.length)
@@ -61,11 +61,12 @@ import Foundation
             let day = dictionary["day"] as! Int
             let dailySum = dictionary["dailySum"] as! NSNumber
             let dailySumAsFloat = dailySum.floatValue
-            if dailySumAsFloat > 0 {
-                graphData[day] = NSNumber(value: dailySumAsFloat)
-            } else {
-                graphData[day] = NSNumber(value: -dailySumAsFloat)
-            }
+//            if dailySumAsFloat > 0 {
+//                graphData[day] = NSNumber(value: dailySumAsFloat)
+//            } else {
+//                graphData[day] = NSNumber(value: -dailySumAsFloat)
+//            }
+            graphData[day] = dailySum
         }
         
         return graphData

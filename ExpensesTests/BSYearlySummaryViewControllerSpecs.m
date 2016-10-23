@@ -4,6 +4,7 @@
 #import "BSCoreDataController.h"
 #import "DateTimeHelper.h"
 #import "Tag.h"
+#import "Expensit-Swift.h"
 
 
 @interface YearlyTestHelper : NSObject
@@ -35,18 +36,24 @@ __block BSCoreDataController *coreDataController = nil;
 __block BSYearlyExpensesSummaryViewController *yearlyViewController = nil;
 
 beforeAll(^{
-    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBaseYearly" stringByAppendingString:@".sqlite"]];
+    
 
     coreDataStackHelper = [[CoreDataStackHelper alloc] initWithPersitentStoreType:NSSQLiteStoreType resourceName:@"Expenses" extension:@"momd" persistentStoreName:@"myTestDataBaseYearly"];
     
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBaseYearly" stringByAppendingString:@".sqlite"]];
     
     coreDataController = [[BSCoreDataController alloc] initWithEntityName:@"Entry" delegate:nil coreDataHelper:coreDataStackHelper];
     yearlyViewController = [[BSYearlyExpensesSummaryViewController alloc] init];
     KWMock *collectionMock = [KWMock nullMockForClass:UICollectionView.class];
     [yearlyViewController stub:@selector(collectionView) andReturn:collectionMock];
 
-    yearlyViewController.coreDataStackHelper = coreDataStackHelper;
-    yearlyViewController.coreDataController = coreDataController;
+    BSShowYearlyEntriesController *yearlyController = [[BSShowYearlyEntriesController alloc] initWithCoreDataStackHelper:coreDataStackHelper
+                                                                                                      coreDataController:coreDataController];
+    
+    BSShowYearlyEntriesPresenter *yearlyPresenter = [[BSShowYearlyEntriesPresenter alloc] initWithShowEntriesUserInterface:yearlyViewController
+                                                                                               showEntriesController:yearlyController];
+    yearlyViewController.showEntriesController = yearlyController;
+    yearlyViewController.showEntriesPresenter = yearlyPresenter;
     
     KWMock *navItemMock = [KWMock nullMockForClass:UINavigationItem.class];
     [navItemMock stub:@selector(rightBarButtonItems) andReturn:@[[KWMock nullMock], [KWMock nullMock]]];
@@ -116,52 +123,6 @@ describe(@"Yearly calculations", ^{
         [coreDataController saveChanges];
     });
 
-    it(@"testYearlyCalculationsWithNoFilter", ^{
-        [yearlyViewController filterChangedToCategory:nil];
-         NSArray *yearlyResults = yearlyViewController.fetchedResultsController.fetchedObjects;
-        [[theValue([yearlyResults count]) should] equal:theValue(3)];
-        
-        [[[[YearlyTestHelper resultDictionaryForDate:@"2013" fromArray:yearlyResults] valueForKey:@"yearlySum"] should] equal:@(-6.9)];
-        [[[[YearlyTestHelper resultDictionaryForDate:@"2012" fromArray:yearlyResults] valueForKey:@"yearlySum"] should] equal:@(398.5)];
-        [[[[YearlyTestHelper resultDictionaryForDate:@"2011" fromArray:yearlyResults] valueForKey:@"yearlySum"] should] equal:@(249.5)];
-    });
-    
-
-    it(@"testGraphYearlySurplusCalculations", ^{
-        NSArray *yearlyResults = [yearlyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([yearlyResults count]) should] equal:theValue(3)];
-        
-        // 2011
-        [[[yearlyResults[0] valueForKey:@"yearlySum"] should] equal:@(306.5)];
-        [[[yearlyResults[0] valueForKey:@"year"] should] equal:@(2011)];
-        
-        // 2012
-        [[[yearlyResults[1] valueForKey:@"yearlySum"] should] equal:@(470)];
-        [[[yearlyResults[1] valueForKey:@"year"] should] equal:@(2012)];
-        
-        // 2013
-        [[[yearlyResults[2] valueForKey:@"yearlySum"] should] equal:@(254)];
-        [[[yearlyResults[2] valueForKey:@"year"] should] equal:@(2013)];
-    });
-
-    it(@"testGraphYearlyExpensesCalculations", ^{
-        NSArray *yearlyResults = [yearlyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([yearlyResults count]) should] equal:theValue(3)];
-        
-        // 2011
-        [[[yearlyResults[0] valueForKey:@"yearlySum"] should] equal:@(-57)];
-        [[[yearlyResults[0] valueForKey:@"year"] should] equal:@(2011)];
-        
-        // 2012
-        [[[yearlyResults[1] valueForKey:@"yearlySum"] should] equal:@(-71.5)];
-        [[[yearlyResults[1] valueForKey:@"year"] should] equal:@(2012)];
-        
-        // 2013
-        [[[yearlyResults[2] valueForKey:@"yearlySum"] should] equal:@(-260.9)];
-        [[[yearlyResults[2] valueForKey:@"year"] should] equal:@(2013)];
-        
-    });
-
 });
 
 describe(@"Category filtering", ^{
@@ -209,7 +170,7 @@ describe(@"Category filtering", ^{
 
         
         [yearlyViewController filterChangedToCategory:foodTag];
-        NSArray *yearlyResults = yearlyViewController.fetchedResultsController.fetchedObjects;
+        NSArray *yearlyResults = yearlyViewController.showEntriesController._fetchedResultsController.fetchedObjects;
         
         NSPredicate *predicate2011 = [NSPredicate predicateWithFormat:@"year = %@", (NSNumber *)[NSDecimalNumber decimalNumberWithString:@"2011"]];
         NSPredicate *predicate2012 = [NSPredicate predicateWithFormat:@"year = %@", (NSNumber *)[NSDecimalNumber decimalNumberWithString:@"2012"]];

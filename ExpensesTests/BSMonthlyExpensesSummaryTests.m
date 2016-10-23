@@ -12,12 +12,16 @@
 #import "BSCoreDataController.h"
 #import "DateTimeHelper.h"
 #import "OCMock/Headers/OCMock/OCMock.h"
+#import "Expensit-Swift.h"
 
 @interface BSMonthlyExpensesSummaryTests : XCTestCase
 @property (strong, nonatomic) CoreDataStackHelper *coreDataStackHelper;
 @property (strong, nonatomic) BSCoreDataController *coreDataController;
 @property (strong, nonatomic) BSMonthlyExpensesSummaryViewController *monthlyViewController;
 @property (strong, nonatomic) NSString *expectedVisibleSectionName;
+@property (strong, nonatomic) BSShowMonthlyEntriesController *controller;
+@property (strong, nonatomic) BSShowMonthlyEntriesPresenter *presenter;
+
 @end
 
 @implementation BSMonthlyExpensesSummaryTests
@@ -26,13 +30,25 @@
 {
     [super setUp];
     
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBase" stringByAppendingString:@".sqlite"]];
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBase" stringByAppendingString:@".sqlite-shm"]];
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBase" stringByAppendingString:@".sqlite-wal"]];
+
+    
     self.coreDataStackHelper = [[CoreDataStackHelper alloc] initWithPersitentStoreType:NSSQLiteStoreType resourceName:@"Expenses" extension:@"momd" persistentStoreName:@"myTestDataBase"];
-    [self.coreDataStackHelper destroySQLPersistentStoreCoordinator];
+    
     
     self.coreDataController = [[BSCoreDataController alloc] initWithEntityName:@"Entry" delegate:nil coreDataHelper:self.coreDataStackHelper];
-    self.monthlyViewController = [[BSMonthlyExpensesSummaryViewController alloc] init];
-    self.monthlyViewController.coreDataStackHelper = self.coreDataStackHelper;
-    self.monthlyViewController.coreDataController = self.coreDataController;
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Storyboard" bundle:nil];
+    self.monthlyViewController = [storyboard instantiateViewControllerWithIdentifier:@"BSMonthlyExpensesSummaryViewController"];
+
+    self.controller = [[BSShowMonthlyEntriesController alloc] initWithCoreDataStackHelper:self.coreDataStackHelper
+                                                                 coreDataController:self.coreDataController];
+    self.presenter = [[BSShowMonthlyEntriesPresenter alloc] initWithShowEntriesUserInterface:self.monthlyViewController
+                                                                 showEntriesController:self.controller];
+    self.monthlyViewController.showEntriesController = self.controller;
+    self.monthlyViewController.showEntriesPresenter = self.presenter;
     
     // 2013
     [self.coreDataController insertNewEntryWithDate:[DateTimeHelper dateWithFormat:nil stringDate:@"02/01/2013"] description:@"Food and drinks" value:@"-20.0" category:nil];
@@ -105,226 +121,258 @@
 {
     self.coreDataStackHelper = nil;
     self.monthlyViewController = nil;
+    
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBase" stringByAppendingString:@".sqlite"]];
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBase" stringByAppendingString:@".sqlite-shm"]];
+    [CoreDataStackHelper destroySQLPersistentStoreCoordinatorWithName:[@"myTestDataBase" stringByAppendingString:@".sqlite-wal"]];
+
     [super tearDown];
 }
 
 - (void) testMonthlyCalculations
 {
-    NSArray *monthlyResults = self.monthlyViewController.fetchedResultsController.fetchedObjects;
-    XCTAssertTrue([monthlyResults count] == 12 + 8 + 8, @"Monthly results don't have the right number of monthly entries.");
-    
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"01/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20), @"01/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"02/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(42), @"02/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"03/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-11), @"03/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"04/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(33), @"04/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"05/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20.5), @"05/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"06/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-131), @"06/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"07/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20.5), @"07/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"08/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-33.5), @"08/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"09/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-2.5), @"09/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"10/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-7.8), @"10/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"11/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(33), @"11/2013's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"12/2013" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-10.1), @"12/2013's sum is Incorrect");
-    
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"01/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20.5), @"01/2012's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"03/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(9), @"02/2012's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"04/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(50.5), @"04/2012s sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"07/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(18.5), @"07/2012's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"08/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(50.5), @"08/2012's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"09/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20.5), @"09/2012's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"11/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(260.5), @"11/2012's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"12/2012" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(50.5), @"12/2012's sum is Incorrect");
-    
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"01/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20.5), @"01/2011's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"02/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(220.5), @"02/2011's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"03/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(2), @"03/2011s sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"04/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(50.5), @"04/2011's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"05/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-20.5), @"05/2011's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"06/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(32.5), @"06/2011's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"07/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-5), @"11/2011's sum is Incorrect");
-    XCTAssertEqualObjects([[self resultDictionaryForDate:@"12/2011" fromArray:monthlyResults] valueForKey:@"monthlySum"], @(-10), @"12/2011's sum is Incorrect");
+    [self.monthlyViewController.showEntriesPresenter viewIsReadyToDisplayEntriesCompletionBlock:^( NSArray * _Nullable sections) {
+        XCTAssertTrue(sections.count == 3);
+        
+        BSDisplaySectionData *sectionData_2011 = sections[0];
+        XCTAssertTrue(sectionData_2011.entries.count == 12);
+        XCTAssertTrue([sectionData_2011.title isEqualToString:@"2011"]);
+        
+        BSDisplayEntry * e1 = sectionData_2011.entries[0];
+        XCTAssertTrue([e1.title isEqual:@"JAN"]);
+        XCTAssertTrue([e1.value isEqual:@"-$20.50"]);
+
+        BSDisplayEntry * e2 = sectionData_2011.entries[1];
+        XCTAssertTrue([e2.title isEqual:@"FEB"]);
+        XCTAssertTrue([e2.value isEqual:@"$220.50"]);
+
+        BSDisplayEntry * e3 = sectionData_2011.entries[2];
+        XCTAssertTrue([e3.title isEqual:@"MAR"]);
+        XCTAssertTrue([e3.value isEqual:@"$2.00"]);
+
+        BSDisplayEntry * e4 = sectionData_2011.entries[3];
+        XCTAssertTrue([e4.title isEqual:@"APR"]);
+        XCTAssertTrue([e4.value isEqual:@"$50.50"]);
+
+        BSDisplayEntry * e5 = sectionData_2011.entries[4];
+        XCTAssertTrue([e5.title isEqual:@"MAY"]);
+        XCTAssertTrue([e5.value isEqual:@"-$20.50"]);
+
+        BSDisplayEntry * e6 = sectionData_2011.entries[5];
+        XCTAssertTrue([e6.title isEqual:@"JUN"]);
+        XCTAssertTrue([e6.value isEqual:@"$32.50"]);
+
+        BSDisplayEntry * e7 = sectionData_2011.entries[6];
+        XCTAssertTrue([e7.title isEqual:@"JUL"]);
+        XCTAssertTrue([e7.value isEqual:@"-$5.00"]);
+
+        BSDisplayEntry * e8 = sectionData_2011.entries[7];
+        XCTAssertTrue([e8.title isEqual:@"AUG"]);
+        XCTAssertTrue([e8.value isEqual:@""]);
+
+        BSDisplayEntry * e9 = sectionData_2011.entries[8];
+        XCTAssertTrue([e9.title isEqual:@"SEP"]);
+        XCTAssertTrue([e9.value isEqual:@""]);
+
+        BSDisplayEntry * e10 = sectionData_2011.entries[9];
+        XCTAssertTrue([e10.title isEqual:@"OCT"]);
+        XCTAssertTrue([e10.value isEqual:@""]);
+
+        BSDisplayEntry * e11 = sectionData_2011.entries[10];
+        XCTAssertTrue([e11.title isEqual:@"NOV"]);
+        XCTAssertTrue([e11.value isEqual:@""]);
+
+        BSDisplayEntry * e12 = sectionData_2011.entries[11];
+        XCTAssertTrue([e12.title isEqual:@"DEC"]);
+        XCTAssertTrue([e12.value isEqual:@"-$10.00"]);
+
+        
+        BSDisplaySectionData *sectionData_2012 = sections[1];
+        XCTAssertTrue(sectionData_2012.entries.count == 12);
+        XCTAssertTrue([sectionData_2012.title isEqualToString:@"2012"]);
+        
+        e1 = sectionData_2012.entries[0];
+        XCTAssertTrue([e1.title isEqual:@"JAN"]);
+        XCTAssertTrue([e1.value isEqual:@"-$20.50"]);
+        
+        e2 = sectionData_2012.entries[1];
+        XCTAssertTrue([e2.title isEqual:@"FEB"]);
+        XCTAssertTrue([e2.value isEqual:@""]);
+        
+        e3 = sectionData_2012.entries[2];
+        XCTAssertTrue([e3.title isEqual:@"MAR"]);
+        XCTAssertTrue([e3.value isEqual:@"$9.00"]);
+        
+        e4 = sectionData_2012.entries[3];
+        XCTAssertTrue([e4.title isEqual:@"APR"]);
+        XCTAssertTrue([e4.value isEqual:@"$50.50"]);
+        
+        e5 = sectionData_2012.entries[4];
+        XCTAssertTrue([e5.title isEqual:@"MAY"]);
+        XCTAssertTrue([e5.value isEqual:@""]);
+        
+        e6 = sectionData_2012.entries[5];
+        XCTAssertTrue([e6.title isEqual:@"JUN"]);
+        XCTAssertTrue([e6.value isEqual:@""]);
+        
+        e7 = sectionData_2012.entries[6];
+        XCTAssertTrue([e7.title isEqual:@"JUL"]);
+        XCTAssertTrue([e7.value isEqual:@"$18.50"]);
+        
+        e8 = sectionData_2012.entries[7];
+        XCTAssertTrue([e8.title isEqual:@"AUG"]);
+        XCTAssertTrue([e8.value isEqual:@"$50.50"]);
+        
+        e9 = sectionData_2012.entries[8];
+        XCTAssertTrue([e9.title isEqual:@"SEP"]);
+        XCTAssertTrue([e9.value isEqual:@"-$20.50"]);
+        
+        e10 = sectionData_2012.entries[9];
+        XCTAssertTrue([e10.title isEqual:@"OCT"]);
+        XCTAssertTrue([e10.value isEqual:@""]);
+        
+        e11 = sectionData_2012.entries[10];
+        XCTAssertTrue([e11.title isEqual:@"NOV"]);
+        XCTAssertTrue([e11.value isEqual:@"$260.50"]);
+        
+        e12 = sectionData_2012.entries[11];
+        XCTAssertTrue([e12.title isEqual:@"DEC"]);
+        XCTAssertTrue([e12.value isEqual:@"$50.50"]);
+
+        BSDisplaySectionData *sectionData_2013 = sections[2];
+        XCTAssertTrue(sectionData_2013.entries.count == 12);
+        XCTAssertTrue([sectionData_2013.title isEqualToString:@"2013"]);
+        
+        e1 = sectionData_2013.entries[0];
+        XCTAssertTrue([e1.title isEqual:@"JAN"]);
+        XCTAssertTrue([e1.value isEqual:@"-$20.00"]);
+        
+        e2 = sectionData_2013.entries[1];
+        XCTAssertTrue([e2.title isEqual:@"FEB"]);
+        XCTAssertTrue([e2.value isEqual:@"$42.00"]);
+        
+        e3 = sectionData_2013.entries[2];
+        XCTAssertTrue([e3.title isEqual:@"MAR"]);
+        XCTAssertTrue([e3.value isEqual:@"-$11.00"]);
+        
+        e4 = sectionData_2013.entries[3];
+        XCTAssertTrue([e4.title isEqual:@"APR"]);
+        XCTAssertTrue([e4.value isEqual:@"$33.00"]);
+        
+        e5 = sectionData_2013.entries[4];
+        XCTAssertTrue([e5.title isEqual:@"MAY"]);
+        XCTAssertTrue([e5.value isEqual:@"-$20.50"]);
+        
+        e6 = sectionData_2013.entries[5];
+        XCTAssertTrue([e6.title isEqual:@"JUN"]);
+        XCTAssertTrue([e6.value isEqual:@"-$131.00"]);
+        
+        e7 = sectionData_2013.entries[6];
+        XCTAssertTrue([e7.title isEqual:@"JUL"]);
+        XCTAssertTrue([e7.value isEqual:@"-$20.50"]);
+        
+        e8 = sectionData_2013.entries[7];
+        XCTAssertTrue([e8.title isEqual:@"AUG"]);
+        XCTAssertTrue([e8.value isEqual:@"-$33.50"]);
+        
+        e9 = sectionData_2013.entries[8];
+        XCTAssertTrue([e9.title isEqual:@"SEP"]);
+        XCTAssertTrue([e9.value isEqual:@"-$2.50"]);
+        
+        e10 = sectionData_2013.entries[9];
+        XCTAssertTrue([e10.title isEqual:@"OCT"]);
+        XCTAssertTrue([e10.value isEqual:@"-$7.80"]);
+        
+        e11 = sectionData_2013.entries[10];
+        XCTAssertTrue([e11.title isEqual:@"NOV"]);
+        XCTAssertTrue([e11.value isEqual:@"$33.00"]);
+        
+        e12 = sectionData_2013.entries[11];
+        XCTAssertTrue([e12.title isEqual:@"DEC"]);
+        XCTAssertTrue([e12.value isEqual:@"-$10.10"]);
+    }];    
 }
 
 
 - (void) testGraphMonthlySurplusCalculations
 {
-    self.expectedVisibleSectionName = @"2013";
-    id mock = [OCMockObject partialMockForObject:self.monthlyViewController];
-    [[[mock stub] andCall:@selector(visibleSectionNameMock) onObject:self] visibleSectionName];
+    BSMonthlySummaryGraphLineController * controller = [[BSMonthlySummaryGraphLineController alloc] initWithCoreDataStackHelper:self.coreDataStackHelper coreDataController:self.coreDataController];
     
-    NSArray *monthlyResults = [self.monthlyViewController performSelector:@selector(graphSurplusResults)];
-    XCTAssertTrue([monthlyResults count] == 4, @"Monthly results don't have the right number of month entries.");
-    
-    // 2013
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"monthlySum"], @(132), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"month"], @(2), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"monthlySum"], @(4), @"2012's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"year"], @(2013), @"2012's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"month"], @(3), @"2011's sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"monthlySum"], @(50), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"year"], @(2013), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"month"], @(4), @"2011's sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"monthlySum"], @(33), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"year"], @(2013), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"month"], @(11), @"2011's sum is Incorrect");
+    // Jan 2013
+    BSMonthlySummaryGraphLinePresenter *presenter = [[BSMonthlySummaryGraphLinePresenter alloc] initWithMonthlySummaryGraphLineController:controller section:@"2013"];
+    NSArray <NSNumber*>*monthlyResults = [presenter income];
+    NSArray <NSNumber*>* expectation = @[ @0, @132, @4, @50, @0, @0, @0, @0, @0, @0, @33, @0];
+    XCTAssert([monthlyResults count] == 12);
+    NSUInteger count = 0;
+    for (NSNumber *monthlySum in monthlyResults) {
+        XCTAssertTrue([monthlySum integerValue] == [expectation[count] integerValue]);
+        count++;
+    }
+
     
     // 2012
-    self.expectedVisibleSectionName = @"2012";
-    monthlyResults = [self.monthlyViewController performSelector:@selector(graphSurplusResults)];
-    XCTAssertTrue([monthlyResults count] == 6, @"Monthly results don't have the right number of month entries.");
+    presenter = [[BSMonthlySummaryGraphLinePresenter alloc] initWithMonthlySummaryGraphLineController:controller section:@"2012"];
+    monthlyResults = [presenter income];
+    expectation = @[ @0, @0, @21, @(50.5), @0, @0, @37, @(50.5), @0, @0, @(260.5), @(50.5)];
+    XCTAssert([monthlyResults count] == 12);
+    count = 0;
+    for (NSNumber *monthlySum in monthlyResults) {
+        XCTAssertTrue([monthlySum integerValue] == [expectation[count] integerValue]);
+        count++;
+    }
     
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"monthlySum"], @(21), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"year"], @(2012), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"month"], @(3), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"monthlySum"], @(50.5), @"2012's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"year"], @(2012), @"2012's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"month"], @(4), @"2011's sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"monthlySum"], @(37), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"year"], @(2012), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"month"], @(7), @"2011's sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"monthlySum"], @(50.5), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"year"], @(2012), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"month"], @(8), @"2011's sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"monthlySum"], @(260.5), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"year"], @(2012), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"month"], @(11), @"2011's sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[5] valueForKey:@"monthlySum"], @(50.5), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[5] valueForKey:@"year"], @(2012), @"2013's sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[5] valueForKey:@"month"], @(12), @"2011's sum is Incorrect");
     
     // 2011
-    self.expectedVisibleSectionName = @"2011";
-    monthlyResults = [self.monthlyViewController performSelector:@selector(graphSurplusResults)];
-    XCTAssertTrue([monthlyResults count] == 4, @"Monthly results don't have the right number of month entries.");
-    
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"monthlySum"], @(220.5), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"month"], @(2), @"2011's Feb sum is Incorrect");
-
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"monthlySum"], @(3), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"month"], @(3), @"2011's Feb sum is Incorrect");
-
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"monthlySum"], @(50.5), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"month"], @(4), @"2011's Feb sum is Incorrect");
-
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"monthlySum"], @(32.5), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"month"], @(6), @"2011's Feb sum is Incorrect");
+    presenter = [[BSMonthlySummaryGraphLinePresenter alloc] initWithMonthlySummaryGraphLineController:controller section:@"2011"];
+    monthlyResults = [presenter income];
+    expectation = @[@0, @(220.5), @3, @(50.5), @0, @(32.5), @0, @0, @0, @0, @0, @0];
+    XCTAssert([monthlyResults count] == 12);
+    count = 0;
+    for (NSNumber *monthlySum in monthlyResults) {
+        XCTAssertTrue([monthlySum integerValue] == [expectation[count] integerValue]);
+        count++;
+    }
 }
 
 
 - (void) testGraphMonthlyExpensesCalculations
 {
-    self.expectedVisibleSectionName = @"2013";
-    id mock = [OCMockObject partialMockForObject:self.monthlyViewController];
-    [[[mock stub] andCall:@selector(visibleSectionNameMock) onObject:self] visibleSectionName];
+    BSMonthlySummaryGraphLineController * controller = [[BSMonthlySummaryGraphLineController alloc] initWithCoreDataStackHelper:self.coreDataStackHelper coreDataController:self.coreDataController];
     
-    NSArray *monthlyResults = [self.monthlyViewController performSelector:@selector(graphExpensesResults)];
-    XCTAssertTrue([monthlyResults count] == 11, @"Monthly results don't have the right number of month entries.");
+    // Jan 2013
+    BSMonthlySummaryGraphLinePresenter *presenter = [[BSMonthlySummaryGraphLinePresenter alloc] initWithMonthlySummaryGraphLineController:controller section:@"2013"];
+    NSArray <NSNumber*>*monthlyResults = [presenter expenses];
+    NSArray <NSNumber*>* expectation = @[@(-20), @(-90), @(-15), @(-17), @(-20.5), @(-131), @(-20.5), @(-33.5), @(-2.5), @(-7.8), @0, @(-10.1)];
+    XCTAssert([monthlyResults count] == 12);
+    NSUInteger count = 0;
+    for (NSNumber *monthlySum in monthlyResults) {
+        XCTAssertTrue([monthlySum integerValue] == [expectation[count] integerValue]);
+        count++;
+    }
     
-    
-    // 2013
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"monthlySum"], @(-20), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"month"], @(1), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"monthlySum"], @(-90), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"month"], @(2), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"monthlySum"], @(-15), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"month"], @(3), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"monthlySum"], @(-17), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"month"], @(4), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"monthlySum"], @(-20.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"month"], @(5), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[5] valueForKey:@"monthlySum"], @(-131), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[5] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[5] valueForKey:@"month"], @(6), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[6] valueForKey:@"monthlySum"], @(-20.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[6] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[6] valueForKey:@"month"], @(7), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[7] valueForKey:@"monthlySum"], @(-33.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[7] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[7] valueForKey:@"month"], @(8), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[8] valueForKey:@"monthlySum"], @(-2.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[8] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[8] valueForKey:@"month"], @(9), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[9] valueForKey:@"monthlySum"], @(-7.8), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[9] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[9] valueForKey:@"month"], @(10), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[10] valueForKey:@"monthlySum"], @(-10.1), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[10] valueForKey:@"year"], @(2013), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[10] valueForKey:@"month"], @(12), @"2013's Feb sum is Incorrect");
     
     // 2012
-    self.expectedVisibleSectionName = @"2012";
-    monthlyResults = [self.monthlyViewController performSelector:@selector(graphExpensesResults)];
-    XCTAssertTrue([monthlyResults count] == 4, @"Monthly results don't have the right number of month entries.");
+    presenter = [[BSMonthlySummaryGraphLinePresenter alloc] initWithMonthlySummaryGraphLineController:controller section:@"2012"];
+    monthlyResults = [presenter expenses];
+    expectation = @[ @(-20.5), @0, @(-12), @0, @0, @0, @(-18.5), @0, @(-20.5), @0, @0, @0];
+    XCTAssert([monthlyResults count] == 12);
+    count = 0;
+    for (NSNumber *monthlySum in monthlyResults) {
+        XCTAssertTrue([monthlySum integerValue] == [expectation[count] integerValue]);
+        count++;
+    }
     
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"monthlySum"], @(-20.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"year"], @(2012), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"month"], @(1), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"monthlySum"], @(-12), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"year"], @(2012), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"month"], @(3), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"monthlySum"], @(-18.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"year"], @(2012), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"month"], @(7), @"2013's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"monthlySum"], @(-20.5), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"year"], @(2012), @"2013's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"month"], @(9), @"2013's Feb sum is Incorrect");
     
     // 2011
-    self.expectedVisibleSectionName = @"2011";
-    monthlyResults = [self.monthlyViewController performSelector:@selector(graphExpensesResults)];
-    XCTAssertTrue([monthlyResults count] == 5, @"Monthly results don't have the right number of month entries.");
-    
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"monthlySum"], @(-20.5), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[0] valueForKey:@"month"], @(1), @"2011's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"monthlySum"], @(-1), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[1] valueForKey:@"month"], @(3), @"2011's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"monthlySum"], @(-20.5), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[2] valueForKey:@"month"], @(5), @"2011's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"monthlySum"], @(-5), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[3] valueForKey:@"month"], @(7), @"2011's Feb sum is Incorrect");
-    
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"monthlySum"], @(-10), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"year"], @(2011), @"2011's Feb sum is Incorrect");
-    XCTAssertEqualObjects([monthlyResults[4] valueForKey:@"month"], @(12), @"2011's Feb sum is Incorrect");
-
+    presenter = [[BSMonthlySummaryGraphLinePresenter alloc] initWithMonthlySummaryGraphLineController:controller section:@"2011"];
+    monthlyResults = [presenter expenses];
+    expectation = @[ @(-20.5), @0, @(-1), @0, @(-20.5), @0, @(-5), @0, @0, @0, @0, @(-10)];
+    XCTAssert([monthlyResults count] == 12);
+    count = 0;
+    for (NSNumber *monthlySum in monthlyResults) {
+        XCTAssertTrue([monthlySum integerValue] == [expectation[count] integerValue]);
+        count++;
+    }
 }
 
 

@@ -7,18 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-
-@class Tag;
-@protocol BSCategoryFilterDelegate <NSObject>
-/*!
- @discussion The argument is already a Tag* reference or nil
- */
-- (void)filterChangedToCategory:(Tag *)tag;
-
-@end
+#import "BSCategoryFilterDelegate.h"
 
 @protocol BSCategoryFilterPresenterEventsProtocol;
+
 
 @interface BSCategoryFilterViewController : UIViewController
 

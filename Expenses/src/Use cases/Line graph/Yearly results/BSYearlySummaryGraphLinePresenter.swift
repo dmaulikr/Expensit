@@ -65,10 +65,7 @@ import Foundation
             }
             if monthDictionary != nil
             {
-                var value = monthDictionary!["yearlySum"] as! NSNumber
-                if value.compare(NSNumber(value: 0)) == .orderedAscending {
-                    value = NSNumber(value: -value.floatValue)
-                }
+                let value = monthDictionary!["yearlySum"] as! NSNumber
                 graphData.append(value)
             }
             else

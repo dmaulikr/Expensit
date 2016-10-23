@@ -31,11 +31,8 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
     
     func filter(by category : Tag)
     {
-        if (_fetchedResultsController != nil)
-        {
-            let request = _fetchedResultsController!.fetchRequest 
-            self.coreDataController.modifyfetchRequest(request, toFilterByCategory:category)
-        }
+        let request = self.fetchedResultsController()!.fetchRequest
+        self.coreDataController.modifyfetchRequest(request, toFilterByCategory:category)
     }
     
     func entriesForSummary() -> NSDictionary
@@ -65,6 +62,10 @@ class BSAbstractShowEntriesController : NSObject, BSAbstractShowEntriesControlle
         _fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: self.coreDataStackHelper.managedObjectContext, sectionNameKeyPath: self.sectionNameKeyPath(), cacheName: nil)
         
         return _fetchedResultsController
+    }
+    
+    public func fetchedObjects() -> [AnyObject] {
+        return (self.fetchedResultsController()?.fetchedObjects)!
     }
     
     func performFetch() -> ([AnyObject]?, [AnyObject]?)

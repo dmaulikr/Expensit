@@ -4,6 +4,8 @@
 #import "BSCoreDataController.h"
 #import "DateTimeHelper.h"
 #import "Tag.h"
+#import "Expensit-Swift.h"
+
 
 @interface DailyTestHelper : NSObject
 + (NSDictionary*) resultDictionaryForDate:(NSString*)dateString fromArray:(NSArray*)results;
@@ -46,12 +48,12 @@ beforeAll(^{
     KWMock *collectionMock = [KWMock nullMockForClass:UICollectionView.class];
     [dailyViewController stub:@selector(collectionView) andReturn:collectionMock];
 
-    dailyViewController.coreDataStackHelper = coreDataStackHelper;
-    dailyViewController.coreDataController = coreDataController;
     
-
-
-    
+    BSShowDailyEntriesController *controller = [[BSShowDailyEntriesController alloc] initWithCoreDataStackHelper:coreDataStackHelper
+                                                                                          coreDataController:coreDataController];
+    BSShowDailyEntriesPresenter *presenter = [[BSShowDailyEntriesPresenter alloc] initWithShowEntriesUserInterface:dailyViewController showEntriesController:controller];
+    dailyViewController.showEntriesController = controller;
+    dailyViewController.showEntriesPresenter = presenter;
 });
 
 afterAll(^{
@@ -101,7 +103,7 @@ describe(@"Daily calculations", ^{
         [dailyViewController stub:@selector(navigationItem) andReturn:navItemMock];
         
         [dailyViewController filterChangedToCategory:nil];
-        NSArray *dailyResults = dailyViewController.fetchedResultsController.fetchedObjects;
+        NSArray *dailyResults = dailyViewController.showEntriesController._fetchedResultsController.fetchedObjects;
         [[theValue([dailyResults count]) should] equal:theValue(6)];
         
         
@@ -115,105 +117,6 @@ describe(@"Daily calculations", ^{
         [[[[DailyTestHelper resultDictionaryForDate:@"21/12/2011" fromArray:dailyResults] valueForKey:@"dailySum"] should] equal:@(-10)];
     });
     
-
-    it(@"testGraphDailySurplusCalculations", ^{
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"1/2013"];
-        NSArray *dailyReults = [dailyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        
-        // Jan 2013
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(100)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(13)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"13/1/2013"];
-        
-        // March 2013
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"3/2013"];
-        dailyReults = [dailyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(0)];
-        
-        // Jan 2012
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"1/2012"];
-        dailyReults = [dailyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(0)];
-        
-        // March 2012
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"3/2012"];
-        dailyReults = [dailyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(21)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(3)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"3/3/2012"];
-        
-        // Jun 2011
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"6/2011"];
-        dailyReults = [dailyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(12)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(19)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"19/6/2011"];
-        
-        
-        // Dec 2011
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"12/2011"];
-        dailyReults = [dailyViewController performSelector:@selector(graphSurplusResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(0)];
-    });
-
-    it(@"testGraphDailyExpensesCalculations", ^{
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"1/2013"];
-        NSArray *dailyReults = [dailyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        
-        // Jan 2013
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(-20)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(13)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"13/1/2013"];
-        
-        // March 2013
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"3/2013"];
-        dailyReults = [dailyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(-15)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(5)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"5/3/2013"];
-
-        
-        // Jan 2012
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"1/2012"];
-        dailyReults = [dailyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(-20.5)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(2)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"2/1/2012"];
-
-        
-        // March 2012
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"3/2012"];
-        dailyReults = [dailyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(-7)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(3)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"3/3/2012"];
-        
-        // Jun 2011
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"6/2011"];
-        dailyReults = [dailyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(-5)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(19)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"19/6/2011"];
-        
-        
-        // Dec 2011
-        [dailyViewController stub:@selector(visibleSectionName) andReturn:@"12/2011"];
-        dailyReults = [dailyViewController performSelector:@selector(graphExpensesResults)];
-        [[theValue([dailyReults count]) should] equal:theValue(1)];
-        [[[dailyReults[0] valueForKey:@"dailySum"] should] equal:@(-10)];
-        [[[dailyReults[0] valueForKey:@"day"] should] equal:@(21)];
-        [[[dailyReults[0] valueForKey:@"dayMonthYear"] should] equal:@"21/12/2011"];
-
-    });
-
 });
 
 
@@ -265,7 +168,7 @@ describe(@"Category filtering", ^{
     
     it(@"Only take into account entries from the food category", ^{
         [dailyViewController filterChangedToCategory:foodTag];
-        NSArray *dailyResults = dailyViewController.fetchedResultsController.fetchedObjects;
+        NSArray *dailyResults = dailyViewController.showEntriesController._fetchedResultsController.fetchedObjects;
         
         NSPredicate *predicate_19_July_2011 = [NSPredicate predicateWithFormat:@"day = %@ AND monthYear = %@", @(19),  [NSString stringWithFormat:@"%@/%@", @(7), @(2011)]];
         NSPredicate *predicate_19_July_2012 = [NSPredicate predicateWithFormat:@"day = %@ AND monthYear = %@", @(19),  [NSString stringWithFormat:@"%@/%@", @(7), @(2012)]];
@@ -279,7 +182,7 @@ describe(@"Category filtering", ^{
     
     it(@"Only take into account entries from the travel category", ^{
         [dailyViewController filterChangedToCategory:travelTag];
-        NSArray *dailyResults = dailyViewController.fetchedResultsController.fetchedObjects;
+        NSArray *dailyResults = dailyViewController.showEntriesController._fetchedResultsController.fetchedObjects;
         
         NSPredicate *predicate_19_July_2011 = [NSPredicate predicateWithFormat:@"day = %@ AND monthYear = %@", @(19),  [NSString stringWithFormat:@"%@/%@", @(7), @(2011)]];
         NSPredicate *predicate_02_Oct_2012 = [NSPredicate predicateWithFormat:@"day = %@ AND monthYear = %@", @(2),  [NSString stringWithFormat:@"%@/%@", @(10), @(2013)]];
@@ -293,7 +196,7 @@ describe(@"Category filtering", ^{
 
     it(@"Only take into account entries from the bills category", ^{
         [dailyViewController filterChangedToCategory:billsTag];
-        NSArray *dailyResults = dailyViewController.fetchedResultsController.fetchedObjects;
+        NSArray *dailyResults = dailyViewController.showEntriesController._fetchedResultsController.fetchedObjects;
         
         NSPredicate *predicate_02_Oct_2013 = [NSPredicate predicateWithFormat:@"day = %@ AND monthYear = %@", @(2),  [NSString stringWithFormat:@"%@/%@", @(10), @(2013)]];
         NSArray *results_02_Oct_2013 =  [[dailyResults filteredArrayUsingPredicate:predicate_02_Oct_2013] lastObject];

@@ -48,14 +48,7 @@ import Foundation
         for dic in data {
             let dictionary = dic as! NSDictionary
             let month = dictionary["month"] as! Int
-            let monthlySum = dictionary["monthlySum"] as! NSNumber
-            let monthlySumAsFloat = monthlySum.floatValue
-            
-            if monthlySumAsFloat < 0 {
-                graphData[month-1] = NSNumber(value:monthlySumAsFloat * -1 )
-            } else {
-                graphData[month-1] = monthlySum
-            }
+            graphData[month-1] = dictionary["monthlySum"] as! NSNumber
         }
         
         return graphData

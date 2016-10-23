@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3D418F30B21009F626E /* BSDailySummaryViewControllerSpecs.m */; };
-		000260D21BCC5D5700B2444E /* BSMonthlySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3D218EC2E19009F626E /* BSMonthlySummaryViewControllerSpecs.m */; };
-		000260D31BCC5DCF00B2444E /* BSPerEntrySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3D618F312C9009F626E /* BSPerEntrySummaryViewControllerSpecs.m */; };
-		000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3CA18E8AF36009F626E /* BSYearlySummaryViewControllerSpecs.m */; };
 		000A9A0F1D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A0C1D09E5590045523A /* BSYearlySummaryGraphLineController.swift */; };
 		000A9A101D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A0C1D09E5590045523A /* BSYearlySummaryGraphLineController.swift */; };
 		000A9A111D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 000A9A0D1D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift */; };
@@ -120,6 +116,14 @@
 		002487AD1809B403006652DF /* Tag.m in Sources */ = {isa = PBXBuildFile; fileRef = 002487AC1809B403006652DF /* Tag.m */; };
 		00418B8C1D23045F00DB4528 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00418B8B1D23045F00DB4528 /* PaddingLabel.swift */; };
 		00418B8D1D23045F00DB4528 /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00418B8B1D23045F00DB4528 /* PaddingLabel.swift */; };
+		0045D5BF1DBA9A12006AA5AE /* BSYearlyExpensesSummaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0038B1F018B415580095CBF6 /* BSYearlyExpensesSummaryTests.m */; };
+		0045D61C1DBCC72A006AA5AE /* BSDailyExpensesLineGraphTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 003168331DB3927800E08207 /* BSDailyExpensesLineGraphTests.m */; };
+		0045D61D1DBCC75B006AA5AE /* BSMonthlyExpensesSummaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E9F17A1780500C00A1A212 /* BSMonthlyExpensesSummaryTests.m */; };
+		0045D61F1DBCE025006AA5AE /* BSMonthlySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3D218EC2E19009F626E /* BSMonthlySummaryViewControllerSpecs.m */; };
+		0045D6201DBCE137006AA5AE /* BSDailySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3D418F30B21009F626E /* BSDailySummaryViewControllerSpecs.m */; };
+		0045D6221DBCE1E8006AA5AE /* BSPerEntrySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3D618F312C9009F626E /* BSPerEntrySummaryViewControllerSpecs.m */; };
+		0045D6231DBCE1FD006AA5AE /* BSYearlySummaryViewControllerSpecs.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F9B3CA18E8AF36009F626E /* BSYearlySummaryViewControllerSpecs.m */; };
+		0045D6241DBCE29F006AA5AE /* BSPerEntrySummaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 000481EB1780CEEA00E7F401 /* BSPerEntrySummaryTests.m */; };
 		0053A7D518F9E43600D63918 /* BSYearlyLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 0053A7D418F9E43600D63918 /* BSYearlyLayout.m */; };
 		005DF5EC178B58A500DC1800 /* BSGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005DF5EB178B58A500DC1800 /* BSGraphView.m */; };
 		005F7643180991740062DAF8 /* BSCoreDataFixturesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F7642180991740062DAF8 /* BSCoreDataFixturesManager.m */; };
@@ -190,12 +194,12 @@
 			remoteGlobalIDString = 0017DADB1937D8070052DCF4;
 			remoteInfo = BSPieChartViewTests;
 		};
-		007B826F177476780052FE84 /* PBXContainerItemProxy */ = {
+		0045D61A1DBABFEF006AA5AE /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 007B8241177476780052FE84 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 007B8248177476780052FE84;
-			remoteInfo = Expenses;
+			remoteInfo = Expensit;
 		};
 		007B83101775A3660052FE84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -242,7 +246,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		000481E91780C67A00E7F401 /* BSDailyExpensesSummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDailyExpensesSummaryTests.m; sourceTree = "<group>"; };
 		000481EB1780CEEA00E7F401 /* BSPerEntrySummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSPerEntrySummaryTests.m; sourceTree = "<group>"; };
 		000A9A0C1D09E5590045523A /* BSYearlySummaryGraphLineController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSYearlySummaryGraphLineController.swift; sourceTree = "<group>"; };
 		000A9A0D1D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BSYearlySummaryGraphLinePresenter.swift; sourceTree = "<group>"; };
@@ -316,7 +319,9 @@
 		001FF01218E2178D004F06DB /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ImageEffects.m"; path = "../UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		002487AB1809B403006652DF /* Tag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tag.h; path = ../Tag.h; sourceTree = "<group>"; };
 		002487AC1809B403006652DF /* Tag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tag.m; path = ../Tag.m; sourceTree = "<group>"; };
+		002B06AD1DAA71A1002D944C /* BSCategoryFilterDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSCategoryFilterDelegate.h; sourceTree = "<group>"; };
 		002E2EBD191EB93E003630B2 /* v1.0.7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = v1.0.7.xcdatamodel; sourceTree = "<group>"; };
+		003168331DB3927800E08207 /* BSDailyExpensesLineGraphTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSDailyExpensesLineGraphTests.m; sourceTree = "<group>"; };
 		0038B1F018B415580095CBF6 /* BSYearlyExpensesSummaryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSYearlyExpensesSummaryTests.m; sourceTree = "<group>"; };
 		0039450E1A990C110081A5EE /* libOCMock.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libOCMock.a; path = ExpensesTests/OCMock/libOCMock.a; sourceTree = "<group>"; };
 		00418B8B1D23045F00DB4528 /* PaddingLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -590,6 +595,7 @@
 				000A9AAE1D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.h */,
 				000A9AA91D0AF0DB0045523A /* BSCategoryFilterViewController.h */,
 				000A9AAA1D0AF0DB0045523A /* BSCategoryFilterViewController.m */,
+				002B06AD1DAA71A1002D944C /* BSCategoryFilterDelegate.h */,
 				000A9AA31D09FBCA0045523A /* BSCategoryFilterPresenter.swift */,
 				000A9AA61D09FBDE0045523A /* BSCategoryFilterController.swift */,
 				000A9AA01D09FB760045523A /* BSCategoryFilterControllerProtocol.swift */,
@@ -805,8 +811,8 @@
 				0089F8C017FB7C2D000DFEC6 /* OCMock */,
 				007B8272177476780052FE84 /* Supporting Files */,
 				00E9F17A1780500C00A1A212 /* BSMonthlyExpensesSummaryTests.m */,
-				000481E91780C67A00E7F401 /* BSDailyExpensesSummaryTests.m */,
 				00F9B3D218EC2E19009F626E /* BSMonthlySummaryViewControllerSpecs.m */,
+				003168331DB3927800E08207 /* BSDailyExpensesLineGraphTests.m */,
 				00F9B3D418F30B21009F626E /* BSDailySummaryViewControllerSpecs.m */,
 				00F9B3D618F312C9009F626E /* BSPerEntrySummaryViewControllerSpecs.m */,
 				00F9B3CA18E8AF36009F626E /* BSYearlySummaryViewControllerSpecs.m */,
@@ -1005,7 +1011,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				007B8270177476780052FE84 /* PBXTargetDependency */,
+				0045D61B1DBABFEF006AA5AE /* PBXTargetDependency */,
 			);
 			name = ExpensesTests;
 			productName = ExpensesTests;
@@ -1166,7 +1172,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ExpensesTests/Pods-ExpensesTests-resources.sh\"\n";
+			shellScript = "";
 			showEnvVarsInLog = 0;
 		};
 		A55F1F04CA2046A291CDA402 /* Check Pods Manifest.lock */ = {
@@ -1288,13 +1294,16 @@
 			files = (
 				000A9AC91D0C14000045523A /* BSPieGraphInterfaceProtocol.swift in Sources */,
 				000A9A9F1D09FAD30045523A /* BSCategoryFilterPresenterEventsProtocol.swift in Sources */,
+				0045D5BF1DBA9A12006AA5AE /* BSYearlyExpensesSummaryTests.m in Sources */,
 				000A9A7C1D09F3B50045523A /* BSAbstractExpensesSummaryUserInterfaceProtocol.swift in Sources */,
+				0045D6231DBCE1FD006AA5AE /* BSYearlySummaryViewControllerSpecs.m in Sources */,
 				000A9A971D09F7560045523A /* BSEntryDetailsFormViewController.m in Sources */,
 				000A9A8E1D09F6F90045523A /* BSDailyExpensesSummaryViewController.m in Sources */,
 				000A9A771D09F2290045523A /* BSShowAllEntriesController.swift in Sources */,
 				000A9AAC1D0AF0DB0045523A /* BSCategoryFilterViewController.m in Sources */,
 				000A9A731D09F21B0045523A /* BSDisplaySectionData.swift in Sources */,
 				000A9A821D09F3F20045523A /* BSBaseNavigationTransitionManager.swift in Sources */,
+				0045D61D1DBCC75B006AA5AE /* BSMonthlyExpensesSummaryTests.m in Sources */,
 				000A9A1E1D09E99F0045523A /* BSMonthlySummaryGraphLineController.swift in Sources */,
 				000A9A641D09F20E0045523A /* BSShowDailyEntriesPresenter.swift in Sources */,
 				000A9A411D09EB710045523A /* BSAddEntryPresenterEventsProtocol.swift in Sources */,
@@ -1302,9 +1311,9 @@
 				000A9A261D09EA110045523A /* BSDailySummaryGraphLineController.swift in Sources */,
 				000A9A8A1D09F6EF0045523A /* BSMonthlyExpensesSummaryViewController.m in Sources */,
 				000A9A9B1D09F90E0045523A /* LineGraph.m in Sources */,
-				000260D31BCC5DCF00B2444E /* BSPerEntrySummaryViewControllerSpecs.m in Sources */,
 				000A9A141D09E5590045523A /* BSYearlySummaryNavigationTransitionManager.swift in Sources */,
 				000A9AC71D0C14000045523A /* BSPieGraphControllerProtocol.swift in Sources */,
+				0045D6201DBCE137006AA5AE /* BSDailySummaryViewControllerSpecs.m in Sources */,
 				000A9A541D09F2030045523A /* BSShowMonthlyEntriesController.swift in Sources */,
 				000A9A391D09EB710045523A /* BSAddEntryController.swift in Sources */,
 				000A9AB01D0AF1A90045523A /* BSModalSelectorViewTransitioningDelegate.m in Sources */,
@@ -1314,34 +1323,35 @@
 				000A9AA21D09FB760045523A /* BSCategoryFilterControllerProtocol.swift in Sources */,
 				000A9A711D09F21B0045523A /* BSAbstractShowEntriesPresenter.swift in Sources */,
 				000A9A4A1D09F1F00045523A /* BSShowYearlyEntriesController.swift in Sources */,
+				0045D6221DBCE1E8006AA5AE /* BSPerEntrySummaryViewControllerSpecs.m in Sources */,
 				009332691D1C6206004B1DC2 /* BSIndividualExpensesSummaryViewController.m in Sources */,
 				000A9ADA1D0C46E60045523A /* BSExpensesSummaryPieGraphPresenter.swift in Sources */,
 				00F95EE41D5F75BB005F9108 /* BSIndividualEntriesSummaryNavigationTransitionManager.swift in Sources */,
 				000A9A281D09EA110045523A /* BSDailySummaryGraphLinePresenter.swift in Sources */,
 				000A9ACB1D0C14000045523A /* BSPieGraphPresenterProtocol.swift in Sources */,
 				000A9A861D09F6E10045523A /* BSYearlyExpensesSummaryViewController.m in Sources */,
+				0045D61C1DBCC72A006AA5AE /* BSDailyExpensesLineGraphTests.m in Sources */,
 				000A9A6D1D09F21B0045523A /* BSAbstractShowEntriesController.swift in Sources */,
-				000260D51BCC5F2D00B2444E /* BSYearlySummaryViewControllerSpecs.m in Sources */,
-				000260D11BCC5CF100B2444E /* BSDailySummaryViewControllerSpecs.m in Sources */,
 				000A9ADD1D0C48C90045523A /* BSExpensesSummaryPieGraphController.swift in Sources */,
 				000A9A5E1D09F20E0045523A /* BSDailyExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A9A3F1D09EB710045523A /* BSAddEntryPresenter.swift in Sources */,
 				000A9A6B1D09F21B0045523A /* BSAbstractExpensesSummaryPresenterEventsProtocol.swift in Sources */,
 				000A9A931D09F71E0045523A /* BSBaseExpensesSummaryViewController.m in Sources */,
 				000A9A191D09E76D0045523A /* BSGraphViewController.m in Sources */,
+				0045D6241DBCE29F006AA5AE /* BSPerEntrySummaryTests.m in Sources */,
 				000A9A601D09F20E0045523A /* BSShowDailyEntriesController.swift in Sources */,
 				000A9A121D09E5590045523A /* BSYearlySummaryGraphLinePresenter.swift in Sources */,
 				000A9A3B1D09EB710045523A /* BSAddEntryControllerProtocol.swift in Sources */,
 				00418B8D1D23045F00DB4528 /* PaddingLabel.swift in Sources */,
 				000A9A7F1D09F3CB0045523A /* BSDailySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A311D09EA980045523A /* BSGraphLinePresenterProtocol.swift in Sources */,
+				0045D61F1DBCE025006AA5AE /* BSMonthlySummaryViewControllerSpecs.m in Sources */,
 				000A9A101D09E5590045523A /* BSYearlySummaryGraphLineController.swift in Sources */,
 				000A9A2D1D09EA980045523A /* BSGraphLineControllerProtocol.swift in Sources */,
 				000A9A581D09F2030045523A /* BSShowMonthlyEntriesPresenter.swift in Sources */,
 				000A9A201D09E99F0045523A /* BSMonthlySummaryGraphLinePresenter.swift in Sources */,
 				000A9A221D09E99F0045523A /* BSMonthlySummaryNavigationTransitionManager.swift in Sources */,
 				000A9A791D09F2290045523A /* BSShowAllEntriesPresenter.swift in Sources */,
-				000260D21BCC5D5700B2444E /* BSMonthlySummaryViewControllerSpecs.m in Sources */,
 				000A9A3D1D09EB710045523A /* BSAddEntryInterfaceProtocol.swift in Sources */,
 				000A9AA81D09FBDE0045523A /* BSCategoryFilterController.swift in Sources */,
 			);
@@ -1350,10 +1360,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		007B8270177476780052FE84 /* PBXTargetDependency */ = {
+		0045D61B1DBABFEF006AA5AE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 007B8248177476780052FE84 /* Expensit */;
-			targetProxy = 007B826F177476780052FE84 /* PBXContainerItemProxy */;
+			targetProxy = 0045D61A1DBABFEF006AA5AE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1457,7 +1467,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_CODE_COVERAGE = YES;
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1496,7 +1506,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CLANG_ENABLE_CODE_COVERAGE = YES;
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
@@ -1534,7 +1544,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8C7CDFF4784CB7B9A30F1A00 /* Pods-ExpensesTests.debug.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Expensit.app/Expensit";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1571,9 +1582,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
 				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/ExpensesTests-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Expensit-Swift.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expensit.app/Expensit";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Debug;
@@ -1582,7 +1594,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B6C9F993D76B24CAD6E0133 /* Pods-ExpensesTests.release.xcconfig */;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Expensit.app/Expensit";
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_CODE_COVERAGE = NO;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1615,8 +1628,9 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "9B115C84-B040-47D8-A059-52901AFC212B";
 				SWIFT_OBJC_BRIDGING_HEADER = "Expenses/ExpensesTests-Bridging-Header.h";
+				SWIFT_OBJC_INTERFACE_HEADER_NAME = "Expensit-Swift.h";
 				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUNDLE_LOADER)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Expensit.app/Expensit";
 				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol BSGraphLineControllerProtocol
+@objc public protocol BSGraphLineControllerProtocol
 {
     func abscissaValues() -> [NSDictionary]
     func graphSurplusResults(for section: String) -> [AnyObject]
